@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import NavPage from '../../Interface/NavPage/NavPage';
 const Cheques = () => {
     return (
@@ -26,14 +27,14 @@ const Cheques = () => {
                         <div>
                           <div className="card-body pt-4 p-3">
                             <ul className="list-group">
-                              <a href="../pages/TypeCheques.html"><li className="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg"  >
+                              <Link to ={'/client/cheques/typecheques'}><li className="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg"  >
                               <div className='bloc1'>
                                 <div className='bloc2'>
                                       <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-cheque-banking-flaticons-lineal-color-flat-icons-4.png" className='bloc3' />
                                       <span>Chéques émis</span>
                                     </div>
                                     <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" style={{width: '40px'}} />                                
-                                  </div></li></a>
+                                  </div></li></Link>
                               <li className="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
                               <div className='bloc1'>
                                 <div className='bloc2'>

@@ -1,20 +1,40 @@
-import React from 'react'
+import React , { useEffect, useState }  from 'react'
+import { Link  } from 'react-router-dom';
 import NavPage from '../../Interface/NavPage/NavPage';
+import VirementBancaire from './VirementBancaire/VirementBancaire';
+
 const Virement = () => {
-    return (  
-    <>
-    <NavPage name="Virements"/>
-    <div class="container-fluid py-4">
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+
+    return (
+  
+    <div>  
+      {modalIsOpen === true ? (<VirementBancaire  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />) : (<div></div>)  } 
+
+
+
+    <div class="container-fluid py-4"> 
+
     <div class="row">
+
       <div class="col-lg-12">
+
         <div class="row">
+
           <div class="col-md-12 mb-lg-0 mb-4">
+
             <div class="row mt-4">
+
               <div >
-                <div class="card z-index-2">
+
+
+                <div class="card">
+
                   <div class="card-header pb-0">
-                  
+
                     <h6>Virement </h6>
+
                     <p class="text-sm">
                       <span class="font-weight-bold">Veuillez trouver ici  les Virement
                       </span>
@@ -23,12 +43,12 @@ const Virement = () => {
                   <div class="card-body p-3">
                     <div >
                       <div class="card-body pt-4 p-3">
-                          <ul class="list-group">
+                          <ul class="list-group" >
                          
-                              <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
+                          <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" onClick={() => setModalIsOpen(true)} >
             
-                              <div className='bloc1'>
-                                <div className='bloc2'>
+                              <div className='bloc1' >
+                                <div className='bloc2' >
                                             <img src="https://img.icons8.com/external-kmg-design-flat-kmg-design/32/4a90e2/external-hand-ecommerce-kmg-design-flat-kmg-design.png" className='imgWM'/>
                                           <span>Virement</span>
 
@@ -38,7 +58,7 @@ const Virement = () => {
                                       <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" className='imgW'/>                                
                                 </div>
                                 </li>
-                                <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
+                                <Link to={'/client/virements/historique'}><li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
             
                                 <div className='bloc1'>
                                 <div className='bloc2'>
@@ -49,7 +69,7 @@ const Virement = () => {
                             <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" className='imgW'/>                             
                             </div>
 
-                                </li>
+                                </li></Link>
 
                                 <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
             
@@ -89,7 +109,7 @@ const Virement = () => {
     </div>
  
   
-  </div> </> );
+  </div> </div> );
 }
  
 export default Virement;

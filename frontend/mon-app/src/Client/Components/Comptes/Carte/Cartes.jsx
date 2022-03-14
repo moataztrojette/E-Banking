@@ -5,7 +5,6 @@ const Carte = () => {
       <div className="overflow-hidden position-relative border-radius-xl" style={{backgroundImage: 'url("/img/curved-images/curved14.jpg")'}}>
         <span className="mask bg-gradient-dark" />
         <div className="card-body position-relative z-index-1 p-3">
-          <i className="fas fa-wifi text-white p-2" />
           <div style={{display: 'flex', alignItems: 'center', margin: '10px'}}>
             <h2 className="text-white">28 981,500 </h2>
             <h3 className="text-white" style={{marginleft: '1px'}} >DT</h3>

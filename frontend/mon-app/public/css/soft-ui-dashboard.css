@@ -2884,6 +2884,91 @@ textarea.form-control-lg {
   height: 1.4rem;
   border-radius: 0.5rem;
 }
+.form-select_annee 
+{
+  display: block;
+  width: 23%;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  -moz-padding-start: calc(0.75rem - 3px);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  color: #495057;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #d2d6da;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  appearance: none;
+}
+
+.form-select_date_deb 
+{
+  display: block;
+  width: 23%;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  -moz-padding-start: calc(0.75rem - 3px);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  color: #495057;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #d2d6da;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  appearance: none;
+}
+
+.form-select_date_fin
+{
+  display: block;
+  width: 23%;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  -moz-padding-start: calc(0.75rem - 3px);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  color: #495057;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #d2d6da;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  appearance: none;
+}
+.filter_historique{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 10px;
+  margin-left:40% ;
+}
+.as fa-search{
+  width: 30em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .form-select {
   display: block;
@@ -24978,4 +25063,25 @@ pre[class*="language-"] {
 {
   width:40px;
   margin-right: 10px;
+}
+.col_cheque{
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px;
+
+}
+.row_type_cheque{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 5em;
+}
+.card-body h5{
+  text-align: center;
+  color: #7fba00;
+  margin-bottom: 25px;
+}
+.card-body p{
+  text-align: center;
+  color: green;
+  font-size: 10px;
+
 }
