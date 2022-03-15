@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
 
-const VirementBancaire = (props) => {
-    return (
-<div>
+const AjouterComptes = (props) => {
+  return (
+    <div>
       <Modal
         isOpen={props.modalIsOpen}
         shouldCloseOnOverlayClick={false}
@@ -25,7 +25,7 @@ const VirementBancaire = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Virement bancaire </h3>
+          <h3 className="font-weight-light">Creation d'une compte </h3>
           <br />
           <form className="pt-3" encType="multipart/form-data">
           <div className="bloc_component_ajouter_comptes">
@@ -36,35 +36,63 @@ const VirementBancaire = (props) => {
                 type="text"
                 className="form-control"
                 id="exampleInputUsername2"
-                name="nomBeneficiaire"
+                name="nom"
                 required
-                placeholder="Nom  bénéficiaire"
+                placeholder="Nom"
               />
 
               <input
                 type="text"
                 className="form-control"
                 id="exampleInputUsername2"
-                name="ribBeneficiaire"
+                name="prenom"
                 required
-                placeholder="RIB  bénéficiaire"
+                placeholder="Prénom"
               />
 </div>
               <input
-               type="number"
+               type="email"
                 className="form-control"
                 id="input_email"
-                name="montant"
+                name="email"
                 required
-                placeholder="Montant"
+                placeholder="@gmail.com"
               />
 
            
 
 
+<div className="bloc_pc">
+              <input
+                type="text"
+                className="form-control"
+                id="exampleInputUsername2"
+                name="profession"
+                required
+                placeholder="Profession"
+              />
 
+              <input
+                type="number"
+                className="form-control"
+                id="exampleInputUsername2"
+                name="cin"
+                required
+                placeholder="CIN"
+              />
 
-            
+</div>
+         
+
+              <input
+                type="password"
+                className="form-control"
+                id="input_password"
+                name="mdp"
+                required
+                placeholder="Mot de passe"
+              />
+
             <ToastContainer></ToastContainer>
 
 <div className="bloc_creation_compte">
@@ -91,7 +119,7 @@ const VirementBancaire = (props) => {
             </div>
             </div>
             <div>
-              <img src="/img/money_transfer.jpg" className="image_money"/>
+              <img src="/img/register.svg" className="image_register"/>
             </div>
             </div>
             
@@ -99,8 +127,7 @@ const VirementBancaire = (props) => {
         </div>
       </Modal>
     </div>
-    
-     );
-}
- 
-export default VirementBancaire;
+  );
+};
+
+export default AjouterComptes;

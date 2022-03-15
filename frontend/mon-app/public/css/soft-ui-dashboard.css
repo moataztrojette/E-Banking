@@ -2955,9 +2955,26 @@ textarea.form-control-lg {
 .as fa-search{
   width: 30em;
 }
+.filter_comptes{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 20px;
+  margin-left: 70%;
+  margin-bottom: 10px;
+
+}
+.btn_nouvelle_comptes{
+  border-radius: 10px;
+  background-color: #f25022;
+  color: var(--bs-light);
+  border: none;
+  transition: all 0.5s;
+}
 
 
-
+.btn_nouvelle_comptes:hover {
+  transform: scale(1.1);
+}
 
 
 
@@ -25085,3 +25102,329 @@ pre[class*="language-"] {
   font-size: 10px;
 
 }
+.bloc_np{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 10px ;
+  margin-bottom: 20px;
+}
+.bloc_pc{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 10px ;
+  margin-bottom: 20px;
+
+}
+#input_password{
+  margin-bottom: 20px;
+
+}
+#input_email{
+  margin-bottom: 20px;
+
+}
+.bloc_creation_compte{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 10px;
+}
+.btn_terminer{
+  border-radius: 10px;
+  background-color: #00a4ef;
+    color:var(--bs-light);
+    border:none;
+    height: 40px;
+    width: 20em;
+    transition: all 0.4s;
+
+}
+.bloc_component_ajouter_comptes{
+  display: flex;
+  flex-direction: row;
+
+}
+.image_register{
+  width: 20em;
+  margin-left: 20px;
+}
+.image_money{
+  width: 20em;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.btn_terminer:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+.container_login {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.forms-container_login {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.signin-signup_login {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 75%;
+  width: 50%;
+  transition: 1s 0.7s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 5;
+}
+
+.form_login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 5rem;
+  transition: all 0.2s 0.7s;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+form.sign-up-form_login {
+  opacity: 0;
+  z-index: 1;
+}
+
+form.sign-in-form_login {
+  z-index: 2;
+}
+.title3_login {
+  opacity: 0.65;
+  color: #7fba00;
+ 
+
+}
+
+.title_login {
+  font-size: 2.2rem;
+  color: #7fba00;
+}
+
+.input-field_login {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+
+.input-field_login i {
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+
+.input-field_login input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.input-field_login input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+.social-text_login {
+  padding: 0.7rem 0;
+  font-size: 1rem;
+}
+
+.social-media_login {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icon_login {
+  height: 46px;
+  width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.45rem;
+  color: #333;
+  border-radius: 50%;
+  border: 1px solid #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.social-icon_login:hover {
+  color: #4481eb;
+  border-color: #4481eb;
+}
+
+.btn_login {
+  width: 150px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 7em;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn_login:hover {
+  background-color: #4d84e2;
+}
+.panels-container_login {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.container_login:before {
+  content: "";
+  position: absolute;
+  height: 2000px;
+  width: 2000px;
+  top: -10%;
+  right: 48%;
+  transform: translateY(-50%);
+  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+  transition: 1.8s ease-in-out;
+  border-radius: 50%;
+  z-index: 6;
+}
+
+.image_login {
+  width: 100%;
+  transition: transform 1.1s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+.panel_login {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 6;
+}
+
+.left-panel_login {
+  pointer-events: all;
+  padding: 3rem 17% 2rem 12%;
+}
+
+.right-panel_login {
+  pointer-events: none;
+  padding: 3rem 12% 2rem 17%;
+}
+
+.panel_login .content_login {
+  color: #fff;
+  transition: transform 0.9s ease-in-out;
+  transition-delay: 0.6s;
+}
+
+.panel_login h3 {
+  font-weight: 600;
+  line-height: 1;
+  font-size: 1.5rem;
+}
+
+.panel_login p {
+  font-size: 0.95rem;
+  padding: 0.7rem 0;
+}
+
+.btn.transparent_login {
+  margin: 0;
+  background: none;
+  border: 2px solid #fff;
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.right-panel_login .image_login,
+.right-panel_login .content_login {
+  transform: translateX(800px);
+}
+
+/* ANIMATION */
+
+.container_login.sign-up-mode_login:before {
+  transform: translate(100%, -50%);
+  right: 52%;
+}
+
+.container_login.sign-up-mode_login .left-panel_login .image_login,
+.container_login.sign-up-mode_login .left-panel_login .content_login {
+  transform: translateX(-800px);
+}
+
+.container_login.sign-up-mode_login .signin-signup_login {
+  left: 25%;
+}
+
+.container_login.sign-up-mode_login form.sign-up-form_login {
+  opacity: 1;
+  z-index: 2;
+}
+
+.container_login.sign-up-mode_login form.sign-in-form_login {
+  opacity: 0;
+  z-index: 1;
+}
+
+.container_login.sign-up-mode_login .right-panel_login .image_login,
+.container_login.sign-up-mode_login .right-panel_login .content_login {
+  transform: translateX(0%);
+}
+
+.container_login.sign-up-mode_login .left-panel_login {
+  pointer-events: none;
+}
+
+.container_login.sign-up-mode_login .right-panel_login {
+  pointer-events: all;
+}
+
+
+

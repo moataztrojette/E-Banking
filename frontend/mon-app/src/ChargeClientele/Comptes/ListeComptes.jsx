@@ -1,88 +1,84 @@
-import React from 'react';
-
+import React, { useState } from "react";
+import AjouterComptes from './AjouterComptes/AjouterComptes'
 const ListeComptes = () => {
-    return (   <div className="row">
-    <div className="col-12">
-      <div className="card mb-4">
-        <div className="card-header pb-0">
-          <h6>Authors table</h6>
+
+  const[modalIsOpen,setModalIsOpen] = useState(false);
+
+
+  return (
+    <div className="row">
+      {modalIsOpen === true ? (<AjouterComptes  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />) : (<div></div>)  } 
+
+      <div class="filter_comptes">
+        <div class="form-outline">
+          <input
+            type="search"
+            id="form1"
+            class="form-control"
+            placeholder="Rechercher un compte "
+          />
         </div>
-        <div className="card-body px-0 pt-0 pb-2">
-          <div className="table-responsive p-0">
-            <table className="table align-items-center mb-0">
-              <thead>
-                <tr>
-                  <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                  <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                  <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                  <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-                  <th className="text-secondary opacity-7" />
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div className="d-flex px-2 py-1">
-
-                      <div className="d-flex flex-column justify-content-center">
-                        <h6 className="mb-0 text-sm">John Michael</h6>
-                        <p className="text-xs text-secondary mb-0">john@creative-tim.com</p>
+        <button type="button" className="btn_nouvelle_comptes" onClick={()=>setModalIsOpen(true)}>
+          Nouvelle Comptes +{" "}
+        </button>
+      </div>
+      <div className="col-12">
+        <div className="card mb-4">
+          <div className="card-header pb-0">
+            <h6>Liste des comptes</h6>
+          </div>
+          <div className="card-body px-0 pt-0 pb-2">
+            <div className="table-responsive p-0">
+              <table className="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Nom et prénom{" "}
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      RIB
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Solde
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Montant
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">Trojette Moataz</h6>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p className="text-xs font-weight-bold mb-0">Manager</p>
-                    <p className="text-xs text-secondary mb-0">Organization</p>
-                  </td>
-                  <td className="align-middle text-center text-sm">
-                    <span className="badge badge-sm bg-gradient-success">Online</span>
-                  </td>
-                  <td className="align-middle text-center">
-                    <span className="text-secondary text-xs font-weight-bold">23/04/18</span>
-                  </td>
-                  <td className="align-middle">
-                    <a href="javascript:;" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                      Edit
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="d-flex px-2 py-1">
-
-                      <div className="d-flex flex-column justify-content-center">
-                        <h6 className="mb-0 text-sm">John Michael</h6>
-                        <p className="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p className="text-xs font-weight-bold mb-0">Manager</p>
-                    <p className="text-xs text-secondary mb-0">Organization</p>
-                  </td>
-                  <td className="align-middle text-center text-sm">
-                    <span className="badge badge-sm bg-gradient-success">Online</span>
-                  </td>
-                  <td className="align-middle text-center">
-                    <span className="text-secondary text-xs font-weight-bold">23/04/18</span>
-                  </td>
-                  <td className="align-middle">
-                    <a href="javascript:;" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                      Edit
-                    </a>
-                  </td>
-                </tr>
-              
-                
-               
-                 
-              </tbody>
-            </table>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold">
+                        0258741
+                      </span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-secondary text-xs font-weight-bold">
+                        12,500 dt
+                      </span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="badge badge-sm bg-gradient-success">
+                        Voir Profile
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div> );
-}
- 
+  );
+};
+
 export default ListeComptes;
