@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from "axios";
+
 import Navbar from './Navbar/Navbar';
 import SideBar from './SideBar/SideBar';
 import {BrowserRouter , Route, Switch } from "react-router-dom"
@@ -14,11 +16,21 @@ import VirementBancaire from '../Components/Virements/VirementBancaire/VirementB
 import Historique from '../Components/Virements/Historique/Historique';
 
 
-const InterfaceClient = () => {
+const InterfaceClient = (props) => {
+
+    const logout = async ()=>{
+        try{
+         await axios.post('http://localhost:4000/api/compte/deconnexion')
+         props.history.replace('/login')
+        }
+        catch(error){
+        }
+     }
+
     return (<div >
         <SideBar/>
         <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
-        <Navbar/>
+        <Navbar logout ={logout} />
             <Switch>
                <Route path ="/client/virements/virementbancaires" component={VirementBancaire}/>
                 <Route path ="/client/cheques/typecheques" component={TypeCheques}/>

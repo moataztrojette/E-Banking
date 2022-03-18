@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import AjouterComptes from './AjouterComptes/AjouterComptes'
 const ListeComptes = () => {
 
   const[modalIsOpen,setModalIsOpen] = useState(false);
+  const [valuesInput,setValues] = useState({});
+  const [listeCompte,setListeCompte] = useState([]);
+
+
+  useEffect(()=>{
+
+    axios.get("http://localhost:4000/api/compte/find").then((comptes)=>{
+      setListeCompte(comptes.data)
+    })
+  },[])
+
+
+
 
 
   return (
     <div className="row">
-      {modalIsOpen === true ? (<AjouterComptes  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />) : (<div></div>)  } 
+      {modalIsOpen === true ? (<AjouterComptes  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} valuesInput={valuesInput} setValues={setValues} listeCompte={listeCompte} setListeCompte={setListeCompte} />) : (<div></div>)  } 
 
       <div class="filter_comptes">
         <div class="form-outline">
@@ -27,9 +41,15 @@ const ListeComptes = () => {
           <div className="card-header pb-0">
             <h6>Liste des comptes</h6>
           </div>
+         
           <div className="card-body px-0 pt-0 pb-2">
+     
+
             <div className="table-responsive p-0">
-              <table className="table align-items-center mb-0">
+
+           
+              <table className="table align-items-center mb-0">     
+             
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -39,32 +59,57 @@ const ListeComptes = () => {
                       RIB
                     </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Solde
+                      Email
                     </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Profession
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      CIN
+                    </th>
+
+                    
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       Montant
                     </th>
                   </tr>
                 </thead>
+                {listeCompte.map((c)=>(
                 <tbody>
                   <tr>
                     <td>
                       <div class="d-flex px-2 py-1">
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Trojette Moataz</h6>
+                          <h6 class="mb-0 text-sm">{c.prenom} {c.nom}</h6>
                         </div>
                       </div>
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">
-                        0258741
+                        {c.rib}
                       </span>
                     </td>
                     <td class="align-middle text-center text-sm">
                       <span class="text-secondary text-xs font-weight-bold">
-                        12,500 dt
+                        {c.email}
                       </span>
                     </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-secondary text-xs font-weight-bold">
+                        {c.profession}
+                      </span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-secondary text-xs font-weight-bold">
+                        {c.cin}
+                      </span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-secondary text-xs font-weight-bold">
+                        {c.montant}
+                      </span>
+                    </td>
+
                     <td class="align-middle text-center">
                       <span class="badge badge-sm bg-gradient-success">
                         Voir Profile
@@ -72,9 +117,12 @@ const ListeComptes = () => {
                     </td>
                   </tr>
                 </tbody>
+                 ))}
               </table>
             </div>
-          </div>
+           
+            </div>
+       
         </div>
       </div>
     </div>

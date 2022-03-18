@@ -1,8 +1,21 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Historique = () => {
+
+  const [listeHistorique,setListeHistorique] = useState([]);
+
+  useEffect(()=>{
+
+    axios.get("http://localhost:4000/api/virement/historique").then((his)=>{
+      setListeHistorique(his.data)
+    })
+  },[])
+
     return (
-        
+  
+
+
     <div className="row">
         <div className='filter_historique'>
     <select class="form-select_annee" aria-label="Default select example">
@@ -41,30 +54,31 @@ const Historique = () => {
               <thead>
                 <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Opération</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Opération</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type d'opération</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom Beneficiaire</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rib Beneficiaire</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Montant</th>
           
                 </tr>
               </thead>
+              {listeHistorique.map((his)=>(
               <tbody>
               <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                      
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">09/02/2022</h6>
+                            <h6 class="mb-0 text-sm">{his.date}</h6>
                           </div>
                         </div>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">retrait espèces</span>
+                        <span class="text-secondary text-xs font-weight-bold">{his.nomBeneficiaire}</span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">RETRAIT ESPECES</span>
+                        <span class="badge badge-sm bg-gradient-success">{his.ribBeneficiaire}</span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">-450,000 DT</span>
+                        <span class="text-secondary text-xs font-weight-bold text-danger">-{his.montant} DT</span>
                       </td>
                   
                     </tr>
@@ -74,6 +88,7 @@ const Historique = () => {
                
                  
               </tbody>
+                        ))}
             </table>
           </div>
         </div>

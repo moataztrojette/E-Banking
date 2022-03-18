@@ -1,6 +1,7 @@
 import React from 'react';
-import NavPage from '../NavPage/NavPage';
-const Navbar = () => {
+
+
+const Navbar = (props) => {
     return (
         <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
           <div className="container-fluid py-1 px-3">
@@ -16,7 +17,7 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item px-3 d-flex align-items-center">
                   <a href="javascript:;" className="nav-link text-body p-0">
-                    <img src="/img/icons8-shutdown-48.png" width="30px" alt="" />
+                    <img src="/img/icons8-shutdown-48.png" width="30px" alt="" onClick={props.logout} />
                   </a>
                 </li>
               </ul>

@@ -1,30 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavPage from "../../Interface/NavPage/NavPage";
 import ChargesClienteles from "./ChargesClienteles/ChargesClienteles";
-import Historique from "./Historique/Historique";
+
 import Profil from "./Profil/Profil";
 import Statistique from "./Statistique/Statistque";
+import axios from "axios";
+import { Route, Switch, Link } from "react-router-dom";
+import Historique from "./Historique/Historique";
+import VirementRecu  from "./Historique/VirementRecu";
 
 const TableauDeBord = () => {
-    return (
-      <>
-      <NavPage name="Tableau de bord"/>
+  const [infoProfil, setInfoProfil] = useState([]);
+  const [historique, setHistorique] = useState([]);
+  const [virementRecu, setVirementRecu] = useState([]);
 
-          <div className="container-fluid py-4">
+  useEffect(() => {
+    axios.get("http://localhost:4000/api/compte/profil").then((compte) => {
+      setInfoProfil(compte.data);
+      console.log(infoProfil);
+    });
+    axios
+      .get("http://localhost:4000/api/virement/lastHistorique")
+      .then((his) => {
+        setHistorique(his.data);
+      });
 
+    axios.get("http://localhost:4000/api/virement/recu").then((his) => {
+      setVirementRecu(his.data);
+    });
+  }, []);
+
+  return (
+    <>
+      <NavPage name="Tableau de bord" />
+
+      <div className="container-fluid py-4">
         <div className="row">
           <div className="col-lg-8">
             <div className="row">
-            <Profil/>
-            <Statistique/> 
+              <Profil infoProfil={infoProfil} setInfoProfil={setInfoProfil} />
+              <Statistique />
             </div>
           </div>
-         <ChargesClienteles/>
+          <ChargesClienteles />
         </div>
-       <Historique/>
+
+        <div className="accordion-1">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="accordion" id="accordionRental" style={{display:"flex" ,marginTop:"4em",marginLeft:"-30px"}}>
+                 <Historique historique={historique} setHistorique={setHistorique} />
+                  <VirementRecu virementRecu={virementRecu} setVirementRecu={setVirementRecu}/>
+              
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      </>
-     );
-}
- 
+    </>
+  );
+};
+
 export default TableauDeBord;

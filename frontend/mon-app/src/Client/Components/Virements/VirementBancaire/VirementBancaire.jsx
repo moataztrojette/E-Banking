@@ -1,9 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
+import axios from "axios";
+
 
 const VirementBancaire = (props) => {
+
+  const [valuesInput,setValues] = useState({});
+
+  const MyValuesInput = (event) => {
+    let res = valuesInput;
+    res[event.target.name] = event.target.value;
+    setValues(res);
+  };
+
+  const handleFormSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      await axios.post(
+        "http://localhost:4000/api/virement/add",
+        valuesInput
+      );
+
+      toast("Virement effectué avec succes ", {
+        type: "success",
+      });
+
+    } catch (error) {
+      if (error.response.data) {
+        toast(error.response.data, {
+          type: "error",
+        });
+      }
+    }
+  };
+
+
+
     return (
 <div>
       <Modal
@@ -27,7 +61,7 @@ const VirementBancaire = (props) => {
         <div className="auth-form-light text-left p-5">
           <h3 className="font-weight-light">Virement bancaire </h3>
           <br />
-          <form className="pt-3" encType="multipart/form-data">
+          <form className="pt-3" encType="multipart/form-data"  onSubmit={handleFormSubmit}>
           <div className="bloc_component_ajouter_comptes">
 
             <div>
@@ -39,7 +73,8 @@ const VirementBancaire = (props) => {
                 name="nomBeneficiaire"
                 required
                 placeholder="Nom  bénéficiaire"
-              />
+                onChange={MyValuesInput}
+                />
 
               <input
                 type="text"
@@ -48,6 +83,8 @@ const VirementBancaire = (props) => {
                 name="ribBeneficiaire"
                 required
                 placeholder="RIB  bénéficiaire"
+                onChange={MyValuesInput}
+
               />
 </div>
               <input
@@ -57,6 +94,8 @@ const VirementBancaire = (props) => {
                 name="montant"
                 required
                 placeholder="Montant"
+                onChange={MyValuesInput}
+
               />
 
            
