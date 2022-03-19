@@ -1,5 +1,7 @@
 const virements = require("../models/virement.model");
-const comptes = require("../models/compte.model")
+const comptes = require("../models/compte.model");
+const historiques = require("../models/historique.model");
+
 module.exports.add = async (req,res)=>{
     let date_ob = new Date();
       let date = date_ob.getDate();
@@ -10,23 +12,25 @@ module.exports.add = async (req,res)=>{
 
 
     const ribValid = await comptes.findOne({rib:req.body.ribBeneficiaire})
+    const comptesUser2 = await comptes.findOne({rib:req.body.ribBeneficiaire})
     const comptesUser = await comptes.findOne({_id:req.info_compte._id}).populate('_id');
 
  if(comptesUser.rib != req.body.ribBeneficiaire ){
     if(comptesUser.montant > req.body.montant)
     {
      if(ribValid ){
-         const preventMontant = ribValid.montant;
- 
+         let preventMontant = ribValid.montant;
+        
          await comptes.findOneAndUpdate({rib:req.body.ribBeneficiaire},{
-                 montant : (req.body.montant + preventMontant)
+                 montant : parseInt(preventMontant)+parseInt(req.body.montant)
          },{
              new : true
          })
+       
          
  
          await comptes.findOneAndUpdate({_id:req.info_compte._id},{
-             montant :  comptesUser.montant - req.body.montant
+             montant :  parseInt(comptesUser.montant) - parseInt(req.body.montant)
          },{
              new : true
          });
@@ -40,6 +44,26 @@ module.exports.add = async (req,res)=>{
              id_user_recu : ribValid._id
          })
          await virement.save();
+
+         const historique =  new historiques({
+            id_user : req.info_compte._id,
+            montant :parseInt(comptesUser.montant) - parseInt(req.body.montant) ,
+            date : dataFull,
+           
+        })
+        await historique.save();
+
+        const his =  new historiques({
+            id_user : comptesUser2._id,
+            montant :parseInt(comptesUser2.montant )+ parseInt(req.body.montant) ,
+            date : dataFull,
+           
+        })
+        await his.save();
+
+
+
+
  
          res.status(200).json(virement);
  

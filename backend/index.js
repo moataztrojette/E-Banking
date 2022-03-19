@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session')
 
 const compte = require("./routes/compte.router");
 const virement = require("./routes/virement.router");
+const historique = require("./routes//historique.router");
 
 
 env.config()
@@ -22,6 +23,7 @@ app.use(cookieSession({
 require("./DB/setup")()
 app.use("/api/compte",compte)
 app.use("/api/virement",virement)
+app.use("/api/historique",historique)
 
 
 

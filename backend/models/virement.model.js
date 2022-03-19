@@ -5,7 +5,7 @@ const virement = new mongoose.Schema({
     nomBeneficiaire : {type:String,required:true},
     ribBeneficiaire : {type:String,required:true},
     date : {type:String, required:true},
-    montant : {type:String,required:true},
+    montant : {type:Number,required:true},
     id_user_recu: {type:mongoose.Types.ObjectId, ref:"comptes"}
 })
 const virements = mongoose.model("virements",virement);
