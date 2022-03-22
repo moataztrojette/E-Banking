@@ -71,7 +71,7 @@ const Virement = () => {
 
                                 </li></Link>
 
-                                <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
+                                <Link to={'/client/virements/beneficiaires'}><li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
             
                                 <div className='bloc1'>
                                 <div className='bloc2'>
@@ -82,7 +82,7 @@ const Virement = () => {
                   <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" className='imgW'/>                                   
                   </div>
 
-                                </li>
+                                </li></Link>
 
 
                                

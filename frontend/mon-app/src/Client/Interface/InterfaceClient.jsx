@@ -14,6 +14,7 @@ import DemandesCartes from '../Components/Cartes/DemandesCartes/DemandesCartes';
 import TypeCheques from '../Components/Cheques/TypeCheques/TypeCheques';
 import VirementBancaire from '../Components/Virements/VirementBancaire/VirementBancaire';
 import Historique from '../Components/Virements/Historique/Historique';
+import Beneficiaires from '../Components/Virements/Bénéficiaires/Beneficiaires';
 
 
 const InterfaceClient = (props) => {
@@ -36,6 +37,8 @@ const InterfaceClient = (props) => {
                 <Route path ="/client/cheques/typecheques" component={TypeCheques}/>
                 <Route path ="/client/cartes/demande" component={DemandesCartes}/>
                 <Route path ="/client/virements/historique" component={Historique}/>
+                <Route path ="/client/virements/beneficiaires" component={Beneficiaires}/>
+
                 <Route path="/client/main" component={TableauDeBord}/>
                 <Route path ="/client/virements" component={Virements}/>
                 <Route path ="/client/demandes" component={Demandes}/>

@@ -3,13 +3,22 @@ import React, { useEffect, useState } from "react";
 
 const Historique = () => {
 
-  const [listeHistorique,setListeHistorique] = useState([]);
-
+  const [virementEnvoyer, setVirementEnvoyer] = useState([]);
+  const [virementRecu, setVirementRecu] = useState([]);
   useEffect(()=>{
 
-    axios.get("http://localhost:4000/api/virement/historique").then((his)=>{
-      setListeHistorique(his.data)
-    })
+
+    axios
+    .get("http://localhost:4000/api/virement/envoyer")
+    .then((his) => {
+      setVirementEnvoyer(his.data);
+    });
+
+  axios.get("http://localhost:4000/api/virement/recu").then((his) => {
+    setVirementRecu(his.data);
+  });
+
+
   },[])
 
     return (
@@ -48,50 +57,92 @@ const Historique = () => {
         <div className="card-header pb-0">
           <h6>Historique</h6>
         </div>
-        <div className="card-body px-0 pt-0 pb-2">
-          <div className="table-responsive p-0">
-            <table className="table align-items-center mb-0">
-              <thead>
-                <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Opération</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom Beneficiaire</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rib Beneficiaire</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Montant</th>
-          
-                </tr>
-              </thead>
-              {listeHistorique.map((his)=>(
-              <tbody>
-              <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                     
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{his.date}</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{his.nomBeneficiaire}</span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">{his.ribBeneficiaire}</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold text-danger">-{his.montant} DT</span>
-                      </td>
-                  
-                    </tr>
-              
-              
-                
-               
-                 
-              </tbody>
-                        ))}
-            </table>
-          </div>
+        <div class="slider_his">
+  <div className='silder_btn'>
+  <a href="#slide-1" className='btn_virement_2'>Virement envoyer </a>
+  
+  <a href="#slide-2" className='btn_virement_1'>Virement reçu</a>
+  </div>
+
+  <div class="slides_his">
+    <div id="slide-1">
+    <div className="card-body pt-4 p-3">
+          <ul className="list-group">
+          {virementEnvoyer.map((his) => (
+
+<li className="bloc4 border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+<div className="d-flex flex-column">
+  <span className="mb-2 text-xs">
+    Date Opération :{" "}
+    <span className="text-dark font-weight-bold ms-sm-2">
+      {his.date}
+    </span>
+  </span>
+  <span className="mb-2 text-xs">
+    Nom bénéficiaire:{" "}
+    <span className="text-dark font-weight-bold ms-sm-2">
+      {his.nomBeneficiaire}
+    </span>
+  </span>
+  <span className="mb-2 text-xs">
+    RIB bénéficiaire :{" "}
+    <span className="text-dark ms-sm-2 font-weight-bold">
+      {his.ribBeneficiaire}
+    </span>
+  </span>
+  <span className="text-xs">
+    Montant:{" "}
+    <span className="text-danger ms-sm-2 font-weight-bold">
+      -{his.montant} DT
+    </span>
+  </span>
+</div>
+</li>
+               ))}
+       
+          </ul>
         </div>
+    </div>
+    <div id="slide-2">
+    <div className="card-body pt-4 p-3">
+          <ul className="list-group">
+          {virementRecu.map((his) => (
+           <li className="bloc4 border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+           <div className="d-flex flex-column">
+             <span className="mb-2 text-xs">
+               Date Opération :{" "}
+               <span className="text-dark font-weight-bold ms-sm-2">
+                 {his.date}
+               </span>
+             </span>
+             <span className="mb-2 text-xs">
+               Nom bénéficiaire:{" "}
+               <span className="text-dark font-weight-bold ms-sm-2">
+                 {his.id_user.nom}
+               </span>
+             </span>
+             <span className="mb-2 text-xs">
+               RIB bénéficiaire :{" "}
+               <span className="text-dark ms-sm-2 font-weight-bold">
+                 {his.id_user.rib}
+               </span>
+             </span>
+             <span className="text-xs">
+               Montant:{" "}
+               <span className="text-success ms-sm-2 font-weight-bold">
+                 + {his.montant} DT
+               </span>
+             </span>
+           </div>
+           </li>
+         
+         ))}
+          </ul>
+        </div>
+    </div>
+ 
+  </div>
+</div>
       </div>
     </div>
   </div>  );

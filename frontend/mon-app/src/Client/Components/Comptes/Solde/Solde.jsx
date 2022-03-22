@@ -1,6 +1,10 @@
-import React from 'react'
-const Solde = () => {
-    return (  <div className="col-md-12 mt-4">
+import React, { useEffect } from "react";
+import axios from "axios";
+
+const Solde = (props) => {
+    return (<>
+    {props.infoProfil.map((cl)=>(
+      <div className="col-md-12 mt-4">
     <div className="row mt-4">
       <div>
         <div className="card z-index-2">
@@ -8,7 +12,7 @@ const Solde = () => {
             <div>
               <h5>Solde : </h5>
               <div>
-                <h5 className="font-weight-bold">28 944,100  DT </h5> 
+                <h5 className="font-weight-bold">{cl.montant}  DT </h5> 
               </div>
             </div>
             <div>
@@ -19,7 +23,9 @@ const Solde = () => {
         </div>
       </div>
     </div>
-  </div>  );
+  </div>
+   ))}
+  </>  );
 }
  
 export default Solde;

@@ -20,12 +20,12 @@ const TableauDeBord = () => {
       console.log(infoProfil);
     });
     axios
-      .get("http://localhost:4000/api/virement/lastHistorique")
+      .get("http://localhost:4000/api/virement/dernier/envoyer")
       .then((his) => {
         setHistorique(his.data);
       });
 
-    axios.get("http://localhost:4000/api/virement/recu").then((his) => {
+    axios.get("http://localhost:4000/api/virement/dernier/recu").then((his) => {
       setVirementRecu(his.data);
     });
   }, []);

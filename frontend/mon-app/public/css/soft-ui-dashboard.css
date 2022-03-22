@@ -25306,6 +25306,24 @@ form.sign-in-form_login {
 .btn_login:hover {
   background-color: #4d84e2;
 }
+.btn_add_beneficiares{
+  width: 250px;
+  background-color: #f25022;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-left: 80%;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 15px;
+
+}
+.btn_add_beneficiares:hover {
+  background-color: #4d84e2;
+}
 .panels-container_login {
   position: absolute;
   height: 100%;
@@ -25425,6 +25443,113 @@ form.sign-in-form_login {
 .container_login.sign-up-mode_login .right-panel_login {
   pointer-events: all;
 }
+.slider_his {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
 
+.slides_his {
+  display: flex;
+  
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  
+  
+  
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  
+  /*
+  scroll-snap-points-x: repeat(300px);
+  scroll-snap-type: mandatory;
+  */
+}
+.slides_his::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.slides_his::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slides_his > div {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  margin-right: 50px;
+  border-radius: 10px;
+  background: #eee;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+
+.author-info_his {
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+}
+.author-info_his a {
+  color: white;
+}
+
+
+.slider_his > a {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+}
+.slider_his > a:active {
+  top: 1px;
+}
+.slider_his > a:focus {
+  background: #000;
+}
+
+.silder_btn{
+  display: flex;
+  display: row;
+  grid-gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+
+}
+.btn_virement_1{
+  background-color:var(--bs-light);
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+.btn_virement_2{
+  background-color:var(--bs-light);
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+.icon_trash{
+  width: 2em;
+}
 
 

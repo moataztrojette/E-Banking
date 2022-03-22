@@ -7,8 +7,8 @@ const cookieSession = require('cookie-session')
 
 const compte = require("./routes/compte.router");
 const virement = require("./routes/virement.router");
-const historique = require("./routes//historique.router");
-
+const historique = require("./routes/historique.router");
+const beneficiaire = require("./routes/beneficiaires.router");
 
 env.config()
 app.use(cors({ origin: "http://localhost:3000",credentials:true }));
@@ -24,7 +24,7 @@ require("./DB/setup")()
 app.use("/api/compte",compte)
 app.use("/api/virement",virement)
 app.use("/api/historique",historique)
-
+app.use("/api/beneficiaire",beneficiaire)
 
 
 

@@ -84,13 +84,26 @@ module.exports.find_transaction = async(req,res)=>{
     res.status(200).json(list_transactions);
 }
 
-module.exports.find_transaction_last = async(req,res)=>{
-    const list_transactions = await virements.find({id_user:req.info_compte._id}).sort({_id: -1 }).limit(3)
-    res.status(200).json(list_transactions);
+module.exports.dernier_virement_envoyer = async(req,res)=>{
+    const dernier_virement_envoyer = await virements.find({id_user:req.info_compte._id}).sort({_id: -1 }).limit(3)
+    res.status(200).json(dernier_virement_envoyer);
 }
 
 
-module.exports.find_transaction_recu = async(req,res)=>{
-    const list_transactions_recu = await virements.find({id_user_recu:req.info_compte._id})
-    res.status(200).json(list_transactions_recu);
+module.exports.dernier_virement_recu = async(req,res)=>{
+    const dernier_virement_recu = await virements.find({id_user_recu:req.info_compte._id}).sort({_id: -1 }).limit(3).populate("id_user");
+    res.status(200).json(dernier_virement_recu);
 }
+
+
+module.exports.virement_envoyer = async(req,res)=>{
+    const virement_envoyer = await virements.find({id_user:req.info_compte._id})
+    res.status(200).json(virement_envoyer);
+}
+
+
+module.exports.virement_recu = async(req,res)=>{
+    const virement_recu = await virements.find({id_user_recu:req.info_compte._id}).populate("id_user");
+    res.status(200).json(virement_recu);
+}
+

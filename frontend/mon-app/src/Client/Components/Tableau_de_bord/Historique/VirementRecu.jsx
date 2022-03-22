@@ -40,13 +40,13 @@ const VirementRecu = (props) => {
               <span className="mb-2 text-xs">
                 Nom bénéficiaire:{" "}
                 <span className="text-dark font-weight-bold ms-sm-2">
-                  {his.nomBeneficiaire}
+                {his.id_user.prenom} {his.id_user.nom}
                 </span>
               </span>
               <span className="mb-2 text-xs">
                 RIB bénéficiaire :{" "}
                 <span className="text-dark ms-sm-2 font-weight-bold">
-                  {his.ribBeneficiaire}
+                  {his.id_user.rib}
                 </span>
               </span>
               <span className="text-xs">
