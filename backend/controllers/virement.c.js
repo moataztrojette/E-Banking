@@ -9,6 +9,7 @@ module.exports.add = async (req,res)=>{
       let year = date_ob.getFullYear();
 
       const dataFull = date+"/"+month+"/"+year
+      //const dataFull = month
 
 
     const ribValid = await comptes.findOne({rib:req.body.ribBeneficiaire})
@@ -41,7 +42,8 @@ module.exports.add = async (req,res)=>{
              ribBeneficiaire : req.body.ribBeneficiaire,
              montant : req.body.montant,
              date : dataFull,
-             id_user_recu : ribValid._id
+             id_user_recu : ribValid._id,
+             mois : month
          })
          await virement.save();
 
@@ -97,13 +99,26 @@ module.exports.dernier_virement_recu = async(req,res)=>{
 
 
 module.exports.virement_envoyer = async(req,res)=>{
-    const virement_envoyer = await virements.find({id_user:req.info_compte._id})
+    const virement_envoyer = await virements.find({id_user:req.info_compte._id}).sort({_id: -1 })
     res.status(200).json(virement_envoyer);
 }
 
 
 module.exports.virement_recu = async(req,res)=>{
-    const virement_recu = await virements.find({id_user_recu:req.info_compte._id}).populate("id_user");
+    const virement_recu = await virements.find({id_user_recu:req.info_compte._id}).populate("id_user").sort({_id: -1 });
     res.status(200).json(virement_recu);
 }
 
+module.exports.filter_virement_envoyer = async(req,res)=>{
+    const response = await virements.find({id_user:req.info_compte._id , 
+        mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
+    }).sort({_id: -1 });
+    res.status(200).json(response);
+}
+
+module.exports.filter_virement_recu = async(req,res)=>{
+    const response = await virements.find({id_user_recu:req.info_compte._id , 
+        mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
+    }).populate("id_user").sort({_id: -1 });
+    res.status(200).json(response);
+}

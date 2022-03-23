@@ -7,23 +7,15 @@ import axios from "axios";
 
 const Comptes = () => {
   const [infoProfil, setInfoProfil] = useState([]);
-  const [virementEnvoyer, setVirementEnvoyer] = useState([]);
-  const [virementRecu, setVirementRecu] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:4000/api/compte/profil").then((compte) => {
       setInfoProfil(compte.data);
     });
 
-    axios
-    .get("http://localhost:4000/api/virement/envoyer")
-    .then((his) => {
-      setVirementEnvoyer(his.data);
-    });
+   
 
-  axios.get("http://localhost:4000/api/virement/recu").then((his) => {
-    setVirementRecu(his.data);
-  });
+  
 
 
   }, []);
@@ -38,7 +30,7 @@ const Comptes = () => {
         <Solde infoProfil={infoProfil} setInfoProfil={setInfoProfil}/>    
         </div>
       </div>
-      <Historique virementEnvoyer={virementEnvoyer} setVirementEnvoyer={setVirementEnvoyer} virementRecu={virementRecu} setVirementRecu={setVirementRecu} />
+      <Historique  />
     
 
     </div>

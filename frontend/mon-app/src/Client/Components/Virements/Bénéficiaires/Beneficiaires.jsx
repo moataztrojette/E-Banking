@@ -65,7 +65,7 @@ const Beneficiaires  = () => {
                             <span class="text-secondary text-xs font-weight-bold">{data.nom}</span>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-success">{data.rib}</span>
+                            <span class="text-secondary text-xs font-weight-bold">{data.rib}</span>
                           </td>
                         <td class="align-middle text-center text-sm">
                        <img src="/img/icons8-trash.gif" className="icon_trash"  onClick={() => {
