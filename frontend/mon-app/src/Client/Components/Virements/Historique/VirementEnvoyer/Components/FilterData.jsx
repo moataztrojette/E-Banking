@@ -39,6 +39,15 @@ const FilterData = ({posts,setPosts}) => {
      <option value="1">1</option>
      <option value="2">2</option>
      <option value="3">3</option>
+     <option value="3">4</option>
+     <option value="3">5</option>
+     <option value="3">6</option>
+     <option value="3">7</option>
+     <option value="3">8</option>
+     <option value="3">9</option>
+     <option value="3">10</option>
+     <option value="3">11</option>
+     <option value="3">12</option>
      
    </select>
    <select class="form-select_date_fin" aria-label="Default select example" name="date_fin"  onChange={MyValuesInput}>
@@ -46,6 +55,15 @@ const FilterData = ({posts,setPosts}) => {
      <option value="1">1</option>
      <option value="2">2</option>
      <option value="3">3</option>
+     <option value="3">4</option>
+     <option value="3">5</option>
+     <option value="3">6</option>
+     <option value="3">7</option>
+     <option value="3">8</option>
+     <option value="3">9</option>
+     <option value="3">10</option>
+     <option value="3">11</option>
+     <option value="3">12</option>
      
    </select>
    <div class="input-group">

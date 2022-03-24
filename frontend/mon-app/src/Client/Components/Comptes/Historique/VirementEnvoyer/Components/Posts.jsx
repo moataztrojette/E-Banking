@@ -1,6 +1,13 @@
 import React from 'react';
 
 const Posts = ({ posts, loading }) => {
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+
+
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -31,7 +38,7 @@ const Posts = ({ posts, loading }) => {
               <span className="text-xs">
                 Montant:{" "}
                 <span className="text-danger ms-sm-2 font-weight-bold">
-                  -{post.montant} DT
+                  -{numberWithCommas(post.montant)} DT
                 </span>
               </span>
             </div>

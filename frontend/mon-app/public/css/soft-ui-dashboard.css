@@ -25561,3 +25561,11 @@ form.sign-in-form_login {
   grid-gap: 10px;
   
 }
+.signateur{
+  margin-top: 2em;
+  margin-left: 19em;
+  width: 10em;
+}
+.infoCompte{
+  margin-bottom: 2em;
+}

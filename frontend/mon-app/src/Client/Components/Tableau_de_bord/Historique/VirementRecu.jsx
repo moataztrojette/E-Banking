@@ -1,5 +1,10 @@
 import React from 'react'
 const VirementRecu = (props) => {
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+
     return (    <div className="accordion-item mb-3" style={{display:"flex",flexDirection:"column",width:"50em"}}>
     <h5 className="accordion-header" id="headingTwo">
       <button
@@ -54,7 +59,7 @@ const VirementRecu = (props) => {
                 <span className="text-success
 
 ms-sm-2 font-weight-bold">
-                  +{his.montant} DT
+                  +{numberWithCommas(his.montant)} DT
                 </span>
               </span>
             </div>

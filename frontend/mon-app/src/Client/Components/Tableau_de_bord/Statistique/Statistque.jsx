@@ -65,16 +65,23 @@ const Statistique = () => {
         
         },
         scales: {
+          x: {
+            display: false
+          },
+     
           yAxes: [
             {
               ticks: {
-                suggestedMin: 0,
+                display: false,
+
+                suggestedMin: 100,
                 suggestedMax: 100
               }
             }
           ]
         }
       };
+    
 
 
     return (     <div className="col-md-12 mb-lg-0 mb-4">
