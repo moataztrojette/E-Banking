@@ -61,6 +61,9 @@ const ChangePasword = () => {
                         <div className="form-group">
                           <input type="password" className="form-control" id="pwd1" required name="newPassword" placeholder='Nouveau mot de passe'      onChange={MyValuesInput}/>
                         </div>
+                        <div className="form-group">
+                          <input type="password" className="form-control" id="pwd1" required name="confPassword" placeholder='Confirmer votre mot de passe'      onChange={MyValuesInput}/>
+                        </div>
                    
                  
                         <ToastContainer></ToastContainer>

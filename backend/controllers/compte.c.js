@@ -80,15 +80,21 @@ module.exports.changePassword = async (req,res)=>{
   if(user){
     let passwordIsValid = await bcrypt.compare(req.body.currentPassword,user.mdp)
     if(passwordIsValid){
-      const nmdp = await bcrypt.hash(req.body.newPassword,13)
+      if(req.body.newPassword===req.body.confPassword)
+      {
+        const nmdp = await bcrypt.hash(req.body.newPassword,13)
 
-      await comptes.findOneAndUpdate({_id:req.info_compte._id},{
-        mdp :  nmdp
-    },{
-        new : true
-    });
-    return res.status(200).send("Mot de passe a été changé avec succée")
+        await comptes.findOneAndUpdate({_id:req.info_compte._id},{
+          mdp :  nmdp
+      },{
+          new : true
+      });
+      return res.status(200).send("Mot de passe a été changé avec succée")
 
+      }
+      else{
+        return res.status(404).send("Confirmer votre mot de passe")
+      }
     }
     else{
       return res.status(404).send("Verifier votre mot de passe")
