@@ -32,6 +32,7 @@ const Statistique = () => {
         })
     },[])
   
+  
 
     const data = {
         labels: stateDate,
@@ -65,20 +66,13 @@ const Statistique = () => {
         
         },
         scales: {
-          x: {
-            display: false
+          xAxis: {
+            //display: false
           },
      
-          yAxes: [
-            {
-              ticks: {
-                display: false,
-
-                suggestedMin: 100,
-                suggestedMax: 100
-              }
-            }
-          ]
+          y: {
+            display: false
+          },
         }
       };
     

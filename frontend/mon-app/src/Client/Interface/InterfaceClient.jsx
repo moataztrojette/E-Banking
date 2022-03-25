@@ -16,6 +16,8 @@ import VirementBancaire from '../Components/Virements/VirementBancaire/VirementB
 import Historique from '../Components/Virements/Historique/Historique';
 import Beneficiaires from '../Components/Virements/Bénéficiaires/Beneficiaires';
 import Rib from '../Components/Comptes/RIB/Rib';
+import Parametre from '../Components/Parametre/Parametre';
+import ChangePasword from '../Components/Parametre/Components/ChangePassword/ChangePassword';
 
 
 const InterfaceClient = (props) => {
@@ -39,11 +41,15 @@ const InterfaceClient = (props) => {
                 <Route path ="/client/cartes/demande" component={DemandesCartes}/>
                 <Route path ="/client/virements/historique" component={Historique}/>
                 <Route path ="/client/virements/beneficiaires" component={Beneficiaires}/>
+                <Route path ="/client/parametre/changepassword" component={ChangePasword}/>
+
                 <Route path ="/client/comptes/rib" component={Rib}/>
                 <Route path ="/client/virements" component={Virements}/>
+                <Route path ="/client/parametre" component={Parametre}/>
+
                 <Route path ="/client/demandes" component={Demandes}/>
                 <Route path ="/client/comptes" component={Comptes}/>
-                
+          
                 <Route path ="/client/cheques" component={Cheques}/>
                 <Route path ="/client/cartes" component={Cartes}/>
                 <Route path="/client/main" component={TableauDeBord}/>
