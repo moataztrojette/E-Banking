@@ -3,44 +3,14 @@ import { Line } from "react-chartjs-2";
 import dateformat from 'dateformat'
 import axios from 'axios'
 
-const Statistique = () => {
-
-    const [stateDate,setDate] = useState([])
-    const [stateMontant,setMontant] = useState([])    
-    
-    useEffect(()=>{
-       
-        let  date = [];
-        let montant = [];
-      
-
-
-        axios.get("http://localhost:4000/api/historique/find").then((fact)=>{
-
-            for(const dataObj of fact.data){
-
-             
-                date.push(dateformat(dataObj.date , "mmmm"))
-                montant.push(dataObj.montant)
-               
-            }
-        
-            
-       
-            setDate(date)
-            setMontant(montant)
-        
-        })
-    },[])
-  
-  
+const Statistique = (props) => {
 
     const data = {
-        labels: stateDate,
+        labels: props.stateDate,
         datasets: [
           {
             label: "Solde",
-            data: stateMontant,
+            data: props.stateMontant,
             fill: true,
             backgroundColor: "rgba(75,192,192,0.2)",
             borderColor: "rgba(75,192,192,1)",
@@ -72,8 +42,8 @@ const Statistique = () => {
                 ticks:{
                     autoSkip:false,
                     callback : (label, index, labels)=>{  
-                      let uniqueArray = stateDate.filter(function(item, pos) {
-                        return stateDate.indexOf(item) == pos;
+                      let uniqueArray = props.stateDate.filter(function(item, pos) {
+                        return props.stateDate.indexOf(item) == pos;
                     });
                     let na = uniqueArray.map(v=>v === uniqueArray[index] ? v : null  );
                     console.log(na);

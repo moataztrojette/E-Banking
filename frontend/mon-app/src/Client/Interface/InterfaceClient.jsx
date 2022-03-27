@@ -43,28 +43,16 @@ const InterfaceClient = (props) => {
                 <Route path ="/client/virements/beneficiaires" component={Beneficiaires}/>
                 <Route path ="/client/parametre/changepassword" component={ChangePasword}/>
 
-                <Route path ="/client/comptes/rib" component={Rib}/>
+           
                 <Route path ="/client/virements" component={Virements}/>
                 <Route path ="/client/parametre" component={Parametre}/>
-
                 <Route path ="/client/demandes" component={Demandes}/>
+                <Route path="/client/main" component={TableauDeBord}/>
+                <Route path ="/client/comptes/rib" component={Rib}/>
                 <Route path ="/client/comptes" component={Comptes}/>
-          
                 <Route path ="/client/cheques" component={Cheques}/>
                 <Route path ="/client/cartes" component={Cartes}/>
-                <Route path="/client/main" component={TableauDeBord}/>
-
-
-
-
-
-
-              
-               
-
-
-
-
+         
 
             </Switch>
   </main>

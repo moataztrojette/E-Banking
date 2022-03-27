@@ -1,5 +1,5 @@
 const virements = require("../models/virement.model");
-const comptes = require("../models/compte.model");
+const comptes = require("../models/client.model");
 const historiques = require("../models/historique.model");
 
 module.exports.add = async (req,res)=>{
@@ -8,7 +8,8 @@ module.exports.add = async (req,res)=>{
       let month = date_ob.getMonth() + 1;
       let year = date_ob.getFullYear();
 
-      const dataFull = date+"/"+month+"/"+year
+      const dataFull = year+"-"+month+"-"+date
+
       //const dataFull = month
 
 

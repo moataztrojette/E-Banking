@@ -8,9 +8,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/client" component={InterfaceClient} />
         <Route path="/cdc" component={InterfaceChargeClientele} />
+        <Route path="/client" component={InterfaceClient} />
+        <Route path="/" component={Login} />
 
 
         

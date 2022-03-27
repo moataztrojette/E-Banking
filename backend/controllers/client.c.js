@@ -1,4 +1,4 @@
-const comptes = require("../models/compte.model")
+const comptes = require("../models/client.model")
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
@@ -74,6 +74,8 @@ module.exports.findall = async(req,res)=>{
 }
 
 
+
+
 module.exports.changePassword = async (req,res)=>{
 
   const user = await comptes.findOne({_id : req.info_compte._id})
@@ -104,5 +106,5 @@ module.exports.changePassword = async (req,res)=>{
 
 }
 
-
+//
 
