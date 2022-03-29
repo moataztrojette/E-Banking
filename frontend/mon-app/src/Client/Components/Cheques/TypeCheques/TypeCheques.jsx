@@ -6,7 +6,8 @@ const TypeCheques = () => {
       <div className="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li className="breadcrumb-item text-sm"><a className="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li className="breadcrumb-item text-sm"><a href={() => false} 
+ className="opacity-5 text-dark">Pages</a></li>
             <li className="breadcrumb-item text-sm text-dark active" aria-current="page">Types de chèques
             </li>
           </ol>
@@ -25,14 +26,14 @@ const TypeCheques = () => {
                 <div className="card-body text-start p-4 w-100">
                   <div style={{display: 'flex', flexDirection:'column'}}>
                     <div className="text-center mb-3 d-flex align-items-center justify-content-center border-radius-md" >
-                      <img src="https://img.icons8.com/clouds/100/000000/check-book.png" style={{width: '8em'}} />
+                      <img src="https://img.icons8.com/clouds/100/000000/check-book.png" alt="erreur_1" style={{width: '8em'}} />
                       </div>
                    
                   </div>
                       <h5>CHÈQUES PAYÈS</h5>
                       <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
                   <div className="docs-info" style={{marginTop: '5em'}}>
-                    <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" className="btn btn-white btn-sm w-100 mb-0">Voir</a>
+                    <a  href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" rel="noreferrer" className="btn btn-white btn-sm w-100 mb-0">Voir</a>
                   </div>
                 </div>
               </div>
@@ -50,7 +51,7 @@ const TypeCheques = () => {
                   <h5>CHÈQUES À RÈGULARISER</h5>
                   <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
                   <div className="docs-info" style={{marginTop: '5em'}}>
-                  <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" className="btn btn-white btn-sm w-100 mb-0">Voir</a>
+                  <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" rel="noreferrer" className="btn btn-white btn-sm w-100 mb-0">Voir</a>
                   </div>
                 </div>
               </div>
@@ -62,13 +63,13 @@ const TypeCheques = () => {
                 <div className="card-body text-start p-4 w-100">
                   <div style={{display: 'flex', flexDirection:'column'}}>
                     <div className="text-center mb-3 d-flex align-items-center justify-content-center border-radius-md" >
-                    <img src="https://img.icons8.com/color/48/000000/delete-property.png" style={{width: '7em'}} />                    </div>
+                    <img src="https://img.icons8.com/color/48/000000/delete-property.png" alt="erreur_1" style={{width: '7em'}} />                    </div>
                    
                   </div>
                       <h5>CHÈQUES IMPAYÈS</h5>
                       <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
                   <div className="docs-info" style={{marginTop: '5em'}}>
-                    <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" className="btn btn-white btn-sm w-100 mb-0">Voir</a>
+                    <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" rel="noreferrer" className="btn btn-white btn-sm w-100 mb-0">Voir</a>
                   </div>
                 </div>
               </div>

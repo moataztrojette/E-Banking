@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 module.exports.inscription = async (req,res)=>{
     const verife = await comptes.findOne({cin:req.body.cin})
     if(verife){
-        return res.status(422).send("Le compte exist deja ")
+        return res.status(422).send("Le compte existe déjà ")
     }
     else{
         const nmdp = await bcrypt.hash(req.body.mdp,13)
@@ -33,7 +33,7 @@ module.exports.connexion = async (req,res)=>{
     
   
     if(!compte){
-      return res.status(404).send("Invalid Email or Password")
+      return res.status(404).send("Adresse ou mot de passe incorrect")
     }
     
     let passwordIsValid = await bcrypt.compare(mdp,compte.mdp)
@@ -52,7 +52,7 @@ module.exports.connexion = async (req,res)=>{
       });
     }
       else {
-        res.status(403).send("Invalid Adresse or Password")
+        res.status(403).send("Adresse ou mot de passe incorrect")
         
       }
 }
@@ -91,7 +91,7 @@ module.exports.changePassword = async (req,res)=>{
       },{
           new : true
       });
-      return res.status(200).send("Mot de passe a été changé avec succée")
+      return res.status(200).send("Mot de passe a été changé avec succés")
 
       }
       else{

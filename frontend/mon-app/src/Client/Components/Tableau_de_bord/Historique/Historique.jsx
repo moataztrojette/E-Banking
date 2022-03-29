@@ -16,7 +16,7 @@ const Historique = (props) => {
         aria-expanded="false"
         aria-controls="collapseOne"
       >
-        Virement envoyés
+        Virements envoyés
         <i
           className="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"
           aria-hidden="true"

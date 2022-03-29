@@ -5,7 +5,6 @@ import ChargesClienteles from "./ChargesClienteles/ChargesClienteles";
 import Profil from "./Profil/Profil";
 import Statistique from "./Statistique/Statistque";
 import axios from "axios";
-import { Route, Switch, Link } from "react-router-dom";
 import Historique from "./Historique/Historique";
 import VirementRecu  from "./Historique/VirementRecu";
 

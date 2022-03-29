@@ -1,6 +1,5 @@
-import React , { useEffect, useState }  from 'react'
+import React , {useState }  from 'react'
 import { Link  } from 'react-router-dom';
-import NavPage from '../../Interface/NavPage/NavPage';
 import VirementBancaire from './VirementBancaire/VirementBancaire';
 
 const Virement = () => {
@@ -49,24 +48,24 @@ const Virement = () => {
             
                               <div className='bloc1' >
                                 <div className='bloc2' >
-                                            <img src="https://img.icons8.com/external-kmg-design-flat-kmg-design/32/4a90e2/external-hand-ecommerce-kmg-design-flat-kmg-design.png" className='imgWM'/>
+                                            <img src="https://img.icons8.com/external-kmg-design-flat-kmg-design/32/4a90e2/external-hand-ecommerce-kmg-design-flat-kmg-design.png"  alt="erreur_1" className='imgWM'/>
                                           <span>Virement</span>
 
                                       </div>
                             
                   
-                                      <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" className='imgW'/>                                
+                                      <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                                
                                 </div>
                                 </li>
                                 <Link to={'/client/virements/historique'}><li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
             
                                 <div className='bloc1'>
                                 <div className='bloc2'>
-                                          <img src="https://img.icons8.com/emoji/48/4a90e2/clipboard-emoji.png" className='imgWM'/>
+                                          <img src="https://img.icons8.com/emoji/48/4a90e2/clipboard-emoji.png" alt="erreur_1" className='imgWM'/>
                                       <span >Historique</span>
                             </div>
                   
-                            <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" className='imgW'/>                             
+                            <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                             
                             </div>
 
                                 </li></Link>
@@ -75,11 +74,11 @@ const Virement = () => {
             
                                 <div className='bloc1'>
                                 <div className='bloc2'>
-                                   <img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/4a90e2/external-user-management-kiranshastry-lineal-kiranshastry-10.png" className='imgWM'/>
+                                   <img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/4a90e2/external-user-management-kiranshastry-lineal-kiranshastry-10.png" alt="erreur_1" className='imgWM'/>
                                       <span >Bénéficiaires</span>
                             
                   </div>
-                  <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" className='imgW'/>                                   
+                  <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                                   
                   </div>
 
                                 </li></Link>

@@ -19,9 +19,9 @@ const Virements = (props) => {
         
         <div class="slider_his">
   <div className='silder_btn'>
-  <a href="#slide-1" className='btn_virement_2'>Virement envoyer </a>
+  <a href="#slide-1" className='btn_virement_2'>Virements envoyés </a>
   
-  <a href="#slide-2" className='btn_virement_1'>Virement reçu</a>
+  <a href="#slide-2" className='btn_virement_1'>Virements reçus</a>
   </div>
 
   <div class="slides_his">

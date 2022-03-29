@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Navbar from './Navbar/Navbar';
 import SideBar from './SideBar/SideBar';
-import {BrowserRouter , Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import TableauDeBord from '../Components/Tableau_de_bord/TableauDeBord';
 import Comptes from '../Components/Comptes/Comptes';
 import Cheques from '../Components/Cheques/Cheques';

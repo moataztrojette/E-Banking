@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar/Navbar';
 import SideBar from './SideBar/SideBar';
-import {BrowserRouter , Route, Switch } from "react-router-dom"
+import {Route, Switch } from "react-router-dom"
 import Demandes from '../Demandes/Demandes';
 import TableauDeBordClient from '../Comptes/ProfilClient/Tableau_de_bord/TableauDeBordClient';
 import Virements from '../Comptes/ProfilClient/Tableau_de_bord/Historique/Virements/Virements';

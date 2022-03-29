@@ -16,7 +16,7 @@ const ChargesClienteles = () => {
               <h6 className="mb-0 text-sm">Sophie B.</h6>
               <p className="mb-0 text-xs">SophieB@gmail.com</p>
             </div>
-            <a className="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Envoyer un mail</a>
+            <a href={() => false} className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
           </li>
           <li className="list-group-item border-0 d-flex align-items-center px-0 mb-2">
             <div className="avatar me-3">
@@ -26,7 +26,8 @@ const ChargesClienteles = () => {
               <h6 className="mb-0 text-sm">Sophie B.</h6>
               <p className="mb-0 text-xs">SophieB@gmail.com</p>
             </div>
-            <a className="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Envoyer un mail</a>
+            <a  href={() => false} 
+ className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
           </li>
           <li className="list-group-item border-0 d-flex align-items-center px-0 mb-2">
             <div className="avatar me-3">
@@ -36,7 +37,8 @@ const ChargesClienteles = () => {
               <h6 className="mb-0 text-sm">Sophie B.</h6>
               <p className="mb-0 text-xs">SophieB@gmail.com</p>
             </div>
-            <a className="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Envoyer un mail</a>
+            <a href={() => false} 
+ className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
           </li>
           <li className="list-group-item border-0 d-flex align-items-center px-0 mb-2">
             <div className="avatar me-3">
@@ -46,7 +48,8 @@ const ChargesClienteles = () => {
               <h6 className="mb-0 text-sm">Sophie B.</h6>
               <p className="mb-0 text-xs">SophieB@gmail.com</p>
             </div>
-            <a className="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Envoyer un mail</a>
+            <a  href={() => false} 
+ className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
           </li>
           <li className="list-group-item border-0 d-flex align-items-center px-0">
             <div className="avatar me-3">
@@ -56,7 +59,8 @@ const ChargesClienteles = () => {
               <h6 className="mb-0 text-sm">Sophie B.</h6>
               <p className="mb-0 text-xs">SophieB@gmail.com</p>
             </div>
-            <a className="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Envoyer un mail</a>
+            <a  href={() => false} 
+ className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
           </li>
         </ul>
       </div>

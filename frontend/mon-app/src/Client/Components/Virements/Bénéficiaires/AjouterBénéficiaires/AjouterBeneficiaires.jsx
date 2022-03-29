@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -21,7 +21,7 @@ const AjouterBeneficiaires = (props) =>{
         props.valuesInput
       );
 
-      toast("Beneficiaire a ete ajouté avec succès ", {
+      toast("Bénéficiaire a été ajouté avec succès ", {
         type: "success",
       });
 
@@ -112,7 +112,7 @@ const AjouterBeneficiaires = (props) =>{
                 </div>
               </div>
               <div>
-                <img src="/img/register.svg" className="image_register" />
+                <img src="/img/register.svg" alt="erreur_1" className="image_register" />
               </div>
             </div>
           </form>

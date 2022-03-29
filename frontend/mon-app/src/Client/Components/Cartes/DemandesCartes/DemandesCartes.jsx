@@ -27,7 +27,8 @@ const DemandesCartes = () => {
                           <h6 className="mb-0">Type de carte</h6>
                         </div>
                         <div className="col-md-4 text-end">
-                          <a href="javascript:;">
+                          <a href={() => false} 
+>
                             <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" />
                           </a>
                         </div>

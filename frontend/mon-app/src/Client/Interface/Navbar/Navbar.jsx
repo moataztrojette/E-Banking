@@ -10,13 +10,14 @@ const Navbar = (props) => {
               </div>
               <ul className="navbar-nav  justify-content-end">
                 <li className="nav-item d-flex align-items-center">
-                  <a href="javascript:;" className="nav-link text-body font-weight-bold px-0">
+                  <a href={() => false} className="nav-link text-body font-weight-bold px-0">
                     <i className="fa fa-user me-sm-1" />
                     <span className="d-sm-inline d-none">User</span>
                   </a>
                 </li>
                 <li className="nav-item px-3 d-flex align-items-center">
-                  <a href="javascript:;" className="nav-link text-body p-0">
+                  <a href={() => false} 
+ className="nav-link text-body p-0">
                     <img src="/img/icons8-shutdown-48.png" width="30px" alt="" onClick={props.logout} />
                   </a>
                 </li>

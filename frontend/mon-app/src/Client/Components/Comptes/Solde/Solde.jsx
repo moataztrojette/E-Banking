@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Solde = (props) => {
@@ -20,7 +19,7 @@ const Solde = (props) => {
               </div>
             </div>
             <div>
-            <Link to={'/client/comptes/rib'}> <img src="/img/download-svgrepo-com (1).svg" style={{width: '20px', marginLeft: '50px'}} />
+            <Link to={'/client/comptes/rib'}> <img src="/img/download-svgrepo-com (1).svg" alt="erreur_1" style={{width: '20px', marginLeft: '50px'}} />
               <h6>Télécharger RIB</h6></Link>
             </div>
           </div>

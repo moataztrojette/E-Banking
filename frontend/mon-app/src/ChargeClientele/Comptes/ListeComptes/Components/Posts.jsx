@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AjouterComptes from "../AjouterComptes/AjouterComptes";
-import ListeComptes from "../ListeComptes";
 
 const Posts = ({ posts, loading,setListeCompte }) => {
 
@@ -44,7 +43,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
         />
       </div>
       <button type="button" className="btn_nouvelle_comptes" onClick={()=>setModalIsOpen(true)}>
-        Nouvelle Comptes +{" "}
+        Nouveau Compte +{" "}
       </button>
     </div>
     <div className="col-12">
@@ -117,7 +116,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
 
                   <Link to ={'/cdc/profil/'+c._id}><td class="align-middle text-center">
                     <span class="badge badge-sm bg-gradient-success">
-                      Voir Profile
+                      Voir Profil
                     </span>
                   </td></Link>
                 </tr>

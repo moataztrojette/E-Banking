@@ -72,13 +72,13 @@ module.exports.add = async (req,res)=>{
  
      }
      else{
-         res.status(422).send("SVP verifier vos coordonner ")
+         res.status(422).send("SVP verifier vos coordonnées ")
      }
     }else{
      res.status(422).send("solde insuffisant")
     }
  }else{
-    res.status(422).send("SVP verifier vos coordonner ")
+    res.status(422).send("SVP verifier vos coordonnées ")
 }
 }
 

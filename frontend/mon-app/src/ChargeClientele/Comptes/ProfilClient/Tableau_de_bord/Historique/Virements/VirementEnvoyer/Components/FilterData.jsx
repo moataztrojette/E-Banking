@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import axios from "axios";
 const FilterData = ({posts,setPosts,id}) => {
     const [valuesInput, setValues] = useState({});

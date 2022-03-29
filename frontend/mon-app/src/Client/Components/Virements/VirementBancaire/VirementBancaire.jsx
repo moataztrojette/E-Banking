@@ -130,7 +130,7 @@ const VirementBancaire = (props) => {
             </div>
             </div>
             <div>
-              <img src="/img/money_transfer.jpg" className="image_money"/>
+              <img src="/img/money_transfer.jpg" alt="erreur_1"  className="image_money"/>
             </div>
             </div>
             

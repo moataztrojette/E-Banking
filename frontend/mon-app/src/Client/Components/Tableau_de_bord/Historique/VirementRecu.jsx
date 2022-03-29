@@ -15,7 +15,7 @@ const VirementRecu = (props) => {
         aria-expanded="false"
         aria-controls="collapseTwo"
       >
-        Virement reçus
+        Virements reçus
         <i
           className="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"
           aria-hidden="true"

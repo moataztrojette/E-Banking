@@ -4,7 +4,7 @@ module.exports.add = async (req,res)=>{
    
             const response = await beneficiaires.findOne({rib : req.body.rib})
             if(response){
-                return res.status(422).send("beneficiaires exist deja ")
+                return res.status(422).send("bénéficiaires existe déjà ")
             }
             else{
                 const beneficiaire =  new beneficiaires({

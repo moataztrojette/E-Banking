@@ -19,12 +19,12 @@ const Cartes = () => {
                 <span className="mask bg-gradient-dark" />
                 <div className="card-body position-relative z-index-1 p-3">
                   <div style={{textAlign: 'center'}}>
-                    <img src="https://img.icons8.com/plasticine/50/000000/bank-cards.png" style={{width: '4em'}} />                      
+                    <img src="https://img.icons8.com/plasticine/50/000000/bank-cards.png" alt="erreur_1" style={{width: '4em'}} />                      
                   </div>
                   <h5 className="text-white mt-2 mb-5 pb-2" style={{textAlign: 'center'}}>Demande de carte bancaire</h5>
                   <div className="d-flex">
                     <div className="ms-auto w-20 d-flex align-items-end justify-content-end">
-                      <img className="w-60 mt-2" src="/img/logos/mastercard.png" alt="logo" />
+                      <img  src="/img/logos/mastercard.png" alt="erreur_1" className="w-60 mt-2" />
                     </div>
                   </div>
                 </div>

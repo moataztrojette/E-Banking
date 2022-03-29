@@ -11,13 +11,14 @@ const ChargesClienteles = (props) => {
         <ul className="list-group">
           <li className="list-group-item border-0 d-flex align-items-center px-0 mb-2">
             <div className="avatar me-3">
-            <img src="https://img.icons8.com/emoji/48/4a90e2/clipboard-emoji.png" className='imgWM'/>
+            <img src="https://img.icons8.com/emoji/48/4a90e2/clipboard-emoji.png" alt="erreur_1" className='imgWM'/>
             </div>
             <div className="d-flex align-items-start flex-column justify-content-center ">
               <h6 className="mb-0 text-sm" style={{marginRight:"16em"}} >Historique</h6>
               
             </div>
-            <Link to={'/cdc/profil/historique/'+props.id}> <a className="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Voir</a></Link>
+            <Link to={'/cdc/profil/historique/'+props.id}> <a href={() => false} 
+ className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Voir</a></Link>
           </li>
        
       

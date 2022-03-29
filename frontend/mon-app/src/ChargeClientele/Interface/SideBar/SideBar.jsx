@@ -5,7 +5,7 @@ const SideBar = () => {
         <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
           <div className="sidenav-header">
             <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav" />
-            <a className="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" target="_blank">
+            <a className="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" rel="noreferrer">
               <img src="/img/icons8-user-40.png" className="navbar-brand-img h-100" alt="main_logo" />
               <span className="ms-1 font-weight-bold">User</span>
             </a>
@@ -14,7 +14,8 @@ const SideBar = () => {
           <div className="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to ={''} className="nav-link  " href="../pages/TableauDebord.html">
+                <Link to ={''} className="nav-link  " href={() => false} 
+>
                   <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
                     <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                       <title>shop </title>

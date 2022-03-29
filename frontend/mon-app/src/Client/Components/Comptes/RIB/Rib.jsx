@@ -41,7 +41,7 @@ const Rib = () => {
                 <div className="card" style={{marginLeft:"-2em",width:"40em",height:"35em"}} >
                 {infoProfil.map((info)=>(
                   <div className="card-body" style={{padding:"7em"}} ref={componentRef}>
-                  <h5 className="infoCompte">Informations sur les comptes</h5>
+                  <h5 className="infoCompte">Informations sur le compte</h5>
                         <br />
                       
                           
@@ -52,7 +52,7 @@ const Rib = () => {
                     <h6 className="card-title">CIN : {info.cin}</h6>
                     <h6 className="card-title">RIB bancaire : {info.rib}</h6>
                     <h6 className="card-title">Solde de Compte Bancaire : {numberWithCommas(info.montant)} DT</h6>
-                    <img src="/img/signateur.png" className='signateur' />
+                    <img src="/img/signateur.png" alt="erreur_1" className='signateur' />
 
 
                   </div>

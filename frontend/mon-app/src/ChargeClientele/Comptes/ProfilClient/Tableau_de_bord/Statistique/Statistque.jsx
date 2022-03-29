@@ -1,7 +1,6 @@
-import React, { useState,useEffect } from 'react'
+import React from 'react'
 import { Line } from "react-chartjs-2";
-import dateformat from 'dateformat'
-import axios from 'axios'
+
 
 const Statistique = (props) => {
 

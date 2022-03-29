@@ -5,7 +5,7 @@ const SideBar = () => {
         <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
           <div className="sidenav-header">
             <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav" />
-            <a className="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" target="_blank">
+            <a className="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" rel="noreferrer">
               <img src="/img/icons8-user-40.png" className="navbar-brand-img h-100" alt="main_logo" />
               <span className="ms-1 font-weight-bold">User</span>
             </a>

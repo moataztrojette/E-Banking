@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
 
 
 const Profil = (props) => {
@@ -31,13 +30,9 @@ const Profil = (props) => {
      <div className="card-header pb-0 p-3">
        <div className="row">
          <div className="col-md-8 d-flex align-items-center">
-           <h6 className="mb-0">Profile Information</h6>
+           <h6 className="mb-0">Informations personnelles</h6>
          </div>
-         <div className="col-md-4 text-end">
-           <a href="javascript:;">
-             <i className="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" />
-           </a>
-         </div>
+     
        </div>
      </div>
      {props.infoProfil.map((cl)=>(

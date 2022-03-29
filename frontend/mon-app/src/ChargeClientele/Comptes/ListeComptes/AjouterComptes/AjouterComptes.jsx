@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Modal from "react-modal";
-import Swal from "sweetalert2";
 
 const AjouterComptes = (props) => {
   const MyValuesInput = (event) => {
@@ -57,7 +56,7 @@ const AjouterComptes = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Creation d'une compte </h3>
+          <h3 className="font-weight-light">Création d'un compte </h3>
           <br />
           <form
             className="pt-3"
@@ -152,7 +151,7 @@ const AjouterComptes = (props) => {
                 </div>
               </div>
               <div>
-                <img src="/img/register.svg" className="image_register" />
+                <img src="/img/register.svg" alt="erreur_1" className="image_register" />
               </div>
             </div>
           </form>

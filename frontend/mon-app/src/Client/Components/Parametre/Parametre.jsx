@@ -31,7 +31,7 @@ const Parametre  = () => {
                           <Link to ={'/client/parametre/changepassword'}><li className="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
                             <div className='bloc1'>
                                   <div className='bloc2'>
-                                  <img src="/img/icons8-password-64.png" style={{width: '40px'}} />                                
+                                  <img src="/img/icons8-password-64.png" alt="erreur_1" style={{width: '40px'}} />                                
                                   <span>Modification de mot de passe</span>
                                 </div>
                               </div></li></Link>
