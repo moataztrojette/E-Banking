@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import NavPage from '../Interface/NavPage/NavPage';
+
 const Demandes = () => {
     return (<>
     <NavPage name="Demandes"/>
@@ -45,6 +47,28 @@ const Demandes = () => {
                 </div>
               </div>
             </div>
+
+            <div className="col_cheque">
+              <div className="card card-background " id="sidenavCard" >
+                <div className="full-background" />
+                <div className="card-body text-start p-4 w-100">
+                  <div style={{display: 'flex', flexDirection:'column'}}>
+                    <div className="text-center mb-3 d-flex align-items-center justify-content-center border-radius-md" >
+                    <img src="/img/RDV-Online.png"   alt="erreur_1" style={{width: '8em'}}  />
+
+                     </div>
+                   
+                  </div>
+                  <h5>Rendez-vous</h5>
+                      <p style={{marginBottom:"14em"}}>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
+                  
+                  <Link to={'/cdc/demandes/rdv'}><div className="docs-info" style={{marginTop: '5em'}}>
+                  <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" rel="noreferrer" className="btn btn-white btn-sm w-100 mb-0">Voir</a>
+                  </div></Link>
+                </div>
+              </div>
+            </div>
+
 
            
 

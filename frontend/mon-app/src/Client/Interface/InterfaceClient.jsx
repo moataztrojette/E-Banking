@@ -18,6 +18,8 @@ import Beneficiaires from '../Components/Virements/Bénéficiaires/Beneficiaires
 import Rib from '../Components/Comptes/RIB/Rib';
 import Parametre from '../Components/Parametre/Parametre';
 import ChangePasword from '../Components/Parametre/Components/ChangePassword/ChangePassword';
+import ListeDemandes from '../Components/Demandes/ListeDemandes/ListeDemandes';
+import Liste_demande_rdv from '../Components/Demandes/ListeDemandes/Liste_demande_rdv/Liste_demande_rdv';
 
 
 const InterfaceClient = (props) => {
@@ -42,6 +44,8 @@ const InterfaceClient = (props) => {
                 <Route path ="/client/virements/historique" component={Historique}/>
                 <Route path ="/client/virements/beneficiaires" component={Beneficiaires}/>
                 <Route path ="/client/parametre/changepassword" component={ChangePasword}/>
+                <Route path ="/client/demandes/liste/rdv" component={Liste_demande_rdv}/>
+                <Route path ="/client/demandes/liste" component={ListeDemandes}/>
 
            
                 <Route path ="/client/virements" component={Virements}/>

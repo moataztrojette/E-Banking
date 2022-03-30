@@ -6,6 +6,7 @@ import Demandes from '../Demandes/Demandes';
 import TableauDeBordClient from '../Comptes/ProfilClient/Tableau_de_bord/TableauDeBordClient';
 import Virements from '../Comptes/ProfilClient/Tableau_de_bord/Historique/Virements/Virements';
 import ListeComptes from '../Comptes/ListeComptes/ListeComptes';
+import Liste_demande_rdv from '../Demandes/Demande_rendez-vous/Liste_demande_rdv';
 
 
 
@@ -18,9 +19,11 @@ const InterfaceChargeClientele = () => {
         <Navbar/>
             <Switch>
             <Route path="/cdc/profil/historique/:id" component={Virements}/>
+            <Route path="/cdc/demandes/rdv" component={Liste_demande_rdv}/>
             <Route path="/cdc/profil/:id" component={TableauDeBordClient}/>
             <Route path="/cdc/comptes" component={ListeComptes}/>
             <Route path="/cdc/demandes" component={Demandes}/>
+
 
             </Switch>
   </main>
