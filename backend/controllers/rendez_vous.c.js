@@ -17,13 +17,13 @@ module.exports.add = async (req,res)=>{
 }
 
 module.exports.liste_rdv = async(req,res)=>{
-    const response = await rendez_vous.find({id_user:req.info_compte._id})
+    const response = await rendez_vous.find({id_user:req.info_compte._id}).sort({_id: -1 });
     res.status(200).json(response);
 }
 
 
 module.exports.find = async(req,res)=>{
-    const response = await rendez_vous.find({})
+    const response = await rendez_vous.find({}).populate("id_user").sort({_id: -1 });
     res.status(200).json(response);
 }
 
@@ -34,14 +34,14 @@ module.exports.update_rdv =  async (req,res)=>{
     
 
     if(Valider ===null){
-        return res.status(404).send("SVP choisi lien meet")
+        return res.status(404).send("SVP choisissez un lien meet")
     }
     else{
         const response = await rendez_vous.findOneAndUpdate({_id:req.params.id},{
             link : req.body.link,
         },{
             new : true
-        })
+        }).populate("id_user")
         res.json(response)
     }
     

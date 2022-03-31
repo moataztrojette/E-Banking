@@ -17,7 +17,8 @@ module.exports.inscription = async (req,res)=>{
             profession : req.body.profession,
             mdp :nmdp,
             rib : Math.floor(Math.random() * 10000000000000000) + 10000000000000000,
-            montant : 1000000
+            montant : 1000000,
+            id_cdc:req.info_compte._id
         })
         await compte.save()
         res.status(200).send(compte);

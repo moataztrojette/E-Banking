@@ -25572,3 +25572,29 @@ form.sign-in-form_login {
 .link_meet{
   width: 25px;
 }
+.image_login_cdc {
+  width: 80%;
+  border-radius: 10px;
+  transition: transform 1.1s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+
+.btn_inscri {
+  width: 250px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 7em;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn_inscri:hover {
+  background-color: #4d84e2;
+}

@@ -51,10 +51,11 @@ const Posts = ({ posts, loading,setPosts}) => {
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Date de rendez-vous{" "}
+                   La Date de rendez-vous{" "}
                   </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Heure de depart de rendez-vous
+                  L'heure de rendez-vous
+
                   </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     Motif
@@ -67,7 +68,8 @@ const Posts = ({ posts, loading,setPosts}) => {
                    Lien de Réunion
                   </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                  Annuler la réunion
+                  Annulation de réunion
+
                   </th>
                   
                   
@@ -97,7 +99,7 @@ const Posts = ({ posts, loading,setPosts}) => {
                   {c.link == "null" ? (
                        <td class="align-middle text-center text-sm">
                        <span class="text-danger text-xs font-weight-bold">
-                       Demande pas encore acceptée                       </span>
+                       Demande non acceptée pour le moment.                      </span>
                      </td>
       ) : (
         <>

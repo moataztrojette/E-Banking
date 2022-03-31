@@ -26,7 +26,7 @@ const DemandeRDV = (props) => {
       
       await axios.post("http://localhost:4000/api/rdv/add", valuesInput);
 
-      toast("demande de rendez-vous effectué avec succes ", {
+      toast("Prise de rendez-vous réussie ", {
         type: "success",
       });
     } catch (error) {

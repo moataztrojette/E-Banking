@@ -21,57 +21,56 @@ module.exports.add = async (req,res)=>{
     if(comptesUser.montant > req.body.montant)
     {
      if(ribValid ){
-         let preventMontant = ribValid.montant;
+
+        if(parseInt(req.body.montant)>10000){
+            let preventMontant = ribValid.montant;
         
-         await comptes.findOneAndUpdate({rib:req.body.ribBeneficiaire},{
-                 montant : parseInt(preventMontant)+parseInt(req.body.montant)
-         },{
-             new : true
-         })
-       
-         
- 
-         await comptes.findOneAndUpdate({_id:req.info_compte._id},{
-             montant :  parseInt(comptesUser.montant) - parseInt(req.body.montant)
-         },{
-             new : true
-         });
- 
-         const virement =  new virements({
-             id_user : req.info_compte._id,
-             nomBeneficiaire : req.body.nomBeneficiaire,
-             ribBeneficiaire : req.body.ribBeneficiaire,
-             montant : req.body.montant,
-             date : dataFull,
-             id_user_recu : ribValid._id,
-             mois : month
-         })
-         await virement.save();
-
-         const historique =  new historiques({
-            id_user : req.info_compte._id,
-            montant :parseInt(comptesUser.montant) - parseInt(req.body.montant) ,
-            date : dataFull,
-           
-        })
-        await historique.save();
-
-        const his =  new historiques({
-            id_user : comptesUser2._id,
-            montant :parseInt(comptesUser2.montant )+ parseInt(req.body.montant) ,
-            date : dataFull,
-           
-        })
-        await his.save();
-
-
-
-
- 
-         res.status(200).json(virement);
- 
-     }
-     else{
+            await comptes.findOneAndUpdate({rib:req.body.ribBeneficiaire},{
+                    montant : parseInt(preventMontant)+parseInt(req.body.montant)
+            },{
+                new : true
+            })
+          
+            
+    
+            await comptes.findOneAndUpdate({_id:req.info_compte._id},{
+                montant :  parseInt(comptesUser.montant) - parseInt(req.body.montant)
+            },{
+                new : true
+            });
+    
+            const virement =  new virements({
+                id_user : req.info_compte._id,
+                nomBeneficiaire : req.body.nomBeneficiaire,
+                ribBeneficiaire : req.body.ribBeneficiaire,
+                montant : req.body.montant,
+                date : dataFull,
+                id_user_recu : ribValid._id,
+                mois : month
+            })
+            await virement.save();
+   
+            const historique =  new historiques({
+               id_user : req.info_compte._id,
+               montant :parseInt(comptesUser.montant) - parseInt(req.body.montant) ,
+               date : dataFull,
+              
+           })
+           await historique.save();
+   
+           const his =  new historiques({
+               id_user : comptesUser2._id,
+               montant :parseInt(comptesUser2.montant )+ parseInt(req.body.montant) ,
+               date : dataFull,
+              
+           })
+           await his.save();
+            res.status(200).json(virement);
+        }else{
+            res.status(422).send("Désolé minimum pour faire un virement 10 dinar")
+        }
+     
+     }else{
          res.status(422).send("SVP verifier vos coordonnées ")
      }
     }else{

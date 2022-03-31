@@ -4,7 +4,7 @@ const {inscription,connexion,deconnexion,findCompte,findall,changePassword} = re
 const { isLogin } = require("../middleware/auth")
 
 
-router.post('/inscription',inscription)
+router.post('/inscription',isLogin,inscription)
 router.post('/connexion',connexion)
 router.post('/deconnexion',deconnexion)
 router.get('/profil',isLogin,findCompte)

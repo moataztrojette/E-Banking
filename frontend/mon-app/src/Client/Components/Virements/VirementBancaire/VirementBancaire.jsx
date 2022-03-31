@@ -77,7 +77,7 @@ const VirementBancaire = (props) => {
                 />
 
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="exampleInputUsername2"
                 name="ribBeneficiaire"
@@ -97,16 +97,8 @@ const VirementBancaire = (props) => {
                 onChange={MyValuesInput}
 
               />
-
-           
-
-
-
-
-            
             <ToastContainer></ToastContainer>
-
-<div className="bloc_creation_compte">
+            <div className="bloc_creation_compte">
             <div className="mb-2">
               <button
                 type="submit"

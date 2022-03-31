@@ -8,8 +8,9 @@ const compte = new mongoose.Schema({
     profession : {type:String,required:true},
     mdp :{type:String,required:true},
     rib : {type:String,required:true},
-    montant : {type:Number,required:true}
-    
+    montant : {type:Number,required:true},
+    id_cdc : {type:mongoose.Types.ObjectId, ref:"chargeClienteles"},
+
     
 })
 const comptes = mongoose.model("comptes",compte);
