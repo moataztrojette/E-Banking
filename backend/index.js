@@ -11,6 +11,7 @@ const historique = require("./routes/historique.router");
 const beneficiaire = require("./routes/beneficiaires.router");
 const cdc = require("./routes/chargeClientele.router");
 const rendez_vous = require("./routes/rendez_vous.router");
+const admin = require("./routes/admin.router");
 
 
 env.config()
@@ -29,7 +30,10 @@ app.use("/api/virement",virement)
 app.use("/api/historique",historique)
 app.use("/api/beneficiaire",beneficiaire)
 app.use("/api/rdv",rendez_vous)
+app.use("/api/admin",admin)
 app.use("/api/cdc",cdc)
+
+
 
 
 

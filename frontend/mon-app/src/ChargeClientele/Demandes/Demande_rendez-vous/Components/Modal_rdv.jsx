@@ -22,7 +22,7 @@ const Modal_rdv = (props) => {
     console.log(props)
 
     try {
-    const data = await axios.post("http://localhost:4000/api/rdv/cdc/update/"+props.stateUserId._id,valuesInput);
+    const data = await axios.post("http://localhost:4000/api/rdv/update/"+props.stateUserId._id,valuesInput);
 
       toast("Prise de rendez-vous réussie ", {
         type: "success",

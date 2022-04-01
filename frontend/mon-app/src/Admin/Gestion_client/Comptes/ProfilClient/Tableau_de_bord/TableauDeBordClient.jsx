@@ -3,10 +3,11 @@ import Profil from "./Profil/Profil";
 import Statistique from "./Statistique/Statistque";
 import VirementRecu  from "./Historique/DernierVirements/VirementRecu";
 import VirementEnvoyer  from "./Historique/DernierVirements/VirementEnvoyer";
-import NavPage from "../../../Interface/NavPage/NavPage";
+
 import axios from "axios";
 import dateformat from 'dateformat'
 import ChargesClienteles from "./Historique/ChargesClienteles";
+import NavPage from "../../../../../Admin/Interface/NavPage/NavPage";
 
 const TableauDeBordClient = (props) => {
 

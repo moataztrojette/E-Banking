@@ -1,6 +1,18 @@
 import React from 'react';
+import axios from "axios";
 import { Link } from 'react-router-dom';
-const SideBar = () => {
+
+const SideBar = (props) => {
+
+  const logout = async ()=>{
+    try{
+     await axios.post('http://localhost:4000/api/admin/deconnexion')
+     props.history.replace('/admin/connexion')
+    }
+    catch(error){
+    }
+ }
+
     return (
         <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
           <div className="sidenav-header">
@@ -14,7 +26,7 @@ const SideBar = () => {
           <div className="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to={'/cdc/main'}  className="nav-link  ">
+                <Link to={'/admin/main'}  className="nav-link  ">
                   <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
                     <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                       <title>shop </title>
@@ -34,7 +46,7 @@ const SideBar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={'/cdc/comptes'} className="nav-link  " >
+                <Link to={'/admin/comptes'} className="nav-link  " >
                   <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
                     <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                       <title>office</title>
@@ -53,21 +65,13 @@ const SideBar = () => {
                   <span className="nav-link-text ms-1">Comptes</span>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to ={'/cdc/demandes'} className="nav-link  " >
+              <li className="nav-item"  >
+                <a href={() => false} className="nav-link" >
                   <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
-                    <img src="/img/icons8-pull-request-16.png" width="20px" alt="" />
-                    <title>Demandes</title>
+
+                    <img src="/img/icons8-sign-out-50.png" width="30px" alt="" onClick={()=>logout} />
                   </div>
-                  <span className="nav-link-text ms-1">Demandes</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link  " href="../pages/rtl.html">
-                  <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
-                    <img src="/img/icons8-sign-out-50.png" width="30px" alt="" />
-                  </div>
-                  <span className="nav-link-text ms-1">Déconnexion</span>
+                  <span className="nav-link-text ms-1" >Déconnexion</span>
                 </a>
               </li>
             </ul>

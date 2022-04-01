@@ -107,5 +107,19 @@ module.exports.changePassword = async (req,res)=>{
 
 }
 
+module.exports.recherche_compte_ac = async (req, res) => {
+  const res_recherche = await comptes.find({
+    cin: { $regex: req.params.cin, $options: "i" },
+  })
+  res.json(res_recherche);
+};
+
+
+module.exports.find_compte_user_ac = async(req,res)=>{
+  const compte = await comptes.find({_id:req.params.id});
+  res.json(compte);
+}
+
+
 //
 

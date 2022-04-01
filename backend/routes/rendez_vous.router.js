@@ -6,8 +6,8 @@ const { isLogin } = require("../middleware/auth")
 
 router.post("/add",isLogin,add)
 router.get('/liste',isLogin,liste_rdv);
-router.get('/cdc/find',find);
-router.post('/cdc/update/:id',update_rdv);
+router.get('/find',find);
+router.post('/update/:id',update_rdv);
 router.delete("/delete/:id", remove);
 
 

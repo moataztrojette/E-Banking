@@ -14,7 +14,7 @@ const Liste_demande_rdv = () => {
   useEffect(() => {
     const fetchPosts = async () => {
         setLoading(true);
-        const res = await axios.get('http://localhost:4000/api/rdv/cdc/find');
+        const res = await axios.get('http://localhost:4000/api/rdv/find');
         setPosts(res.data);
         setLoading(false);
       };

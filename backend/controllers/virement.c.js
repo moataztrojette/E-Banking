@@ -2,6 +2,8 @@ const virements = require("../models/virement.model");
 const comptes = require("../models/client.model");
 const historiques = require("../models/historique.model");
 
+
+
 module.exports.add = async (req,res)=>{
     let date_ob = new Date();
       let date = date_ob.getDate();
@@ -118,6 +120,48 @@ module.exports.filter_virement_envoyer = async(req,res)=>{
 
 module.exports.filter_virement_recu = async(req,res)=>{
     const response = await virements.find({id_user_recu:req.info_compte._id , 
+        mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
+    }).populate("id_user").sort({_id: -1 });
+    res.status(200).json(response);
+}
+
+
+
+//Admin ** cdc
+
+  module.exports.dernier_virement_envoyer_ac = async(req,res)=>{
+    const response = await virements.find({id_user:req.params.id}).sort({_id: -1 }).limit(3)
+    res.status(200).json(response);
+}
+
+
+module.exports.dernier_virement_recu_ac = async(req,res)=>{
+    const response = await virements.find({id_user_recu:req.params.id}).sort({_id: -1 }).limit(3).populate("id_user");
+    res.status(200).json(response);
+}
+  
+
+
+  module.exports.virement_envoyer_ac = async(req,res)=>{
+    const response = await virements.find({id_user:req.params.id}).sort({_id: -1 })
+    res.status(200).json(response);
+}
+
+
+module.exports.virement_recu_ac = async(req,res)=>{
+    const response = await virements.find({id_user_recu:req.params.id}).populate("id_user").sort({_id: -1 });
+    res.status(200).json(response);
+}
+
+module.exports.filter_virement_envoyer_ac = async(req,res)=>{
+    const response = await virements.find({id_user:req.params.id , 
+        mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
+    }).sort({_id: -1 });
+    res.status(200).json(response);
+}
+
+module.exports.filter_virement_recu_ac = async(req,res)=>{
+    const response = await virements.find({id_user_recu:req.params.id , 
         mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
     }).populate("id_user").sort({_id: -1 });
     res.status(200).json(response);

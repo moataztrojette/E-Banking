@@ -6,3 +6,9 @@ module.exports.find_montant = async(req,res)=>{
         
     }
 
+    module.exports.find_user_state_ac = async(req,res)=>{
+        const user = await historique.find({id_user : req.params.id}).select("montant date -_id")
+        res.json(user)
+        
+    }
+    
