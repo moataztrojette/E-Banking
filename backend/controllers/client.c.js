@@ -18,7 +18,8 @@ module.exports.inscription = async (req,res)=>{
             mdp :nmdp,
             rib : Math.floor(Math.random() * 10000000000000000) + 10000000000000000,
             montant : 1000000,
-            id_cdc:req.info_compte._id
+            id_cdc:req.info_compte._id,
+            isActive:true
         })
         await compte.save()
         res.status(200).send(compte);
@@ -40,17 +41,23 @@ module.exports.connexion = async (req,res)=>{
     let passwordIsValid = await bcrypt.compare(mdp,compte.mdp)
     
     if(compte && passwordIsValid){
-      const token = jwt.sign({
-        _id : compte._id,
-     
-      },process.env.SECURITE,{
-        expiresIn : '15d'
-      })
+      if(compte.isActive==true ){
+        const token = jwt.sign({
+          _id : compte._id,
+       
+        },process.env.SECURITE,{
+          expiresIn : '15d'
+        })
+    
+        req.session.token  = token
+        res.json({
+          _id : compte._id,
+        });
+      }else{
+        res.status(403).send("Pour Réactiver votre compte Rendez-vous dans l’agence la plus proche")
+
+      }
   
-      req.session.token  = token
-      res.json({
-        _id : compte._id,
-      });
     }
       else {
         res.status(403).send("Adresse ou mot de passe incorrect")
@@ -121,5 +128,24 @@ module.exports.find_compte_user_ac = async(req,res)=>{
 }
 
 
-//
+module.exports.desactiver_compte =  async (req,res)=>{
 
+  const response = await comptes.findOneAndUpdate({_id:req.params.id},{
+      isActive : false,
+      },{
+          new : true
+      })
+      res.json(response)
+
+}
+
+module.exports.activer_compte =  async (req,res)=>{
+
+  const response = await comptes.findOneAndUpdate({_id:req.params.id},{
+      isActive : true,
+      },{
+          new : true
+      })
+      res.json(response)
+
+}

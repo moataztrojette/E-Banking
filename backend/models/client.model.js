@@ -10,8 +10,7 @@ const compte = new mongoose.Schema({
     rib : {type:String,required:true},
     montant : {type:Number,required:true},
     id_cdc : {type:mongoose.Types.ObjectId, ref:"chargeClienteles"},
-
-    
+    isActive:{type:Boolean, required:true}
 })
 const comptes = mongoose.model("comptes",compte);
 module.exports = comptes;

@@ -2,14 +2,17 @@ import React , {useState }  from 'react'
 import NavPage from '../../Interface/NavPage/NavPage';
 import DemandeRDV from './Demande_RDV/DemandeRDV';
 import { Link } from 'react-router-dom';
+import FermetureCompte from './Demande_de_fermeture_de_compte/FermetureCompte';
 
 const Demandes = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenFermetureCompte, setModalIsOpenFermetureCompte] = useState(false);
 
 
     return (
       <div>  
       {modalIsOpen === true ? (<DemandeRDV  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />) : (<div></div>)  } 
+      {modalIsOpenFermetureCompte === true ? (<FermetureCompte  modalIsOpenFermetureCompte={modalIsOpenFermetureCompte} setModalIsOpenFermetureCompte={setModalIsOpenFermetureCompte} />) : (<div></div>)  } 
 
 
 
@@ -57,10 +60,25 @@ const Demandes = () => {
                                       <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                                
                                 </div>
                                 </li>
+
+                                <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg"  onClick={() => setModalIsOpenFermetureCompte(true)} >
+            
+            <div className='bloc1' >
+              <div className='bloc2' >
+              <img src="/img/icons8-close-58.png" alt="erreur_1" className='bloc3' />
+              <span>Demande de fermeture de compte bancaire </span>
+
+                    </div>
+          
+
+                    <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                                
+              </div>
+              </li>
+
                                 <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
             
                                 <div className='bloc1'>
-                                <div className='bloc2' onClick={() => setModalIsOpen(true)}>
+                                <div className='bloc2' >
                                 <img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/60/4a90e2/external-hand-online-shopping-vitaliy-gorbachev-blue-vitaly-gorbachev.png" alt="erreur_1" className='bloc3' />
                                 <span>Demandes de fonds et de devis</span>
                             </div>

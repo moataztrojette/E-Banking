@@ -12,6 +12,7 @@ const beneficiaire = require("./routes/beneficiaires.router");
 const cdc = require("./routes/chargeClientele.router");
 const rendez_vous = require("./routes/rendez_vous.router");
 const admin = require("./routes/admin.router");
+const DemandeFermetureCompte = require("./routes/demande_fermeture_compte.router");
 
 
 env.config()
@@ -32,6 +33,8 @@ app.use("/api/beneficiaire",beneficiaire)
 app.use("/api/rdv",rendez_vous)
 app.use("/api/admin",admin)
 app.use("/api/cdc",cdc)
+app.use("/api/demande/fermeture",DemandeFermetureCompte)
+
 
 
 

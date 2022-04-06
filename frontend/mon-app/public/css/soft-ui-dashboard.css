@@ -25089,10 +25089,13 @@ pre[class*="language-"] {
   box-shadow: 10px 5px 5px;
 
 }
-.row_type_cheque{
+.row_demande{
+  width: 100%;
   display: flex;
   flex-direction: row;
-  grid-gap: 5em;
+  flex-wrap: wrap;
+  grid-gap: 2em;
+
 }
 .card-body h5{
   text-align: center;
@@ -25159,7 +25162,11 @@ pre[class*="language-"] {
 .btn_terminer:hover {
   transform: scale(1.1);
 }
-
+.image_close{
+  width: 8em;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
 
 
 
@@ -25598,3 +25605,44 @@ form.sign-in-form_login {
 .btn_inscri:hover {
   background-color: #4d84e2;
 }
+
+
+
+.btn_activer_desactiver {
+  width: 150px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 28px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 12px;
+}
+
+.btn_activer_desactiver:hover {
+  background-color: #4d84e2;
+}
+
+.btn-voir{
+  margin-top: 2em;
+  margin-left: 10%;
+  border-radius: 10px;
+  background-color:var(--bs-success);
+  color: var(--bs-light);
+  border: none;
+  transition: all 0.5s;
+  width: 16em;
+  height: 40px;
+  margin-bottom: 30px;
+
+}
+
+
+.btn-voir:hover {
+  transform: scale(1.1);
+}
+
