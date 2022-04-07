@@ -1,4 +1,8 @@
 import React from 'react'
+import dateformat from 'dateformat'
+
+
+
 const VirementRecu = (props) => {
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -39,13 +43,13 @@ const VirementRecu = (props) => {
               <span className="mb-2 text-xs">
                 Date Opération :{" "}
                 <span className="text-dark font-weight-bold ms-sm-2">
-                  {his.date}
+                { dateformat(his.date , "dd mmmm yyyy") }   
                 </span>
               </span>
               <span className="mb-2 text-xs">
                 Nom bénéficiaire:{" "}
                 <span className="text-dark font-weight-bold ms-sm-2">
-                {his.id_user.prenom} {his.id_user.nom}
+                {his.id_user.id_client.prenom} {his.id_user.id_client.nom}
                 </span>
               </span>
               <span className="mb-2 text-xs">

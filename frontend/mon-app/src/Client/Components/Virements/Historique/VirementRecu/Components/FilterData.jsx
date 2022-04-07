@@ -1,5 +1,9 @@
 import React, {useState } from "react";
 import axios from "axios";
+import dateformat from 'dateformat'
+
+
+
 const FilterData = ({posts,setPosts}) => {
     const [valuesInput, setValues] = useState({});
 
@@ -36,35 +40,35 @@ const FilterData = ({posts,setPosts}) => {
             >
    <select class="form-select_date_deb" aria-label="Default select example" name="date_deb"  onChange={MyValuesInput} >
      <option value="all">Date de début</option>
-     <option value="1">1</option>
-     <option value="2">2</option>
-     <option value="3">3</option>
-     <option value="4">4</option>
-     <option value="5">5</option>
-     <option value="6">6</option>
-     <option value="7">7</option>
-     <option value="8">8</option>
-     <option value="9">9</option>
-     <option value="10">10</option>
-     <option value="11">11</option>
-     <option value="12">12</option>
+     <option value="1">Janvier</option>
+     <option value="2">Février</option>
+     <option value="3">Mars</option>
+     <option value="4">avril</option>
+     <option value="5">Mai</option>
+     <option value="6">Juin</option>
+     <option value="7">Juillet</option>
+     <option value="8">Août</option>
+     <option value="9">Septembre</option>
+     <option value="10">Octobre</option>
+     <option value="11">Novembre </option>
+     <option value="12">Décembre</option>
 
      
    </select>
    <select class="form-select_date_fin" aria-label="Default select example" name="date_fin"  onChange={MyValuesInput}>
      <option value="all">Date de Fin</option>
-     <option value="1">1</option>
-     <option value="2">2</option>
-     <option value="3">3</option>
-     <option value="4">4</option>
-     <option value="5">5</option>
-     <option value="6">6</option>
-     <option value="7">7</option>
-     <option value="8">8</option>
-     <option value="9">9</option>
-     <option value="10">10</option>
-     <option value="11">11</option>
-     <option value="12">12</option>
+     <option value="1">Janvier</option>
+     <option value="2">Février</option>
+     <option value="3">Mars</option>
+     <option value="4">avril</option>
+     <option value="5">Mai</option>
+     <option value="6">Juin</option>
+     <option value="7">Juillet</option>
+     <option value="8">Août</option>
+     <option value="9">Septembre</option>
+     <option value="10">Octobre</option>
+     <option value="11">Novembre </option>
+     <option value="12">Décembre</option>
      
    </select>
    <div class="input-group">

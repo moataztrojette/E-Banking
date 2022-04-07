@@ -2,7 +2,7 @@ const beneficiaires = require("../models/beneficiaires.model")
 
 module.exports.add = async (req,res)=>{
    
-            const response = await beneficiaires.findOne({rib : req.body.rib})
+            const response = await beneficiaires.findOne({rib : req.body.rib , id_user: req.info_compte._id })
             if(response){
                 return res.status(422).send("bénéficiaires existe déjà ")
             }
@@ -10,6 +10,7 @@ module.exports.add = async (req,res)=>{
                 const beneficiaire =  new beneficiaires({
                     nom : req.body.nom,
                     rib : req.body.rib,
+                    id_user : req.info_compte._id
                 })
                 await beneficiaire.save();
                 res.status(200).send(beneficiaire)
@@ -17,7 +18,7 @@ module.exports.add = async (req,res)=>{
 }
 
 module.exports.findAll = async(req,res)=>{
-    const response = await beneficiaires.find()
+    const response = await beneficiaires.find({id_user:req.info_compte._id})
     res.json(response)   
 }
 module.exports.remove = async (req,res)=>{

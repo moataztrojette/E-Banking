@@ -13,17 +13,19 @@ module.exports.add = async (req,res)=>{
 
         })
         await response.save();
-        res.status(200).send(response)
+        const data = await  rendez_vous.populate(response,{ path : 'id_client'})
+
+        res.status(200).send(data)
 }
 
 module.exports.liste_rdv = async(req,res)=>{
-    const response = await rendez_vous.find({id_user:req.info_compte._id}).sort({_id: -1 });
+    const response = await rendez_vous.find({id_user:req.info_compte._id}).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 });
     res.status(200).json(response);
 }
 
 
 module.exports.find = async(req,res)=>{
-    const response = await rendez_vous.find({}).populate("id_user").sort({_id: -1 });
+    const response = await rendez_vous.find({}).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 });
     res.status(200).json(response);
 }
 
@@ -41,7 +43,7 @@ module.exports.update_rdv =  async (req,res)=>{
             link : req.body.link,
         },{
             new : true
-        }).populate("id_user")
+        }).populate({path:"id_user",populate:{path:"id_client"}})
         res.json(response)
     }
     

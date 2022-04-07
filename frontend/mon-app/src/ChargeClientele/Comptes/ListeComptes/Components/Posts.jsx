@@ -88,7 +88,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">{c.prenom} {c.nom}</h6>
+                        <h6 class="mb-0 text-sm">{c.id_client.prenom} {c.id_client.nom}</h6>
                       </div>
                     </div>
                   </td>
@@ -99,12 +99,12 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">
-                      {c.email}
+                      {c.id_client.email}
                     </span>
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">
-                      {c.profession}
+                      {c.id_client.profession}
                     </span>
                   </td>
                   <td class="align-middle text-center text-sm">

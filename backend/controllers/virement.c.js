@@ -1,5 +1,5 @@
 const virements = require("../models/virement.model");
-const comptes = require("../models/client.model");
+const comptes = require("../models/compte.model");
 const historiques = require("../models/historique.model");
 
 
@@ -48,7 +48,7 @@ module.exports.add = async (req,res)=>{
                 montant : req.body.montant,
                 date : dataFull,
                 id_user_recu : ribValid._id,
-                mois : month
+            
             })
             await virement.save();
    
@@ -84,44 +84,48 @@ module.exports.add = async (req,res)=>{
 }
 
 module.exports.find_transaction = async(req,res)=>{
-    const list_transactions = await virements.find({id_user:req.info_compte._id})
+    const list_transactions = await virements.find({id_user:req.info_compte._id}).populate({path:"id_user id_user_recu",populate:{path:"id_client"}})
     res.status(200).json(list_transactions);
 }
 
 module.exports.dernier_virement_envoyer = async(req,res)=>{
-    const dernier_virement_envoyer = await virements.find({id_user:req.info_compte._id}).sort({_id: -1 }).limit(3)
+    const dernier_virement_envoyer = await virements.find({id_user:req.info_compte._id}).populate({path:"id_user id_user_recu",populate:{path:"id_client"}}).sort({_id: -1 }).limit(3)
     res.status(200).json(dernier_virement_envoyer);
 }
 
 
 module.exports.dernier_virement_recu = async(req,res)=>{
-    const dernier_virement_recu = await virements.find({id_user_recu:req.info_compte._id}).sort({_id: -1 }).limit(3).populate("id_user");
+    const dernier_virement_recu = await virements.find({id_user_recu:req.info_compte._id}).sort({_id: -1 }).limit(3).populate({path:"id_user id_user_recu",populate:{path:"id_client"}});
     res.status(200).json(dernier_virement_recu);
 }
 
 
 module.exports.virement_envoyer = async(req,res)=>{
-    const virement_envoyer = await virements.find({id_user:req.info_compte._id}).sort({_id: -1 })
+    const virement_envoyer = await virements.find({id_user:req.info_compte._id}).populate({path:"id_user id_user_recu",populate:{path:"id_client"}}).sort({_id: -1 })
     res.status(200).json(virement_envoyer);
 }
 
 
 module.exports.virement_recu = async(req,res)=>{
-    const virement_recu = await virements.find({id_user_recu:req.info_compte._id}).populate("id_user").sort({_id: -1 });
-    res.status(200).json(virement_recu);
+    const response = await virements.find({id_user_recu:req.info_compte._id}).populate({path:"id_user id_user_recu",populate:{path:"id_client"}}).sort({_id: -1 });
+    res.status(200).json(response);
 }
 
 module.exports.filter_virement_envoyer = async(req,res)=>{
     const response = await virements.find({id_user:req.info_compte._id , 
         mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
-    }).sort({_id: -1 });
+    }).populate({path:"id_user id_user_recu",populate:{path:"id_client"}}).sort({_id: -1 });
     res.status(200).json(response);
 }
+
+
+
+
 
 module.exports.filter_virement_recu = async(req,res)=>{
     const response = await virements.find({id_user_recu:req.info_compte._id , 
         mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
-    }).populate("id_user").sort({_id: -1 });
+    }).populate({path:"id_user id_user_recu",populate:{path:"id_client"}}).sort({_id: -1 });
     res.status(200).json(response);
 }
 
@@ -130,39 +134,40 @@ module.exports.filter_virement_recu = async(req,res)=>{
 //Admin ** cdc
 
   module.exports.dernier_virement_envoyer_ac = async(req,res)=>{
-    const response = await virements.find({id_user:req.params.id}).sort({_id: -1 }).limit(3)
+    const response = await virements.find({id_user:req.params.id}).populate({path:"id_user id_user_recu",populate:{path:"id_client"}}).sort({_id: -1 }).limit(3)
     res.status(200).json(response);
 }
 
 
 module.exports.dernier_virement_recu_ac = async(req,res)=>{
-    const response = await virements.find({id_user_recu:req.params.id}).sort({_id: -1 }).limit(3).populate("id_user");
+    const response = await virements.find({id_user_recu:req.params.id}).populate({path:"id_user id_user_recu",populate:{path:"id_client"}}).sort({_id: -1 }).limit(3)
     res.status(200).json(response);
+
 }
   
 
 
   module.exports.virement_envoyer_ac = async(req,res)=>{
-    const response = await virements.find({id_user:req.params.id}).sort({_id: -1 })
+    const response = await virements.find({id_user:req.params.id}).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 })
     res.status(200).json(response);
 }
 
 
 module.exports.virement_recu_ac = async(req,res)=>{
-    const response = await virements.find({id_user_recu:req.params.id}).populate("id_user").sort({_id: -1 });
+    const response = await virements.find({id_user_recu:req.params.id}).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 });
     res.status(200).json(response);
 }
 
 module.exports.filter_virement_envoyer_ac = async(req,res)=>{
     const response = await virements.find({id_user:req.params.id , 
         mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
-    }).sort({_id: -1 });
+    }).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 });
     res.status(200).json(response);
 }
 
 module.exports.filter_virement_recu_ac = async(req,res)=>{
     const response = await virements.find({id_user_recu:req.params.id , 
         mois : {$gte :parseInt(req.body.date_deb),$lte:parseInt(req.body.date_fin)}
-    }).populate("id_user").sort({_id: -1 });
+    }).populate({path:"id_user id_user_recu",populate:{path:"id_client"}}).sort({_id: -1 });
     res.status(200).json(response);
 }

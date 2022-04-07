@@ -46,9 +46,9 @@ const Rib = () => {
                       
                           
                   
-                    <h6 className="card-title">Nom : {info.prenom}</h6>
-                    <h6 className="card-title">Prénom : {info.nom}</h6>
-                    <h6 className="card-title">Email : {info.email}</h6>
+                    <h6 className="card-title">Nom : {info.id_client.prenom}</h6>
+                    <h6 className="card-title">Prénom : {info.id_client.nom}</h6>
+                    <h6 className="card-title">Email : {info.id_client.email}</h6>
                     <h6 className="card-title">CIN : {info.cin}</h6>
                     <h6 className="card-title">RIB bancaire : {info.rib}</h6>
                     <h6 className="card-title">Solde de Compte Bancaire : {numberWithCommas(info.montant)} DT</h6>

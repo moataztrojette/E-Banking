@@ -1,4 +1,5 @@
 import React from 'react';
+import dateformat from 'dateformat'
 
 const Posts = ({ posts, loading }) => {
 
@@ -20,13 +21,14 @@ const Posts = ({ posts, loading }) => {
        <span className="mb-2 text-xs">
          Date Opération :{" "}
          <span className="text-dark font-weight-bold ms-sm-2">
-           {post.date}
+         { dateformat(post.date , "dd mmmm yyyy") }   
+
          </span>
        </span>
        <span className="mb-2 text-xs">
          Nom bénéficiaire:{" "}
          <span className="text-dark font-weight-bold ms-sm-2">
-         {post.id_user.prenom} {post.id_user.nom}
+         {post.id_user.id_client.prenom} {post.id_user.id_client.nom}
 
          </span>
        </span>

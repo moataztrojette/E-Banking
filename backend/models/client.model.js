@@ -1,17 +1,12 @@
 const mongoose = require("mongoose")
 
-const compte = new mongoose.Schema({
+const client = new mongoose.Schema({
     nom :{type:String, required:true},
     prenom : {type:String , require:true},
     email : {type:String , require:true},
-    cin : {type:String,required:true},
     profession : {type:String,required:true},
-    mdp :{type:String,required:true},
-    rib : {type:String,required:true},
-    montant : {type:Number,required:true},
-    id_cdc : {type:mongoose.Types.ObjectId, ref:"chargeClienteles"},
-    isActive:{type:Boolean, required:true}
+  
 })
-const comptes = mongoose.model("comptes",compte);
-module.exports = comptes;
+const clients = mongoose.model("clients",client);
+module.exports = clients;
 

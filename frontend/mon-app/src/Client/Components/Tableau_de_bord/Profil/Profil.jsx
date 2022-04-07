@@ -39,9 +39,9 @@ const Profil = (props) => {
                <div className="card-body p-3">
                <hr className="horizontal gray-light my-3" />
                <ul className="list-group">
-                 <li className="list-group-item border-0 ps-0 pt-0 text-sm"><strong className="text-dark">Nom Prénom:</strong> &nbsp; {cl.prenom} {cl.nom}</li>
+                 <li className="list-group-item border-0 ps-0 pt-0 text-sm"><strong className="text-dark">Nom Prénom:</strong> &nbsp; {cl.id_client.prenom} {cl.id_client.nom}</li>
                  <li className="list-group-item border-0 ps-0 text-sm"><strong className="text-dark">CIN:</strong> &nbsp; {cl.cin} </li>
-                 <li className="list-group-item border-0 ps-0 text-sm"><strong className="text-dark">Email:</strong> &nbsp; {cl.email}</li>
+                 <li className="list-group-item border-0 ps-0 text-sm"><strong className="text-dark">Email:</strong> &nbsp; {cl.id_client.email}</li>
                  <li className="list-group-item border-0 ps-0 text-sm"><strong className="text-dark">RIB:</strong> {cl.rib}</li>
                </ul>
              </div>

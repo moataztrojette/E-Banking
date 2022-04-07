@@ -62,7 +62,7 @@ const Posts = ({ posts, loading,setPosts }) => {
                     <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{c.id_user.prenom} {c.id_user.nom}</h6>
+                            <h6 class="mb-0 text-sm">{c.id_user.id_client.prenom} {c.id_user.id_client.nom}</h6>
                           </div>
                         </div>
                       </td>

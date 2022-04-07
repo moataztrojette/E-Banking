@@ -3,6 +3,8 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import dateformat from 'dateformat'
+
 
 const Posts = ({ posts, loading,setPosts}) => {
 
@@ -81,7 +83,8 @@ const Posts = ({ posts, loading,setPosts}) => {
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">{c.date}</h6>
+                        <h6 class="mb-0 text-sm">                { dateformat(c.date , "dd mmmm yyyy") }   
+</h6>
                       </div>
                     </div>
                   </td>

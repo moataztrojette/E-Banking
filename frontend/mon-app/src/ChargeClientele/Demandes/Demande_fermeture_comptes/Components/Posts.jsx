@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import dateformat from 'dateformat'
 
 const Posts = ({ posts, loading,setListeCompte }) => {
 
@@ -120,7 +121,8 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">
-                      {c.date}
+                    { dateformat(c.date , "dd mmmm yyyy") }   
+
                     </span>
                   </td>
                   <td class="align-middle text-center text-sm">

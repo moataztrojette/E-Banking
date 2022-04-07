@@ -1,4 +1,7 @@
 import React from 'react'
+import dateformat from 'dateformat'
+
+
 const VirementEnvoyer = (props) => {
 
   function numberWithCommas(x) {
@@ -41,7 +44,7 @@ const VirementEnvoyer = (props) => {
               <span className="mb-2 text-xs">
                 Date Opération :{" "}
                 <span className="text-dark font-weight-bold ms-sm-2">
-                  {his.date}
+                { dateformat(his.date , "dd mmmm yyyy") }   
                 </span>
               </span>
               <span className="mb-2 text-xs">
