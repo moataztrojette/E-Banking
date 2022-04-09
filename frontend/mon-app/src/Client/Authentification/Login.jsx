@@ -46,7 +46,7 @@ const Login = (props) => {
 
           <div className="input-field_login">
             <i className="fas fa-user" />
-            <input type="text" placeholder="CIN" onChange={MyValuesInput} name="cin" />
+            <input type="text" placeholder="Login" onChange={MyValuesInput} name="login" />
           </div>
           <div className="input-field_login">
             <i className="fas fa-lock" />

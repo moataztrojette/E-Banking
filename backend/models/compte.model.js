@@ -2,8 +2,8 @@ const mongoose = require("mongoose")
 
 const compte = new mongoose.Schema({
    
-    cin : {type:String,required:true},
     mdp :{type:String,required:true},
+    login:{type:String,required:true},
     rib : {type:String,required:true},
     montant : {type:Number,required:true},
     id_cdc : {type:mongoose.Types.ObjectId, ref:"chargeClienteles"},

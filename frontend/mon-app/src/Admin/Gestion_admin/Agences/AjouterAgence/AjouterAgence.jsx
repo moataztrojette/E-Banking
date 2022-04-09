@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Modal from "react-modal";
 
-const AjouterComptes = (props) => {
+const AjouterAgence = (props) => {
   const MyValuesInput = (event) => {
     let res = props.valuesInput;
     res[event.target.name] = event.target.value;
@@ -15,17 +15,17 @@ const AjouterComptes = (props) => {
     try {
       event.preventDefault();
       const data = await axios.post(
-        "http://localhost:4000/api/compte/inscription",
+        "http://localhost:4000/api/agence/add",
         props.valuesInput
       );
 
-      toast("Compte a été ajouter avec succès ", {
+      toast("Agence a été ajouter avec succès ", {
         type: "success",
       });
 
-      const preventState = props.listeCompte;
+      const preventState = props.listeAgence;
       preventState.push(data.data);
-      props.setListeCompte(preventState);
+      props.setListeAgence(preventState);
     } catch (error) {
       if (error.response.data) {
         toast(error.response.data, {
@@ -56,7 +56,7 @@ const AjouterComptes = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Création d'un compte </h3>
+          <h3 className="font-weight-light">Ajouter Agence </h3>
           <br />
           <form
             className="pt-3"
@@ -72,70 +72,31 @@ const AjouterComptes = (props) => {
                     id="exampleInputUsername2"
                     name="nom"
                     required
-                    placeholder="Nom"
+                    placeholder="Nom Agence"
                     onChange={MyValuesInput}
                   />
 
                   <input
-                    type="text"
+                    type="email"
                     className="form-control"
                     id="exampleInputUsername2"
-                    name="prenom"
+                    name="email"
                     required
-                    placeholder="Prénom"
-                    onChange={MyValuesInput}
-                  />
-                </div>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="input_email"
-                  name="email"
-                  required
-                  placeholder="@gmail.com"
-                  onChange={MyValuesInput}
-                />
-
-                <div className="bloc_pc">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="profession"
-                    required
-                    placeholder="Profession"
-                    onChange={MyValuesInput}
-                  />
-
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="cin"
-                    required
-                    placeholder="CIN"
+                    placeholder="Email"
                     onChange={MyValuesInput}
                   />
                 </div>
                 <input
                   type="number"
                   className="form-control"
+                  id="input_email"
                   name="tel"
                   required
                   placeholder="Téléphone"
                   onChange={MyValuesInput}
                 />
-                <br />
 
-                <input
-                  type="password"
-                  className="form-control"
-                  id="input_password"
-                  name="mdp"
-                  required
-                  placeholder="Mot de passe"
-                  onChange={MyValuesInput}
-                />
+           
 
                 <ToastContainer></ToastContainer>
 
@@ -160,7 +121,7 @@ const AjouterComptes = (props) => {
                 </div>
               </div>
               <div>
-                <img src="/img/register.svg" alt="erreur_1" className="image_register" />
+                <img src="/img/agence-banque.jpg" alt="erreur_1" className="image_agence" />
               </div>
             </div>
           </form>
@@ -170,4 +131,4 @@ const AjouterComptes = (props) => {
   );
 };
 
-export default AjouterComptes;
+export default AjouterAgence;

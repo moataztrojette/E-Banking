@@ -4,24 +4,28 @@ const jwt = require('jsonwebtoken')
 const clients =require("../models/client.model")
 
 module.exports.inscription = async (req,res)=>{
-    const verife = await comptes.findOne({cin:req.body.cin})
-    if(verife){
-        return res.status(422).send("Le compte existe déjà ")
-    }
-    else{
+
+  
       const client = new clients({
         nom : req.body.nom,
         prenom : req.body.prenom,
         email : req.body.email,
         profession : req.body.profession,
+        tel:req.body.tel,
+        cin : req.body.cin
+
     })
     await client.save()
+  
+
 
         const nmdp = await bcrypt.hash(req.body.mdp,13)
+        let generateLogin = req.body.nom.substr(0, 3)+Math.floor(Math.random() * 100) + 1000
+
         const compte = new comptes({
-        
-            cin : req.body.cin,
+
             mdp :nmdp,
+            login:generateLogin,
             rib : Math.floor(Math.random() * 10000000000000000) + 10000000000000000,
             montant : 1000000,
             id_cdc:req.info_compte._id,
@@ -33,17 +37,15 @@ module.exports.inscription = async (req,res)=>{
         const response = await  comptes.populate(compte,{ path : 'id_client'})
 
         res.status(200).send(response);
-    }
    
 };
 
 
 module.exports.connexion = async (req,res)=>{
 
-    const {cin , mdp} = req.body 
-    const compte = await comptes.findOne({cin:cin})
-    
-  
+    const {login , mdp} = req.body 
+    const compte = await comptes.findOne({login:login})
+
     if(!compte){
       return res.status(404).send("Adresse ou mot de passe incorrect")
     }
@@ -54,10 +56,12 @@ module.exports.connexion = async (req,res)=>{
       if(compte.isActive==true ){
         const token = jwt.sign({
           _id : compte._id,
+          id_client:compte.id_client,
        
         },process.env.SECURITE,{
           expiresIn : '15d'
         })
+        
     
         req.session.token  = token
         res.json({
@@ -73,6 +77,7 @@ module.exports.connexion = async (req,res)=>{
         res.status(403).send("Adresse ou mot de passe incorrect")
         
       }
+
 }
 
 module.exports.deconnexion = (req,res)=>{
@@ -86,8 +91,9 @@ module.exports.findCompte = async(req,res)=>{
 }
 
 
+
 module.exports.findall = async(req,res)=>{
-    const compte = await comptes.find().populate("id_client");
+    const compte = await comptes.find().populate("id_client").sort({_id:-1});
     res.json(compte);
 }
 

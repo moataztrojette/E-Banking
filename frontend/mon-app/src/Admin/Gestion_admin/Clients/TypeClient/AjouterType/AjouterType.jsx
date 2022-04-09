@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Modal from "react-modal";
 
-const AjouterComptes = (props) => {
+const AjouterType = (props) => {
   const MyValuesInput = (event) => {
     let res = props.valuesInput;
     res[event.target.name] = event.target.value;
@@ -15,17 +15,17 @@ const AjouterComptes = (props) => {
     try {
       event.preventDefault();
       const data = await axios.post(
-        "http://localhost:4000/api/compte/inscription",
+        "http://localhost:4000/api/type/client/add",
         props.valuesInput
       );
 
-      toast("Compte a été ajouter avec succès ", {
+      toast("Type Client a été ajouter avec succès ", {
         type: "success",
       });
 
-      const preventState = props.listeCompte;
+      const preventState = props.listeType;
       preventState.push(data.data);
-      props.setListeCompte(preventState);
+      props.setListeTypeClient(preventState);
     } catch (error) {
       if (error.response.data) {
         toast(error.response.data, {
@@ -56,7 +56,7 @@ const AjouterComptes = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Création d'un compte </h3>
+          <h3 className="font-weight-light">Type Client </h3>
           <br />
           <form
             className="pt-3"
@@ -70,72 +70,16 @@ const AjouterComptes = (props) => {
                     type="text"
                     className="form-control"
                     id="exampleInputUsername2"
-                    name="nom"
+                    name="nom_type"
                     required
-                    placeholder="Nom"
+                    placeholder="type client"
                     onChange={MyValuesInput}
                   />
 
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="prenom"
-                    required
-                    placeholder="Prénom"
-                    onChange={MyValuesInput}
-                  />
+            
                 </div>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="input_email"
-                  name="email"
-                  required
-                  placeholder="@gmail.com"
-                  onChange={MyValuesInput}
-                />
+         
 
-                <div className="bloc_pc">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="profession"
-                    required
-                    placeholder="Profession"
-                    onChange={MyValuesInput}
-                  />
-
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="cin"
-                    required
-                    placeholder="CIN"
-                    onChange={MyValuesInput}
-                  />
-                </div>
-                <input
-                  type="number"
-                  className="form-control"
-                  name="tel"
-                  required
-                  placeholder="Téléphone"
-                  onChange={MyValuesInput}
-                />
-                <br />
-
-                <input
-                  type="password"
-                  className="form-control"
-                  id="input_password"
-                  name="mdp"
-                  required
-                  placeholder="Mot de passe"
-                  onChange={MyValuesInput}
-                />
 
                 <ToastContainer></ToastContainer>
 
@@ -170,4 +114,4 @@ const AjouterComptes = (props) => {
   );
 };
 
-export default AjouterComptes;
+export default AjouterType;

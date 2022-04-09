@@ -8,6 +8,7 @@ router.post('/inscription',isLogin,inscription)
 router.post('/connexion',connexion)
 router.post('/deconnexion',deconnexion)
 router.get('/profil',isLogin,findCompte)
+
 router.get('/find',findall)
 router.post('/password',isLogin,changePassword)
 router.get("/recherche/:cin", recherche_compte_ac);

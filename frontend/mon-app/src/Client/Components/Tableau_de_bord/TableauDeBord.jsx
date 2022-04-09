@@ -10,14 +10,20 @@ import VirementRecu  from "./Historique/VirementRecu";
 
 const TableauDeBord = () => {
   const [infoProfil, setInfoProfil] = useState([]);
+  const [client, setClient] = useState([]);
   const [historique, setHistorique] = useState([]);
   const [virementRecu, setVirementRecu] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:4000/api/compte/profil").then((compte) => {
       setInfoProfil(compte.data);
-      console.log(infoProfil);
+     
     });
+    axios.get("http://localhost:4000/api/client/find").then((client) => {
+      setClient(client.data);
+     
+    });
+
     axios
       .get("http://localhost:4000/api/virement/dernier/envoyer")
       .then((his) => {
@@ -37,7 +43,7 @@ const TableauDeBord = () => {
         <div className="row">
           <div className="col-lg-8">
             <div className="row">
-              <Profil infoProfil={infoProfil} setInfoProfil={setInfoProfil} />
+              <Profil infoProfil={infoProfil} setInfoProfil={setInfoProfil} client={client} setClient={setClient}/>
               <Statistique />
             </div>
           </div>

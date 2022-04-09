@@ -46,7 +46,7 @@ const SideBar = (props) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={'/admin/comptes'} className="nav-link  " >
+                <Link to={'/admin/clients'} className="nav-link  " >
                   <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
                     <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                       <title>office</title>
@@ -62,9 +62,21 @@ const SideBar = (props) => {
                       </g>
                     </svg>
                   </div>
-                  <span className="nav-link-text ms-1">Comptes</span>
+                  <span className="nav-link-text ms-1">Clients</span>
                 </Link>
               </li>
+              
+              <li className="nav-item">
+                <Link to ={'/admin/agences'} className="nav-link  " >
+                  <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
+                    <img src="/img/icons8-pull-request-16.png" width="20px" alt="" />
+                    <title>Agences</title>
+                  </div>
+                  <span className="nav-link-text ms-1">Agences</span>
+                </Link>
+              </li>
+
+
               <li className="nav-item"  >
                 <a href={() => false} className="nav-link" >
                   <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>

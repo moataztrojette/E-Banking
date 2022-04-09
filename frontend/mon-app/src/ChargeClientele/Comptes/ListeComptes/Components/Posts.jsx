@@ -109,7 +109,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">
-                      {c.cin}
+                      {c.id_client.cin}
                     </span>
                   </td>
             

@@ -25153,6 +25153,16 @@ pre[class*="language-"] {
   width: 20em;
   margin-left: 20px;
 }
+.image_agence{
+  width: 20em;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+.image_silder_equipe{
+  height: 50%;
+  width: 100%;
+}
+
 .image_money{
   width: 20em;
   margin-left: 20px;

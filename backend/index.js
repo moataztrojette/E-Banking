@@ -14,6 +14,8 @@ const rendez_vous = require("./routes/rendez_vous.router");
 const admin = require("./routes/admin.router");
 const DemandeFermetureCompte = require("./routes/demande_fermeture_compte.router");
 const client = require("./routes/client.router")
+const agence = require("./routes/agence.router")
+const typeClient = require("./routes/typeClient.router")
 
 
 env.config()
@@ -36,6 +38,9 @@ app.use("/api/admin",admin)
 app.use("/api/cdc",cdc)
 app.use("/api/demande/fermeture",DemandeFermetureCompte)
 app.use("/api/client",client)
+app.use("/api/agence",agence)
+app.use("/api/type/client",typeClient)
+
 
 
 

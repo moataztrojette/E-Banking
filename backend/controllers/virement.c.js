@@ -48,6 +48,8 @@ module.exports.add = async (req,res)=>{
                 montant : req.body.montant,
                 date : dataFull,
                 id_user_recu : ribValid._id,
+                mois : month
+
             
             })
             await virement.save();
