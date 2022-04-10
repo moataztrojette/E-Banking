@@ -61,7 +61,7 @@ const Authentification_admin = (props) => {
 
     <div className="panels-container_login">
       <div className="panel_login left-panel">
-        <img src="/img/undraw_Success_factors_re_ce93.png" className="image_login_cdc" alt="" />
+        <img src="/img/tg_group_admins.jpg" className="image_login_cdc" alt="" />
       </div>
     </div>
   </div>  );

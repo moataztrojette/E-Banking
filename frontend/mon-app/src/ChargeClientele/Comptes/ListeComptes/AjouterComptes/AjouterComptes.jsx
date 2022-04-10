@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Modal from "react-modal";
 
 const AjouterComptes = (props) => {
+  const [postsTypeClient, setListeTypeClient] = useState([]);
+  const [postsAgences, setListeAgences] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/api/agence/findall").then((ag) => {
+      if (ag.data[0]) {
+        let id_ag = ag.data[0]._id;
+
+        axios.get("http://localhost:4000/api/type/client/findall").then((cl) => {
+          if (cl.data[0]) {
+            let id_type = cl.data[0]._id;
+
+            props.setValues({
+              id_agence: id_ag,
+              id_type_client: id_type
+            });
+            setListeAgences(ag.data);
+            setListeTypeClient(cl.data);
+
+            
+          }
+        });
+      }
+    });
+  }, []);
+
   const MyValuesInput = (event) => {
     let res = props.valuesInput;
     res[event.target.name] = event.target.value;
@@ -126,6 +152,33 @@ const AjouterComptes = (props) => {
                   onChange={MyValuesInput}
                 />
                 <br />
+                <div className="bloc_ag_tc">
+                  <div className="bloc">
+                    <p>Agences</p>
+                    <select
+                      className="form-control"
+                      name="id_agence"
+                      onChange={MyValuesInput}
+                    >
+                      {postsAgences.map((Ag) => (
+                        <option value={Ag._id}>{Ag.nom}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="bloc">
+                  <p>Type Client</p>
+
+                    <select
+                      className="form-control"
+                      name="id_type_client"
+                      onChange={MyValuesInput}
+                    >
+                      {postsTypeClient.map((cl) => (
+                        <option value={cl._id}>{cl.nom_type}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
 
                 <input
                   type="password"
@@ -160,7 +213,11 @@ const AjouterComptes = (props) => {
                 </div>
               </div>
               <div>
-                <img src="/img/register.svg" alt="erreur_1" className="image_register" />
+                <img
+                  src="/img/register.svg"
+                  alt="erreur_1"
+                  className="image_register"
+                />
               </div>
             </div>
           </form>

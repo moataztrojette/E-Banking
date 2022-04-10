@@ -18,7 +18,6 @@ const ListeComptes = () => {
         setListeCompte(res.data);
         setLoading(false);
       };
-  
       fetchPosts();
   }, []);
   // Get current posts

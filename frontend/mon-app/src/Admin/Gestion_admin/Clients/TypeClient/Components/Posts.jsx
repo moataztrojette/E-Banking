@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AjouterType from "../AjouterType/AjouterType";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import Clients_par_type from "../Clients_par_type/Clients_par_type";
 
 const Posts = ({ posts, loading,setListeTypeClient }) => {
 
@@ -11,6 +12,10 @@ const Posts = ({ posts, loading,setListeTypeClient }) => {
   const[modalIsOpen,setModalIsOpen] = useState(false);
   const [valuesInput,setValues] = useState({});
 
+  const [modalListeClientParTypeIsOpen, setModalListeClientParTypeIsOpen] = useState({
+    open: false,
+    info: {},
+  });
 
   
 
@@ -48,6 +53,14 @@ const Posts = ({ posts, loading,setListeTypeClient }) => {
   return (
     <div className="row">
     {modalIsOpen === true ? (<AjouterType  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} valuesInput={valuesInput} setValues={setValues} listeType={posts} setListeTypeClient={setListeTypeClient} />) : (<div></div>)  } 
+    {modalListeClientParTypeIsOpen.open === true ? (
+        <Clients_par_type
+        modalListeClientParTypeIsOpen={modalListeClientParTypeIsOpen}
+        setModalListeClientParTypeIsOpen={setModalListeClientParTypeIsOpen}
+        />
+      ) : (
+        <div></div>
+      )}
     <div class="filter_comptes">
         <div class="form-outline">
           <input
@@ -108,6 +121,13 @@ const Posts = ({ posts, loading,setListeTypeClient }) => {
                   
                   <td class="align-middle text-center text-sm">
                         <img
+                           onClick={() => {
+                            setModalListeClientParTypeIsOpen({
+                              open: true,
+                              info: c._id,
+                            });
+                           
+                          }}
                           src="/img/icons8-view-64.png"
                           className="icon_trash"
                         />

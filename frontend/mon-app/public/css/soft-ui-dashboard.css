@@ -25121,6 +25121,16 @@ pre[class*="language-"] {
   margin-bottom: 20px;
 
 }
+
+.bloc_ag_tc{
+  display: flex;
+  flex-direction: row;
+ 
+  grid-gap: 10px ;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
 #input_password{
   margin-bottom: 20px;
 
@@ -25656,3 +25666,12 @@ form.sign-in-form_login {
   transform: scale(1.1);
 }
 
+.bloc{
+  display: flex;
+  flex-direction: column;
+  width: 15em;
+}
+.img_x{
+  width: 2em;
+  margin-left: 69em;
+}

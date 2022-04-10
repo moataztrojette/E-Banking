@@ -4,10 +4,18 @@ import { Link } from "react-router-dom";
 import AjouterAgence from "../../AjouterAgence/AjouterAgence";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import Clients_par_agence from "../../Clients_par_agence/Clients_par_agence";
+
 
 const Posts = ({ posts, loading, setListeAgence }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [valuesInput, setValues] = useState({});
+
+  const [modalListeClientParAgenceIsOpen, setModalListeClientParAgenceIsOpen] = useState({
+    open: false,
+    info: {},
+  });
+
 
   if (loading) {
     return <h2>Loading...</h2>;
@@ -43,6 +51,14 @@ const Posts = ({ posts, loading, setListeAgence }) => {
 
   return (
     <div className="row">
+          {modalListeClientParAgenceIsOpen.open === true ? (
+        <Clients_par_agence
+          modalListeClientParAgenceIsOpen={modalListeClientParAgenceIsOpen}
+          setModalListeClientParAgenceIsOpen={setModalListeClientParAgenceIsOpen}
+        />
+      ) : (
+        <div></div>
+      )}
       {modalIsOpen === true ? (
         <AjouterAgence
           modalIsOpen={modalIsOpen}
@@ -55,6 +71,7 @@ const Posts = ({ posts, loading, setListeAgence }) => {
       ) : (
         <div></div>
       )}
+   
 
       <div class="filter_comptes">
         <div class="form-outline">
@@ -144,6 +161,14 @@ const Posts = ({ posts, loading, setListeAgence }) => {
 
                       <td class="align-middle text-center text-sm">
                         <img
+                           onClick={() => {
+                            setModalListeClientParAgenceIsOpen({
+                              open: true,
+                              info: c._id,
+                            });
+                           
+                          }}
+
                           src="/img/icons8-view-64.png"
                           className="icon_trash"
                         />

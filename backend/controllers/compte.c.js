@@ -12,7 +12,9 @@ module.exports.inscription = async (req,res)=>{
         email : req.body.email,
         profession : req.body.profession,
         tel:req.body.tel,
-        cin : req.body.cin
+        cin : req.body.cin,
+        id_agence:req.body.id_agence,
+        id_type_client:req.body.id_type_client
 
     })
     await client.save()
@@ -30,7 +32,8 @@ module.exports.inscription = async (req,res)=>{
             montant : 1000000,
             id_cdc:req.info_compte._id,
             isActive:true,
-            id_client:client._id
+            id_client:client._id,
+      
 
         })
         await compte.save()
@@ -131,10 +134,12 @@ module.exports.changePassword = async (req,res)=>{
 }
 
 module.exports.recherche_compte_ac = async (req, res) => {
-  const res_recherche = await comptes.find({
-    cin: { $regex: req.params.cin, $options: "i" },
-  }).populate("id_client")
+
+  const client = await clients.findOne({cin:req.params.cin}).select("_id")
+
+  const res_recherche = await comptes.find({id_client:client}).populate("id_client")
   res.json(res_recherche);
+
 };
 
 

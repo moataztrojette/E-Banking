@@ -21,6 +21,11 @@ module.exports.findAll = async(req,res)=>{
     const response = await agences.find({})
     res.json(response)   
 }
+
+
+
+
+
 module.exports.recherche_agence = async (req, res) => {
     const res_recherche = await agences.find({
       nom: { $regex: req.params.nom, $options: "i" },
