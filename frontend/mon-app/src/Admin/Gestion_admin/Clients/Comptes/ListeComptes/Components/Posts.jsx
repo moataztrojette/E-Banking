@@ -69,9 +69,13 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                     Profession
                   </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    CIN
+                    Agence
                   </th>
 
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    CIN
+                  </th>
+                
                   
               
                 </tr>
@@ -101,6 +105,12 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                       {c.id_client.profession}
                     </span>
                   </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-secondary text-xs font-weight-bold">
+                      {c.id_client.id_agence.nom}
+                    </span>
+                  </td>
+                  
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">
                       {c.id_client.cin}

@@ -108,6 +108,10 @@ const Profil = (props) => {
                   <strong className="text-dark">Téléphone:</strong>{" "}
                   {cl.tel}
                 </li>
+                <li className="list-group-item border-0 ps-0 text-sm">
+                  <strong className="text-dark">Agence:</strong>{" "}
+                  {cl.id_agence.nom}
+                </li>
               </ul>
             </div>
           </div>

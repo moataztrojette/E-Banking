@@ -27,8 +27,20 @@ module.exports.liste_rdv = async(req,res)=>{
 
 
 module.exports.find = async(req,res)=>{
+    let Collection = [];
     const response = await rendez_vous.find({etat_rdv:false}).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 });
-    res.status(200).json(response);
+    
+    for(i=0;i<response.length;i++){
+        let a =  (req.info_compte.id_agence).toString()
+        let b = (response[i].id_user.id_client.id_agence).toString()
+        if(a.localeCompare(b) == 0){
+            Collection.push(response[i])
+
+        }
+    }
+    
+    res.status(200).json(Collection);
+
 }
 
 

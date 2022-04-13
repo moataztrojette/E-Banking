@@ -14,7 +14,7 @@ module.exports.update_donnees_person =  async (req,res)=>{
   }
 
   module.exports.find_client = async(req,res)=>{
-    const client = await clients.find({_id:req.info_compte.id_client})
+    const client = await clients.find({_id:req.info_compte.id_client}).populate("id_agence")
     res.json(client);
 }
 

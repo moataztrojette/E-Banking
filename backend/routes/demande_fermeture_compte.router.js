@@ -4,7 +4,7 @@ const {add,demandes,état_compte_activer,état_compte_desactiver} = require("../
 const { isLogin } = require("../middleware/auth")
 
 router.post("/add",isLogin,add)
-router.get("/find",demandes)
+router.get("/find",isLogin,demandes)
 router.post('/desactiver/:id',état_compte_desactiver)
 router.post('/activer/:id',état_compte_activer)
 

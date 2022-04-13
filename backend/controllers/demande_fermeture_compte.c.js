@@ -28,8 +28,20 @@ module.exports.add = async (req,res)=>{
 
 }
 module.exports.demandes = async(req,res)=>{
-    const response = await demandeFerCompt.find({}).sort({_id: -1 }).populate("id_user");
-    res.status(200).json(response);
+     
+    let Collection = [];
+    const response = await demandeFerCompt.find({}).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 });
+    
+    for(i=0;i<response.length;i++){
+        let a =  (req.info_compte.id_agence).toString()
+        let b = (response[i].id_user.id_client.id_agence).toString()
+        if(a.localeCompare(b) == 0){
+            Collection.push(response[i])
+
+        }
+    }
+    
+    res.status(200).json(Collection);
 }
 
 

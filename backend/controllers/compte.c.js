@@ -96,7 +96,7 @@ module.exports.findCompte = async(req,res)=>{
 
 
 module.exports.findall = async(req,res)=>{
-    const compte = await comptes.find().populate("id_client").sort({_id:-1});
+    const compte = await comptes.find().populate({path:"id_client" , populate:{path:"id_agence"}}).sort({_id:-1});
     res.json(compte);
 }
 
@@ -176,7 +176,7 @@ module.exports.findComptes_par_agence = async(req,res)=>{
   Collection =[] 
 
   const client = await clients.find({id_agence:req.info_compte.id_agence}).select("_id")
-  const AllCompte = await comptes.find({}).populate("id_client");
+  const AllCompte = await comptes.find({}).populate({path:"id_client" , populate:{path:"id_agence"}});
 
   if(client){
     for (let i=0;i<client.length;i++){
