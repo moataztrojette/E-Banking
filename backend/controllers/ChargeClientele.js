@@ -15,7 +15,9 @@ module.exports.inscription = async (req,res)=>{
             prenom : req.body.prenom,
             email : req.body.email,
             cin : req.body.cin,
-            mdp :nmdp, 
+            mdp :nmdp,
+            id_agence:req.body.id_agence,
+            tel : req.body.tel
         })
         await chargeClientele.save()
         res.status(200).send(chargeClientele);
@@ -23,7 +25,7 @@ module.exports.inscription = async (req,res)=>{
 };
 
 module.exports.findCompte = async(req,res)=>{
-    const response = await chargeClienteles.find({_id:req.info_compte._id});
+    const response = await chargeClienteles.find({_id:req.info_compte._id}).populate("id_agence");
     res.json(response);
 }
 
@@ -47,6 +49,7 @@ module.exports.connexion = async (req,res)=>{
     if(chargeClientele && passwordIsValid){
       const token = jwt.sign({
         _id : chargeClientele._id,
+        id_agence : chargeClientele.id_agence,
      
       },process.env.SECURITE,{
         expiresIn : '15d'

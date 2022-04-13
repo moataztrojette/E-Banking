@@ -25123,10 +25123,7 @@ pre[class*="language-"] {
 }
 
 .bloc_ag_tc{
-  display: flex;
-  flex-direction: row;
- 
-  grid-gap: 10px ;
+
   margin-bottom: 20px;
   width: 100%;
 }
@@ -25670,6 +25667,12 @@ form.sign-in-form_login {
   display: flex;
   flex-direction: column;
   width: 15em;
+}
+.bloc_ag
+{
+  display: flex;
+  flex-direction: column;
+  width: 23em;
 }
 .img_x{
   width: 2em;

@@ -16,12 +16,12 @@ const Posts = ({ posts, loading,setListeCompte }) => {
 
   const rechercheUsers = async (event) => {
     if (event.target.value === "") {
-      axios.get("http://localhost:4000/api/compte/find").then((comptes) => {
+      axios.post("http://localhost:4000/api/compte/agence/find").then((comptes) => {
         setListeCompte(comptes.data)
       });
     } else {
       let res = await axios.get(
-        "http://localhost:4000/api/compte/recherche/" + event.target.value
+        "http://localhost:4000/api/compte/cdc/recherche/" + event.target.value
       );
       setListeCompte(res.data);
     }

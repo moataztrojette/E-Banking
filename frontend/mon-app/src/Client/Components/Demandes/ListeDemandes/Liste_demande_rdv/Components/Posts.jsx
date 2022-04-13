@@ -65,7 +65,11 @@ const Posts = ({ posts, loading,setPosts}) => {
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                   Resultat
                   </th>
-                
+
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                  Réponse chargé de clientèle
+                  </th>
+
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                    Lien de Réunion
                   </th>
@@ -80,6 +84,7 @@ const Posts = ({ posts, loading,setPosts}) => {
               {posts.map((c)=>(
               <tbody>
                 <tr>
+                  
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
@@ -114,6 +119,17 @@ text-xs font-weight-bold">
         </td>
         </>
         )}
+         {c.link != "null" ?(   <td class="align-middle text-center text-sm">
+                    <span class="text-secondary text-xs font-weight-bold">
+                     Valider
+                    </span>
+                  </td>):(   <td class="align-middle text-center text-sm">
+                    <span class="text-secondary text-xs font-weight-bold">
+                      {c.reponse_cdc}
+                    </span>
+                  </td>)}
+      
+        
         {c.link != "null" ? (<td class="align-middle text-center text-sm">
 
 <span class="text-success
@@ -123,9 +139,9 @@ text-xs font-weight-bold">
 </td>)
 :(<td class="align-middle text-center text-sm"></td>)
 }
-      
-    
-      <td class="align-middle text-center text-sm">
+
+
+{c.link == "null" ? (<td class="align-middle text-center text-sm">
      <img src="/img/icons8-close-64.png" className="link_meet" onClick={() => {
                       Swal.fire({
                         title: "Êtes - vous sûr  ?",
@@ -142,7 +158,8 @@ text-xs font-weight-bold">
                       });
                     }} ></img>
       </td>
-                      
+                   ) : (<td class="align-middle text-center text-sm"></td>)}
+         
                
             
 

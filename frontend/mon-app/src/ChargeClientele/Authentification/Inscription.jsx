@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,19 @@ import { Link } from "react-router-dom";
 
 const Inscription = (props) => {
     const [valuesInput,setValues] = useState({});
+    const [postsAgences, setListeAgences] = useState([]);
+
+    useEffect(() => {
+      axios.get("http://localhost:4000/api/agence/findall").then((ag) => {
+        if (ag.data[0]) {
+          let id_ag = ag.data[0]._id;
+              setValues({
+                id_agence: id_ag,
+              });
+              setListeAgences(ag.data);
+        }
+      });
+    }, []);
 
     const MyValuesInput = (event) => {
         let res = valuesInput;
@@ -67,11 +80,28 @@ const Inscription = (props) => {
             <input type="text" placeholder="Email" onChange={MyValuesInput} name="email" />
           </div>
 
+          <div className="input-field_login">
+            <i className="fas fa-user" />
+            <input type="number" placeholder="Téléphone" onChange={MyValuesInput} name="tel" />
+          </div>
+
 
           <div className="input-field_login">
             <i className="fas fa-user" />
             <input type="text" placeholder="Identifiant" onChange={MyValuesInput} name="cin" />
           </div>
+          <div className="bloc_ag">
+
+                    <select
+                      className="form-control"
+                      name="id_agence"
+                      onChange={MyValuesInput}
+                    >
+                      {postsAgences.map((Ag) => (
+                        <option value={Ag._id}>{Ag.nom}</option>
+                      ))}
+                    </select>
+</div>
           <div className="input-field_login">
             <i className="fas fa-lock" />
             <input type="password" placeholder="Mot de passe" onChange={MyValuesInput} name="mdp" />

@@ -13,7 +13,7 @@ module.exports.inscription = async (req,res)=>{
         profession : req.body.profession,
         tel:req.body.tel,
         cin : req.body.cin,
-        id_agence:req.body.id_agence,
+        id_agence:req.info_compte.id_agence,
         id_type_client:req.body.id_type_client
 
     })
@@ -170,3 +170,56 @@ module.exports.activer_compte =  async (req,res)=>{
       res.json(response)
 
 }
+
+module.exports.findComptes_par_agence = async(req,res)=>{
+  tabId =[] 
+  Collection =[] 
+
+  const client = await clients.find({id_agence:req.info_compte.id_agence}).select("_id")
+  const AllCompte = await comptes.find({}).populate("id_client");
+
+  if(client){
+    for (let i=0;i<client.length;i++){
+      {
+        tabId.push(client[i]._id)
+      }
+    } 
+    }
+    //console.log(tabId)
+
+      for (let i=0;i<tabId.length;i++){
+        {
+          for (let j=0;j<AllCompte.length;j++){
+            {
+
+              let a =  tabId[i].toString()
+              let b = (AllCompte[j].id_client._id).toString()
+              //console.log(a ," ===", b  )
+              //console.log(a.localeCompare(b));
+
+              if(a.localeCompare(b) == 0 ){
+                Collection.push(AllCompte[j])
+                //console.log(AllCompte[j].id_client._id ,"",tabId[i])
+
+                  }
+            }
+        }
+      } 
+
+    }
+  
+ 
+    res.json(Collection);
+}
+
+module.exports.recherche_compte_cdc = async (req, res) => {
+
+  const client = await clients.findOne({cin:req.params.cin,id_agence:req.info_compte.id_agence}).select("_id")
+
+  const res_recherche = await comptes.find({id_client:client}).populate("id_client")
+  res.json(res_recherche);
+
+};
+
+
+

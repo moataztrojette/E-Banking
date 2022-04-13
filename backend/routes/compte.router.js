@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {inscription,connexion,deconnexion,findCompte,findall,changePassword,recherche_compte_ac,find_compte_user_ac,desactiver_compte,activer_compte} = require("../controllers/compte.c")
+const {inscription,connexion,deconnexion,findCompte,findall,changePassword,recherche_compte_ac,find_compte_user_ac,desactiver_compte,activer_compte,findComptes_par_agence,recherche_compte_cdc} = require("../controllers/compte.c")
 const { isLogin } = require("../middleware/auth")
 
 
@@ -15,7 +15,8 @@ router.get("/recherche/:cin", recherche_compte_ac);
 router.get('/user/:id',find_compte_user_ac)
 router.post('/desactiver/:id',desactiver_compte)
 router.post('/activer/:id',activer_compte)
-
+router.post('/agence/find/',isLogin,findComptes_par_agence)
+router.get("/cdc/recherche/:cin", isLogin,recherche_compte_cdc);
 
 
 

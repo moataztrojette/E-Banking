@@ -9,6 +9,8 @@ module.exports.add = async (req,res)=>{
             motif : req.body.motif,
             id_user : req.info_compte._id,
             link :  "null",
+            reponse_cdc:"En attente",
+            etat_rdv:false
 
 
         })
@@ -25,7 +27,7 @@ module.exports.liste_rdv = async(req,res)=>{
 
 
 module.exports.find = async(req,res)=>{
-    const response = await rendez_vous.find({}).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 });
+    const response = await rendez_vous.find({etat_rdv:false}).populate({path:"id_user",populate:{path:"id_client"}}).sort({_id: -1 });
     res.status(200).json(response);
 }
 
@@ -41,6 +43,7 @@ module.exports.update_rdv =  async (req,res)=>{
     else{
         const response = await rendez_vous.findOneAndUpdate({_id:req.params.id},{
             link : req.body.link,
+            etat_rdv:false
         },{
             new : true
         }).populate({path:"id_user",populate:{path:"id_client"}})
@@ -49,6 +52,19 @@ module.exports.update_rdv =  async (req,res)=>{
     
 
 }
+
+module.exports.update_rdv_annuler =  async (req,res)=>{
+        const response = await rendez_vous.findOneAndUpdate({_id:req.params.id},{
+            reponse_cdc : req.body.reponse,
+            etat_rdv:true
+        },{
+            new : true
+        }).populate({path:"id_user",populate:{path:"id_client"}})
+        res.json(response)
+    
+
+}
+
 
 
 module.exports.remove = async (req,res)=>{

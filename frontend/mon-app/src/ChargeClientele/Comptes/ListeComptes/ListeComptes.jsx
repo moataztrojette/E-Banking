@@ -14,7 +14,7 @@ const ListeComptes = () => {
   useEffect(() => {
     const fetchPosts = async () => {
         setLoading(true);
-        const res = await axios.get('http://localhost:4000/api/compte/find');
+        const res = await axios.post('http://localhost:4000/api/compte/agence/find');
         setListeCompte(res.data);
         setLoading(false);
       };

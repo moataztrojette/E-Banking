@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import Modal_Annuler_rdv from "./Modal_Annuler_rdv";
 import Modal_rdv from "./Modal_rdv";
 
 const Posts = ({ posts, loading,setPosts }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenAnnulerRDV, setModalIsOpenAnnulerRDV] = useState(false);
+
   const [stateUserId, setStateUserId] = useState({});
 
   if (loading) {
@@ -23,6 +26,21 @@ const Posts = ({ posts, loading,setPosts }) => {
       ) : (
         <div></div>
       )}
+
+{modalIsOpenAnnulerRDV === true ? (
+        <Modal_Annuler_rdv
+          posts={posts}
+          setPosts={setPosts}
+          modalIsOpenAnnulerRDV={modalIsOpenAnnulerRDV}
+          setModalIsOpenAnnulerRDV={setModalIsOpenAnnulerRDV}
+          stateUserId={stateUserId}
+          setStateUserId={setStateUserId}
+        />
+      ) : (
+        <div></div>
+      )}
+
+
 
       <div className="col-12">
         <div className="card mb-4">
@@ -53,7 +71,9 @@ const Posts = ({ posts, loading,setPosts }) => {
                       Action
                     </th>
 
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lien de réunion </th>
+
                   </tr>
                 </thead>
                 {posts.map((c) => (
@@ -84,7 +104,19 @@ const Posts = ({ posts, loading,setPosts }) => {
                           {c.motif}
                         </span>
                       </td>
-
+                      {c.link == "null" ? (  <td
+                        class="align-middle text-center text-sm"
+                        onClick={() => {
+                          setModalIsOpenAnnulerRDV(true);
+                          setStateUserId(c);
+                        }}
+                      >
+                        <button class="btn btn-danger">
+                        Annuler un rendez-vous
+                        </button>
+                      </td>
+) : (<></>)}
+                    
                       <td
                         class="align-middle text-center text-sm"
                         onClick={() => {

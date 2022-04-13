@@ -153,19 +153,7 @@ const AjouterComptes = (props) => {
                 />
                 <br />
                 <div className="bloc_ag_tc">
-                  <div className="bloc">
-                    <p>Agences</p>
-                    <select
-                      className="form-control"
-                      name="id_agence"
-                      onChange={MyValuesInput}
-                    >
-                      {postsAgences.map((Ag) => (
-                        <option value={Ag._id}>{Ag.nom}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="bloc">
+               
                   <p>Type Client</p>
 
                     <select
@@ -177,7 +165,6 @@ const AjouterComptes = (props) => {
                         <option value={cl._id}>{cl.nom_type}</option>
                       ))}
                     </select>
-                  </div>
                 </div>
 
                 <input

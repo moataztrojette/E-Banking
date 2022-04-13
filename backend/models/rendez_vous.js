@@ -7,7 +7,9 @@ const rendez_vous = new mongoose.Schema({
     heure : {type:String,required:true},
     motif : {type:String,required:true},
     id_user: {type:mongoose.Types.ObjectId, ref:"comptes"},
-    link:  {type:String}
+    link:  {type:String},
+    reponse_cdc : {type:String,required:true},
+    etat_rdv : {type:Boolean,required:true}
 
 
 
