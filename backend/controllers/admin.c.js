@@ -1,7 +1,7 @@
 const admin = require("../models/admin.model")
 const jwt = require('jsonwebtoken')
 
-module.exports.connexion = (req,res)=>{
+module.exports.se_connecter = (req,res)=>{
     let identifiant = req.body.identifiant;
     let mdp = req.body.mdp;
    
@@ -20,7 +20,7 @@ module.exports.connexion = (req,res)=>{
     }
 }
 
-module.exports.deconnexion = (req,res)=>{
+module.exports.se_deconnecter = (req,res)=>{
     req.session = null
     res.send('logout')
 }

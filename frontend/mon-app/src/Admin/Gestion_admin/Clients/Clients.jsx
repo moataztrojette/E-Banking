@@ -1,5 +1,6 @@
 import React , {useState }  from 'react'
 import { Link  } from 'react-router-dom';
+import NavPage from '../../../Client/Interface/NavPage/NavPage';
 
 const Clients = () => {
 
@@ -7,6 +8,8 @@ const Clients = () => {
     return (
   
     <div>  
+                  <NavPage name="Clients"/>
+
 
 
 

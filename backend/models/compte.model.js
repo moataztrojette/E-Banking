@@ -9,6 +9,7 @@ const compte = new mongoose.Schema({
     id_cdc : {type:mongoose.Types.ObjectId, ref:"chargeClienteles"},
     isActive:{type:Boolean, required:true},
     id_client : {type:mongoose.Types.ObjectId, ref:"clients"},
+    date_creation: {type:String,required:true},
    
 
 })

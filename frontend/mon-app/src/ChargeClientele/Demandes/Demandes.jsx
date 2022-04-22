@@ -43,7 +43,7 @@ const Demandes = () => {
                  
                 </div>
               </div>
-              <Link to={'/cdc/demandes/rdv'}><button  type="button"  className="btn-voir">Voir</button></Link>
+              <Link to={'/cdc/demandes/carnet'}><button  type="button"  className="btn-voir">Voir</button></Link>
 
             </div>
 

@@ -3,16 +3,19 @@ import NavPage from '../../Interface/NavPage/NavPage';
 import DemandeRDV from './Demande_RDV/DemandeRDV';
 import { Link } from 'react-router-dom';
 import FermetureCompte from './Demande_de_fermeture_de_compte/FermetureCompte';
+import Demande_de_carnet_cheque from './Demande_de_carnet_cheque/Demande_de_carnet_cheque';
 
 const Demandes = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenFermetureCompte, setModalIsOpenFermetureCompte] = useState(false);
+  const [modalIsOpenCarnetCheque, setModalIsOpenCarnetCheque] = useState(false);
 
 
     return (
       <div>  
       {modalIsOpen === true ? (<DemandeRDV  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />) : (<div></div>)  } 
       {modalIsOpenFermetureCompte === true ? (<FermetureCompte  modalIsOpenFermetureCompte={modalIsOpenFermetureCompte} setModalIsOpenFermetureCompte={setModalIsOpenFermetureCompte} />) : (<div></div>)  } 
+      {modalIsOpenCarnetCheque === true ? (<Demande_de_carnet_cheque  modalIsOpenCarnetCheque={modalIsOpenCarnetCheque} setModalIsOpenCarnetCheque={setModalIsOpenCarnetCheque} />) : (<div></div>)  } 
 
 
 
@@ -75,12 +78,12 @@ const Demandes = () => {
               </div>
               </li>
 
-                                <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
+                                <li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" onClick={() => setModalIsOpenCarnetCheque(true)} >
             
                                 <div className='bloc1'>
                                 <div className='bloc2' >
-                                <img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/60/4a90e2/external-hand-online-shopping-vitaliy-gorbachev-blue-vitaly-gorbachev.png" alt="erreur_1" className='bloc3' />
-                                <span>Demandes de fonds et de devis</span>
+                                <img src="https://img.icons8.com/ultraviolet/40/000000/check.png" alt="erreur_1" className='bloc3'  />
+                                <span>Demande de carnet de chèque</span>
                             </div>
                   
                             <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                             

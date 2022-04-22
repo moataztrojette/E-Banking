@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Pagination from "./Components/Pagination";
 import Posts from "./Components/Posts";
 import axios from "axios";
+import NavPage from "../../../../Client/Interface/NavPage/NavPage";
 
 
 const ListeAgences = () => {
@@ -35,6 +36,8 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
    <div>
+                       <NavPage name="Agences"/>
+
        <div className="card-body pt-4 p-3">
       
       <Posts posts={currentPosts} setListeAgence={setListeAgence} loading={loading} />

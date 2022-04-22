@@ -25678,3 +25678,49 @@ form.sign-in-form_login {
   width: 2em;
   margin-left: 69em;
 }
+.agences{
+  width: 20em;
+  height: 30em;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 2px 2px 2px;
+
+}
+.img_random{
+  height: 50%;
+  width: 100%;
+}
+.containts{
+  height: 50%;
+  padding: 10px;
+
+}
+.containts h4,h3{
+  text-align: center;
+}
+.liste_agences{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 20px;
+  flex-wrap: wrap;
+}
+.btn-voir-clients{
+  border-radius: 10px;
+  background-color:var(--bs-success);
+  color: var(--bs-light);
+  border: none;
+  transition: all 0.5s;
+  width: 10em;
+  height: 40px;
+  margin-top: 5%;
+  margin-left: 20%;
+}
+
+.btn-voir-clients:hover {
+  transform: scale(1.1);
+}
+.format_carnet{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

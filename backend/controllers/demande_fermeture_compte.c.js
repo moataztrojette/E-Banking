@@ -14,8 +14,6 @@ module.exports.add = async (req,res)=>{
         const dataFull = year+"-"+month+"-"+date
 
         const response =  new demandeFerCompt({
-            np :req.body.np,
-            email : req.body.email,
             motif : req.body.motif,
             id_user : req.info_compte._id,
             isActive : true,

@@ -19,12 +19,12 @@ module.exports.update_donnees_person =  async (req,res)=>{
 }
 
 
-module.exports.find_client_agence = async(req,res)=>{
+module.exports.suivre_les_clients_de_chaque_agences = async(req,res)=>{
     const client = await clients.find({id_agence:req.params.id}).populate("id_agence id_type_client")
     res.json(client);
 }
 
-module.exports.find_client_type = async(req,res)=>{
+module.exports.consulter_les_client_par_categorie = async(req,res)=>{
     const client = await clients.find({id_type_client:req.params.id}).populate("id_agence id_type_client")
     res.json(client);
 }

@@ -1,13 +1,13 @@
 const express = require("express")
 const router = express.Router()
-const {add,findAll,remove,recherche_agence} = require("../controllers/agence.c")
+const {ajouter_agence,consulter_les_agences,remove,cherche_agence} = require("../controllers/agence.c")
 const { isLogin } = require("../middleware/auth")
 
 
-router.post("/add",add)
-router.get("/findall",findAll)
+router.post("/add",ajouter_agence)
+router.get("/findall",consulter_les_agences)
 router.delete('/delete/:id',remove)
-router.get("/recherche/:nom", recherche_agence);
+router.get("/recherche/:nom", cherche_agence);
 
 
 

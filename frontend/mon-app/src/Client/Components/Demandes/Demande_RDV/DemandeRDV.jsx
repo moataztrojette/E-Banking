@@ -68,27 +68,7 @@ const DemandeRDV = (props) => {
           >
             <div className="bloc_component_ajouter_comptes">
               <div>
-                <div className="bloc_np">
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="telephone"
-                    required
-                    placeholder="Téléphone"
-                    onChange={MyValuesInput}
-                  />
-
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="email"
-                    required
-                    placeholder="E-mail"
-                    onChange={MyValuesInput}
-                  />
-                </div>
+              
                 <h6>Date de rendez-vous</h6>
 
                 <input

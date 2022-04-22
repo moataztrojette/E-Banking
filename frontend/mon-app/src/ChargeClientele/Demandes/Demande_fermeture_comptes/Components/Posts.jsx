@@ -110,13 +110,13 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">{c.np}</h6>
+                        <h6 class="mb-0 text-sm">{c.id_user.id_client.nom} {c.id_user.id_client.prenom}</h6>
                       </div>
                     </div>
                   </td>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold">
-                      {c.email}
+                    {c.id_user.id_client.email}
                     </span>
                   </td>
                   <td class="align-middle text-center text-sm">

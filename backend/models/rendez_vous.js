@@ -1,8 +1,6 @@
 const mongoose = require("mongoose")
 
 const rendez_vous = new mongoose.Schema({
-    telephone :{type:Number, required:true},
-    email : {type:String,required:true},
     date : {type:String,required:true},
     heure : {type:String,required:true},
     motif : {type:String,required:true},

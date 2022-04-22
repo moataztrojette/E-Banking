@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const {connexion,deconnexion} = require("../controllers/admin.c")
+const {se_connecter,se_deconnecter} = require("../controllers/admin.c")
 
-router.post("/connexion",connexion)
-router.post('/deconnexion',deconnexion)
+router.post("/connexion",se_connecter)
+router.post('/deconnexion',se_deconnecter)
 
 module.exports = router;
 

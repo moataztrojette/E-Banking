@@ -16,6 +16,8 @@ const DemandeFermetureCompte = require("./routes/demande_fermeture_compte.router
 const client = require("./routes/client.router")
 const agence = require("./routes/agence.router")
 const typeClient = require("./routes/typeClient.router")
+const demande_carnet_cheque = require("./routes/demande_carnet_cheque.router")
+const carnet_cheque = require("./routes/carnet_cheque.router")
 
 
 env.config()
@@ -40,6 +42,10 @@ app.use("/api/demande/fermeture",DemandeFermetureCompte)
 app.use("/api/client",client)
 app.use("/api/agence",agence)
 app.use("/api/type/client",typeClient)
+app.use("/api/demande/carnet",demande_carnet_cheque)
+app.use("/api/carnet",carnet_cheque)
+
+
 
 
 

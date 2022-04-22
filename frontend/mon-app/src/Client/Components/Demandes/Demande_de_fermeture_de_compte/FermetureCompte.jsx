@@ -65,32 +65,7 @@ const FermetureCompte = (props) => {
           >
             <div className="bloc_component_ajouter_comptes">
               <div>
-                <div className="bloc_np">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="np"
-                    required
-                    placeholder="Nom Prénom"
-                    onChange={MyValuesInput}
-                  />
-
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="email"
-                    required
-                    placeholder="E-mail"
-                    onChange={MyValuesInput}
-                  />
-                </div>
-
-            
-                
-
-               
+   
                 <br />
                 <textarea
                   name="motif"

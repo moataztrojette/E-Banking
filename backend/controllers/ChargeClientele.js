@@ -3,7 +3,7 @@ const chargeClienteles = require("../models/chargeClientele.model")
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
-module.exports.inscription = async (req,res)=>{
+module.exports.ajouter_compte = async (req,res)=>{
     const verife = await chargeClienteles.findOne({cin:req.body.cin})
     if(verife){
         return res.status(422).send("Le compte existe déjà ")
@@ -24,17 +24,17 @@ module.exports.inscription = async (req,res)=>{
     }
 };
 
-module.exports.findCompte = async(req,res)=>{
+module.exports.consulter_informations_personnelles = async(req,res)=>{
     const response = await chargeClienteles.find({_id:req.info_compte._id}).populate("id_agence");
     res.json(response);
 }
 
-module.exports.deconnexion = (req,res)=>{
+module.exports.se_deconnecter = (req,res)=>{
     req.session = null
     res.send('logout')
 }
 
-module.exports.connexion = async (req,res)=>{
+module.exports.se_connecter = async (req,res)=>{
 
     const {cin , mdp} = req.body 
     const chargeClientele = await chargeClienteles.findOne({cin:cin})
@@ -66,6 +66,21 @@ module.exports.connexion = async (req,res)=>{
       }
 }
 
+module.exports.consulter_les_charges_clienteles_par_agence = async(req,res)=>{
+  const response = await chargeClienteles.find({id_agence:req.params.id}).populate("id_agence");
+  res.json(response);
+}
+
+module.exports.consulter_les_charges_clienteles = async(req,res)=>{
+  const response = await chargeClienteles.find({_id:req.params.id}).populate("id_agence");
+  res.json(response);
+}
 
 
 
+module.exports.chercher_cdc_par_mot_cle_cdc = async (req, res) => {
+  const res_recherche = await chargeClienteles.find({
+    prenom: { $regex: req.params.prenom, $options: "i" },
+  }).populate("id_agence")
+  res.json(res_recherche);
+};

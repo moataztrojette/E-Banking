@@ -3,7 +3,14 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const clients =require("../models/client.model")
 
-module.exports.inscription = async (req,res)=>{
+module.exports.ajouter_compte = async (req,res)=>{
+
+  let date_ob = new Date();
+  let date = date_ob.getDate();
+  let month = date_ob.getMonth() + 1;
+  let year = date_ob.getFullYear();
+
+  const dataFull = year+"-"+month+"-"+date
 
   
       const client = new clients({
@@ -33,6 +40,7 @@ module.exports.inscription = async (req,res)=>{
             id_cdc:req.info_compte._id,
             isActive:true,
             id_client:client._id,
+            date_creation:dataFull
       
 
         })
@@ -44,7 +52,7 @@ module.exports.inscription = async (req,res)=>{
 };
 
 
-module.exports.connexion = async (req,res)=>{
+module.exports.se_connecter = async (req,res)=>{
 
     const {login , mdp} = req.body 
     const compte = await comptes.findOne({login:login})
@@ -83,27 +91,17 @@ module.exports.connexion = async (req,res)=>{
 
 }
 
-module.exports.deconnexion = (req,res)=>{
+module.exports.se_deconnecter = (req,res)=>{
     req.session = null
     res.send('logout')
 }
 
-module.exports.findCompte = async(req,res)=>{
+module.exports.consulter_informations_personnelles = async(req,res)=>{
     const compte = await comptes.find({_id:req.info_compte._id}).populate("id_client");
     res.json(compte);
 }
 
-
-
-module.exports.findall = async(req,res)=>{
-    const compte = await comptes.find().populate({path:"id_client" , populate:{path:"id_agence"}}).sort({_id:-1});
-    res.json(compte);
-}
-
-
-
-
-module.exports.changePassword = async (req,res)=>{
+module.exports.modifier_mot_de_passe = async (req,res)=>{
 
   const user = await comptes.findOne({_id : req.info_compte._id})
   if(user){
@@ -133,6 +131,50 @@ module.exports.changePassword = async (req,res)=>{
 
 }
 
+module.exports.consulter_releves_compte_client_cdc = async(req,res)=>{
+  const compte = await comptes.find({_id:req.params.id}).populate("id_client");
+  res.json(compte);
+}
+
+
+module.exports.fermer_compte =  async (req,res)=>{
+
+  const response = await comptes.findOneAndUpdate({_id:req.params.id},{
+      isActive : false,
+      },{
+          new : true
+      })
+      res.json(response)
+
+}
+module.exports.chercher_compte_par_mot_cle_cdc = async (req, res) => {
+
+  const client = await clients.findOne({cin:req.params.cin,id_agence:req.info_compte.id_agence}).select("_id")
+
+  const res_recherche = await comptes.find({id_client:client}).populate("id_client")
+  res.json(res_recherche);
+
+};
+
+
+module.exports.Consulter_les_comptes_crées_par_cdc = async(req,res)=>{
+  const compte = await comptes.find({id_cdc:req.params.id}).populate({path:"id_client" , populate:{path:"id_agence"}}).sort({_id:-1});
+  res.json(compte);
+}
+
+
+
+
+module.exports.findall = async(req,res)=>{
+    const compte = await comptes.find().populate({path:"id_client" , populate:{path:"id_agence"}}).sort({_id:-1});
+    res.json(compte);
+}
+
+
+
+
+
+
 module.exports.recherche_compte_ac = async (req, res) => {
 
   const client = await clients.findOne({cin:req.params.cin}).select("_id")
@@ -143,22 +185,7 @@ module.exports.recherche_compte_ac = async (req, res) => {
 };
 
 
-module.exports.find_compte_user_ac = async(req,res)=>{
-  const compte = await comptes.find({_id:req.params.id}).populate("id_client");
-  res.json(compte);
-}
 
-
-module.exports.desactiver_compte =  async (req,res)=>{
-
-  const response = await comptes.findOneAndUpdate({_id:req.params.id},{
-      isActive : false,
-      },{
-          new : true
-      })
-      res.json(response)
-
-}
 
 module.exports.activer_compte =  async (req,res)=>{
 
@@ -170,6 +197,9 @@ module.exports.activer_compte =  async (req,res)=>{
       res.json(response)
 
 }
+
+
+
 
 module.exports.findComptes_par_agence = async(req,res)=>{
   tabId =[] 
@@ -212,14 +242,6 @@ module.exports.findComptes_par_agence = async(req,res)=>{
     res.json(Collection);
 }
 
-module.exports.recherche_compte_cdc = async (req, res) => {
-
-  const client = await clients.findOne({cin:req.params.cin,id_agence:req.info_compte.id_agence}).select("_id")
-
-  const res_recherche = await comptes.find({id_client:client}).populate("id_client")
-  res.json(res_recherche);
-
-};
 
 
 

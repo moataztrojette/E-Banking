@@ -28,14 +28,16 @@ const Posts = ({ posts, loading,setListeCompte }) => {
   return (
     <div className="row">
 
-    <div class="filter_comptes" style={{marginLeft:"70em"}}>
+    <div class="filter_comptes" style={{marginLeft:"66em"}}>
       <div class="form-outline">
         <input
           name="serche"
           onChange={rechercheUsers}
           id="form1"
           class="form-control"
-          placeholder="Rechercher un compte "
+          placeholder="Rechercher un compte par cin "
+          style={{width:"20em"}}
+
         />
       </div>
     

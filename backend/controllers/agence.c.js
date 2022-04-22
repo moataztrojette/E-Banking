@@ -1,6 +1,6 @@
 const agences = require("../models/agence.mode")
 
-module.exports.add = async (req,res)=>{
+module.exports.ajouter_agence = async (req,res)=>{
    
             const response = await agences.findOne({nom : req.body.nom})
             if(response){
@@ -17,7 +17,7 @@ module.exports.add = async (req,res)=>{
             }
 }
 
-module.exports.findAll = async(req,res)=>{
+module.exports.consulter_les_agences = async(req,res)=>{
     const response = await agences.find({})
     res.json(response)   
 }
@@ -26,7 +26,7 @@ module.exports.findAll = async(req,res)=>{
 
 
 
-module.exports.recherche_agence = async (req, res) => {
+module.exports.cherche_agence = async (req, res) => {
     const res_recherche = await agences.find({
       nom: { $regex: req.params.nom, $options: "i" },
     })

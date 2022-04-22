@@ -1,12 +1,12 @@
 const express = require("express")
 const router = express.Router()
-const {add,findAll,remove,recherche_type_client} = require("../controllers/typeClient.c")
+const {ajouter_categorie_client,afficher_la_liste_categorie,Archives_categorie_client,recherche_type_client} = require("../controllers/typeClient.c")
 const { isLogin } = require("../middleware/auth")
 
 
-router.post("/add",add)
-router.get("/findall",findAll)
-router.delete('/delete/:id',remove)
+router.post("/add",ajouter_categorie_client)
+router.get("/findall",afficher_la_liste_categorie)
+router.delete('/delete/:id',Archives_categorie_client)
 router.get("/recherche/:nom", recherche_type_client);
 
 

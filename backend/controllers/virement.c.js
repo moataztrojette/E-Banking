@@ -1,6 +1,7 @@
 const virements = require("../models/virement.model");
 const comptes = require("../models/compte.model");
 const historiques = require("../models/historique.model");
+const beneficiaires = require("../models/beneficiaires.model")
 
 
 
@@ -69,6 +70,16 @@ module.exports.add = async (req,res)=>{
               
            })
            await his.save();
+
+           const response = await beneficiaires.findOne({rib : req.body.ribBeneficiaire , id_user: req.info_compte._id })
+           if(!response){
+            const beneficiaire =  new beneficiaires({
+                nom : req.body.nomBeneficiaire,
+                rib :  req.body.ribBeneficiaire,
+                id_user : req.info_compte._id
+            })
+            await beneficiaire.save();
+           }
             res.status(200).json(virement);
         }else{
             res.status(422).send("Désolé minimum pour faire un virement 10 dinar")

@@ -1,6 +1,6 @@
 const typeClients = require("../models/typeClient.model")
 
-module.exports.add = async (req,res)=>{
+module.exports.ajouter_categorie_client = async (req,res)=>{
    
             const response = await typeClients.findOne({nom_type : req.body.nom_type})
             if(response){
@@ -16,13 +16,13 @@ module.exports.add = async (req,res)=>{
             }
 }
 
-module.exports.findAll = async(req,res)=>{
+module.exports.afficher_la_liste_categorie = async(req,res)=>{
     const response = await typeClients.find({})
     res.json(response)   
 }
 
 
-  module.exports.remove = async (req,res)=>{
+  module.exports.Archives_categorie_client = async (req,res)=>{
     await typeClients.findByIdAndRemove({_id : req.params.id})
     res.status(200).send("deleted")
 }
