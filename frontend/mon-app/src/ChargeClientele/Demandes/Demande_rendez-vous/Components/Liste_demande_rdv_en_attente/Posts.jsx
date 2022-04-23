@@ -6,6 +6,7 @@ const Posts = ({ posts, loading,setPosts }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenAnnulerRDV, setModalIsOpenAnnulerRDV] = useState(false);
 
+
   const [stateUserId, setStateUserId] = useState({});
 
   if (loading) {
@@ -42,70 +43,67 @@ const Posts = ({ posts, loading,setPosts }) => {
 
 
 
-      <div className="col-12">
+      <div >
         <div className="card mb-4">
           <div className="card-header pb-0">
             <h6>Liste des rendez-vous</h6>
           </div>
 
-          <div className="card-body px-0 pt-0 pb-2">
+          <div style={{width:"13em" ,height:"4em"}}>
             <div className="table-responsive p-0">
-              <table className="table align-items-center mb-0">
-                <thead>
-                  <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+              <table style={{width:"100%"}} >
+                <thead >
+                  <tr >
+                  <th class=" text-secondary text-sm font-weight-bolder opacity-7">
                       Nom Prénom{" "}
                     </th>
 
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    <th class=" text-secondary  text-sm  opacity-7">
                     La date de rendez vous{" "}
                     </th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    <th class="text-center  text-secondary  text-sm	  opacity-7">
                     L'heure de rendez-vous
 
                     </th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    <th class="text-center  text-secondary  text-sm  opacity-7">
                       Motif
                     </th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    <th class="text-center  text-secondary  text-sm	  opacity-7">
                       Action
                     </th>
 
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> </th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lien de réunion </th>
+                    <th class="text-center  text-secondary text-sm	 opacity-7"> </th>
 
                   </tr>
                 </thead>
                 {posts.map((c) => (
                   <tbody>
-                    <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{c.id_user.id_client.prenom} {c.id_user.id_client.nom}</h6>
-                          </div>
-                        </div>
+                    <tr style={{marginBottom:"20px"}}>
+                    <td class="text-center text-uppercase text-secondary text-lg		 font-weight-bolder " >
+                        <span class="text-secondary text-sm	 font-weight-bold">
+                        {c.id_user.id_client.nom} {c.id_user.id_client.prenom}  
+
+                        </span>
                       </td>
 
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{c.date}</h6>
-                          </div>
-                        </div>
+                      <td class="text-center text-uppercase text-secondary text-lg	 font-weight-bolder ">
+                        <span class="text-secondary  text-sm font-weight-bold">
+                        {c.date}   
+
+                        </span>
                       </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">
+                      <td class="text-center text-uppercase text-secondary  text-lg		 font-weight-bolder ">
+                        <span class="text-secondary  text-sm font-weight-bold">
                           {c.heure}
                         </span>
                       </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold">
+                      <td class="text-center text-uppercase text-secondary text-lg		 font-weight-bolder ">
+                        <span class="text-secondary  text-sm font-weight-bold">
                           {c.motif}
                         </span>
                       </td>
-                      {c.link == "null" ? (  <td
-                        class="align-middle text-center text-sm"
+                      {c.etat_demande=="en attente" ? (   <td
+                       class="text-center text-uppercase text-secondary  text-lg		 font-weight-bolder "
                         onClick={() => {
                           setModalIsOpenAnnulerRDV(true);
                           setStateUserId(c);
@@ -115,26 +113,29 @@ const Posts = ({ posts, loading,setPosts }) => {
                         Annuler un rendez-vous
                         </button>
                       </td>
-) : (<></>)}
-                    
-                      <td
-                        class="align-middle text-center text-sm"
-                        onClick={() => {
+                    ):(<></>)} 
+
+{c.etat_demande=="en attente" ? (          <td
+class="text-center text-uppercase text-secondary  text-lg		 font-weight-bolder "                        onClick={() => {
                           setModalIsOpen(true);
                           setStateUserId(c);
                         }}
                       >
                         <button class="btn btn-success">
-                          Ajouter Lien meet
+                         Accepter reunion
                         </button>
                       </td>
-                      {c.link !="null" ? (   <td class="align-middle text-center text-sm">
-                        <a href={c.link} target="_blank"><img src="/img/icons8-link (1).gif" className="link_meet"></img>  </a>
-                      </td>) : (<td class="align-middle text-center text-sm">   
-</td>)}
+                    ):(<></>)} 
+
+
+                   
+
+               
+        
                    
 
                     </tr>
+
                   </tbody>
                 ))}
               </table>

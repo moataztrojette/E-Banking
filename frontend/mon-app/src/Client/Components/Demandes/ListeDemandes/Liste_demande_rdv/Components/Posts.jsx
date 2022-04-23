@@ -1,14 +1,19 @@
 import React, {useState } from "react";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 import dateformat from 'dateformat'
+import ModalResultat from "./ModalResultat";
+import ModalPropositionRDV from "./ModalPropositionRDV";
 
 
 const Posts = ({ posts, loading,setPosts}) => {
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [stateIdDemande, setStateIdDemande] = useState({});
+  const [modalIsOpenProposition, setModalIsOpenProposition] = useState(false);
 
+  
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -35,7 +40,33 @@ const Posts = ({ posts, loading,setPosts}) => {
   return (
     <div className="row">
 
-    
+{modalIsOpen === true ? (
+        <ModalResultat
+        
+          modalIsOpen={modalIsOpen}
+          setModalIsOpen={setModalIsOpen}
+          stateIdDemande={stateIdDemande}
+          setStateIdDemande={setStateIdDemande}
+  
+        />
+      ) : (
+        <div></div>
+      )}
+
+{modalIsOpenProposition === true ? (
+        <ModalPropositionRDV
+        
+        modalIsOpenProposition={modalIsOpenProposition}
+        setModalIsOpenProposition={setModalIsOpenProposition}
+          stateIdDemande={stateIdDemande}
+          setStateIdDemande={setStateIdDemande}
+  
+        />
+      ) : (
+        <div></div>
+      )}
+
+
     <div className="col-12">
       <div className="card mb-4">
         <div className="card-header pb-0">
@@ -67,12 +98,9 @@ const Posts = ({ posts, loading,setPosts}) => {
                   </th>
 
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                  Réponse chargé de clientèle
+                  Proposition RDV
                   </th>
 
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                   Lien de Réunion
-                  </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                   Annulation de réunion
 
@@ -104,44 +132,35 @@ const Posts = ({ posts, loading,setPosts}) => {
                     </span>
                   </td>
 
-                  {c.link == "null" ? (
-                       <td class="align-middle text-center text-sm">
-                       <span class="text-danger text-xs font-weight-bold">
-                       Demande non acceptée pour le moment.                      </span>
-                     </td>
-      ) : (
-        <>
-        <td class="align-middle text-center text-sm">
-        <span class="text-success
-text-xs font-weight-bold">
-        Demande acceptée
-        </span>
-        </td>
-        </>
-        )}
-         {c.link != "null" ?(   <td class="align-middle text-center text-sm">
-                    <span class="text-secondary text-xs font-weight-bold">
-                     Valider
-                    </span>
-                  </td>):(   <td class="align-middle text-center text-sm">
-                    <span class="text-secondary text-xs font-weight-bold">
-                      {c.reponse_cdc}
-                    </span>
-                  </td>)}
-      
-        
-        {c.link != "null" ? (<td class="align-middle text-center text-sm">
-
-<span class="text-success
-text-xs font-weight-bold">
-<a href={c.link} target="_blank"><img src="/img/icons8-link (1).gif" className="link_meet"></img>  </a>
-</span>
-</td>)
-:(<td class="align-middle text-center text-sm"></td>)
-}
+    
+ {c.etat_demande=="valider" ? (   <td
+                        class="align-middle text-center text-sm"
+                        onClick={() => {
+                          setModalIsOpen(true);
+                          setStateIdDemande(c);
+                        }}
+                      >
+                        <button class="btn btn-success">
+                        Voir
+                        </button>
+                      </td>) : (<><td></td></>)}
+               
+{c.etat_demande =="refuser" ? ( <td
+                        class="align-middle text-center text-sm"
+                        onClick={() => {
+                          setModalIsOpenProposition(true);
+                          setStateIdDemande(c);
+                        }}
+                      >
+                        <button class="btn btn-success">
+                        Voir
+                        </button>
+                      </td>) : (<td></td>)}
+                     
 
 
-{c.link == "null" ? (<td class="align-middle text-center text-sm">
+
+{c.etat_demande == "en attente" ? (<td class="align-middle text-center text-sm">
      <img src="/img/icons8-close-64.png" className="link_meet" onClick={() => {
                       Swal.fire({
                         title: "Êtes - vous sûr  ?",

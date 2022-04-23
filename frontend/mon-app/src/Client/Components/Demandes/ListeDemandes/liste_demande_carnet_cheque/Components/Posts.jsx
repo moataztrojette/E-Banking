@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import React, {useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import Swal from "sweetalert2";
 import dateformat from 'dateformat'
 import ModalResultat from "./ModalResultat";
 

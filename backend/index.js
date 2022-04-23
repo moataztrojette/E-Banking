@@ -10,7 +10,7 @@ const virement = require("./routes/virement.router");
 const historique = require("./routes/historique.router");
 const beneficiaire = require("./routes/beneficiaires.router");
 const cdc = require("./routes/chargeClientele.router");
-const rendez_vous = require("./routes/rendez_vous.router");
+const demande_rendez_vous = require("./routes/demande_rendez_vous.router");
 const admin = require("./routes/admin.router");
 const DemandeFermetureCompte = require("./routes/demande_fermeture_compte.router");
 const client = require("./routes/client.router")
@@ -18,6 +18,8 @@ const agence = require("./routes/agence.router")
 const typeClient = require("./routes/typeClient.router")
 const demande_carnet_cheque = require("./routes/demande_carnet_cheque.router")
 const carnet_cheque = require("./routes/carnet_cheque.router")
+const rendez_vous = require("./routes/rendez_vous.router")
+const proposition_rendez_vous = require("./routes/proposition.router")
 
 
 env.config()
@@ -35,7 +37,7 @@ app.use("/api/compte",compte)
 app.use("/api/virement",virement)
 app.use("/api/historique",historique)
 app.use("/api/beneficiaire",beneficiaire)
-app.use("/api/rdv",rendez_vous)
+app.use("/api/demande/rdv",demande_rendez_vous)
 app.use("/api/admin",admin)
 app.use("/api/cdc",cdc)
 app.use("/api/demande/fermeture",DemandeFermetureCompte)
@@ -44,6 +46,12 @@ app.use("/api/agence",agence)
 app.use("/api/type/client",typeClient)
 app.use("/api/demande/carnet",demande_carnet_cheque)
 app.use("/api/carnet",carnet_cheque)
+app.use("/api/rdv",rendez_vous)
+app.use("/api/proposition/rdv",proposition_rendez_vous)
+
+
+
+
 
 
 

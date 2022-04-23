@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Pagination from "./Components/Pagination";
-import Posts from "./Components/Posts";
+import Posts from "./Posts";
+import Pagination from "./Pagination";
 
 
-const Liste_demande_rdv = () => {
+const Liste_demande_rdv_accepter = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [postsPerPage] = useState(5);
 
  
   useEffect(() => {
     const fetchPosts = async () => {
         setLoading(true);
-        const res = await axios.get('http://localhost:4000/api/demande/rdv/liste');
+        const res = await axios.get('http://localhost:4000/api/demande/rdv/find');
         setPosts(res.data);
         setLoading(false);
       };
@@ -48,4 +48,4 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
   );
 };
 
-export default Liste_demande_rdv;
+export default Liste_demande_rdv_accepter;

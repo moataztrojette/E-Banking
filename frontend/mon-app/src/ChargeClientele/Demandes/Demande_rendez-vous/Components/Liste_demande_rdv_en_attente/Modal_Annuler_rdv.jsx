@@ -3,8 +3,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
 import axios from "axios";
-import 'react-datepicker/dist/react-datepicker.css'
-
+import "react-datepicker/dist/react-datepicker.css";
 
 const Modal_Annuler_rdv = (props) => {
   const [valuesInput, setValues] = useState({});
@@ -15,26 +14,26 @@ const Modal_Annuler_rdv = (props) => {
     setValues(res);
   };
 
- 
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(props)
+    console.log(props);
 
     try {
-    const data = await axios.post("http://localhost:4000/api/rdv/rdv/"+props.stateUserId._id,valuesInput);
+      const data = await axios.post(
+        "http://localhost:4000/api/proposition/rdv/add",
+        {
+          date : valuesInput.date,
+          heure: valuesInput.heure,
+          id_user : props.stateUserId.id_user._id,
+          id_demande :  props.stateUserId._id
+        }
+      );
 
       toast("Annulation rendez-Vous ", {
         type: "success",
       });
 
-      const resFind = props.posts.find(
-        (element) => element._id === props.stateUserId._id
-      );
-      const newState = props.posts;
-      const index = props.posts.indexOf(resFind);
-      newState[index] = data.data;
-      props.setPosts(newState);
+     
     } catch (error) {
       if (error.response.data) {
         toast(error.response.data, {
@@ -74,25 +73,59 @@ const Modal_Annuler_rdv = (props) => {
           >
             <div className="bloc_component_ajouter_comptes">
               <div>
-              <div className="form-group" style={{borderRadius:"10px",padding:"10px"}}>
-            <a href="https://meet.google.com/" target="_blanck" >S'il vous plaît reprendre un autre rendez-vous selon votre disponibilité !!</a>
-            </div>
-                <div className="bloc_np">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleInputUsername2"
-                    name="reponse"
-                    required
-                    placeholder="Message"
-                    onChange={MyValuesInput}
-                  />
-
-               
+                <div
+                  className="form-group"
+                  style={{ borderRadius: "10px", padding: "10px" }}
+                >
+                  <a href="https://meet.google.com/" target="_blanck">
+                    S'il vous plaît reprendre un autre rendez-vous selon votre
+                    disponibilité !!
+                  </a>
                 </div>
+                <div >
+                  <div>
+                    {" "}
+                    <h6>Date de rendez-vous</h6>
+                    <input
+                      type="date"
+                      className="form-control"
+                      name="date"
+                      required
+                      onChange={MyValuesInput}
+                      min={
+                        new Date(
+                          new Date().getTime() -
+                            new Date().getTimezoneOffset() * 60000
+                        )
+                          .toISOString()
+                          .split("T")[0]
+                      }
+                      //minDate={new Date()}
+                    />
+                  </div>
+
+                  <br />
+
+                  <div>
+                  <h6>Heure rendez-vous</h6>
+
+                    <input
+                      name="heure"
+                      className="form-control"
+                      type="time"
+                      id="appt"
+                      min="09:00"
+                      max="18:00"
+                      required
+                      onChange={MyValuesInput}
+                    />
+                  </div>
+                  <br/>
+
 
            
-                
+                </div>
+                <br />
 
                 <ToastContainer></ToastContainer>
 
@@ -128,7 +161,6 @@ const Modal_Annuler_rdv = (props) => {
         </div>
       </Modal>
     </div>
-    
   );
 };
 

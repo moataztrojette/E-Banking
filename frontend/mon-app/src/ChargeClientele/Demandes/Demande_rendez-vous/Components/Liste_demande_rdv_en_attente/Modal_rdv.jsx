@@ -19,29 +19,23 @@ const Modal_rdv = (props) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(props)
 
-    try {
-    const data = await axios.post("http://localhost:4000/api/rdv/update/"+props.stateUserId._id,valuesInput);
+      const data = await axios.post(
+        "http://localhost:4000/api/rdv/add",
+        {
+          link : valuesInput.link,
+          id_user : props.stateUserId.id_user._id,
+          id_demande :  props.stateUserId._id
+        }
+      );
 
-      toast("Prise de rendez-vous réussie ", {
+
+      toast("Opération valider ", {
         type: "success",
       });
 
-      const resFind = props.posts.find(
-        (element) => element._id === props.stateUserId._id
-      );
-      const newState = props.posts;
-      const index = props.posts.indexOf(resFind);
-      newState[index] = data.data;
-      props.setPosts(newState);
-    } catch (error) {
-      if (error.response.data) {
-        toast(error.response.data, {
-          type: "error",
-        });
-      }
-    }
+   
+
   };
 
   return (

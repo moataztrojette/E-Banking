@@ -25114,6 +25114,7 @@ pre[class*="language-"] {
   grid-gap: 10px ;
   margin-bottom: 20px;
 }
+
 .bloc_pc{
   display: flex;
   flex-direction: row;
@@ -25723,4 +25724,52 @@ form.sign-in-form_login {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+
+.slides_rdv {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.slides_rdv {
+  display: flex;
+  
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  
+  
+  
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  
+  /*
+  scroll-snap-points-x: repeat(300px);
+  scroll-snap-type: mandatory;
+  */
+}
+.slides_rdv::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.slides_rdv::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slides_rdv > div {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: #eee;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+  
+  display: flex;
+  align-items: center;
+  font-size: 100px;
 }
