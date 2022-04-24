@@ -26,10 +26,10 @@ const Choix = (props) => {
             <img src="https://img.icons8.com/emoji/48/4a90e2/clipboard-emoji.png" alt="erreur_1" className='imgWM'/>
             </div>
             <div className="d-flex align-items-start flex-column justify-content-center ">
-              <h6 className="mb-0 text-sm" style={{marginRight:"10em"}} >Consulter les cartes et les carnet chéques validées</h6>
+              <h6 className="mb-0 text-sm" style={{marginRight:"10em"}} >Consulter les carnet chéques validées</h6>
               
             </div>
-            <Link to={'/admin/cdc/liste/profil/compte/creer/'+props.id}> <a href={() => false} 
+            <Link to={'/admin/cdc/liste/profil/carnet_valider/'+props.id}> <a href={() => false} 
  className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Voir</a></Link>
           </li>
 

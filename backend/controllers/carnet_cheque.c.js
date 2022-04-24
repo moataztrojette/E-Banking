@@ -25,3 +25,10 @@ module.exports.consulter_resultat_demande = async (req,res )=>{
     const response = await carnet_cheques.find({id_demande : req.params.id }).populate({path:"id_user",populate:{path:"id_client"}});
     res.status(200).send(response)
 }
+
+module.exports.Consulter_les_carnets_chéques_validées_par_cdc = async(req,res)=>{
+    const response = await carnet_cheques.find({id_cdc:req.params.id}).populate({path:"id_user id_demande" , populate:{path:"id_client"}}).sort({_id:-1});
+    res.json(response);
+  }
+
+

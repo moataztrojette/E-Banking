@@ -20,6 +20,8 @@ const demande_carnet_cheque = require("./routes/demande_carnet_cheque.router")
 const carnet_cheque = require("./routes/carnet_cheque.router")
 const rendez_vous = require("./routes/rendez_vous.router")
 const proposition_rendez_vous = require("./routes/proposition.router")
+const type_carte_bancaire = require("./routes/type_carte_bancaire.router")
+const demande_carte_bancaire = require("./routes/demande_carte_bancaire.router")
 
 
 env.config()
@@ -48,6 +50,10 @@ app.use("/api/demande/carnet",demande_carnet_cheque)
 app.use("/api/carnet",carnet_cheque)
 app.use("/api/rdv",rendez_vous)
 app.use("/api/proposition/rdv",proposition_rendez_vous)
+app.use("/api/type/carte",type_carte_bancaire)
+app.use("/api/demande/carte",demande_carte_bancaire)
+
+
 
 
 

@@ -21,6 +21,8 @@ import ChangePasword from '../Components/Parametre/Components/ChangePassword/Cha
 import ListeDemandes from '../Components/Demandes/ListeDemandes/ListeDemandes';
 import Liste_demande_rdv from '../Components/Demandes/ListeDemandes/Liste_demande_rdv/Liste_demande_rdv';
 import Liste_demande_carnet_cheque from '../Components/Demandes/ListeDemandes/liste_demande_carnet_cheque/Liste_demande_carnet_cheque';
+import Demande_carte_bancaire from '../Components/Demandes/Demande_carte_bancaire/Demande_carte_bancaire';
+import Type_carte_bancaire from '../Components/Demandes/Demande_carte_bancaire/Type_carte_bancaire/Type_carte_bancaire';
 
 
 const InterfaceClient = (props) => {
@@ -39,15 +41,18 @@ const InterfaceClient = (props) => {
         <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <Navbar logout ={logout} />
             <Switch>
-               <Route path ="/client/virements/virementbancaires" component={VirementBancaire}/>
-                <Route path ="/client/cheques/typecheques" component={TypeCheques}/>
-                <Route path ="/client/cartes/demande" component={DemandesCartes}/>
-                <Route path ="/client/virements/historique" component={Historique}/>
-                <Route path ="/client/virements/beneficiaires" component={Beneficiaires}/>
+                <Route path ="/client/demandes/carte/bancaire/type/:id" component={Type_carte_bancaire}/>
+                <Route path ="/client/virements/virementbancaires" component={VirementBancaire}/>
                 <Route path ="/client/parametre/changepassword" component={ChangePasword}/>
+                <Route path ="/client/demandes/carte/bancaire" component={Demande_carte_bancaire}/>
+                <Route path ="/client/virements/beneficiaires" component={Beneficiaires}/>
+                <Route path ="/client/cheques/typecheques" component={TypeCheques}/>
+                <Route path ="/client/virements/historique" component={Historique}/>
                 <Route path ="/client/demandes/liste/carnets" component={Liste_demande_carnet_cheque}/>
                 <Route path ="/client/demandes/liste/rdv" component={Liste_demande_rdv}/>
+                <Route path ="/client/cartes/demande" component={DemandesCartes}/>
 
+                
                
                 <Route path ="/client/demandes/liste" component={ListeDemandes}/>
 

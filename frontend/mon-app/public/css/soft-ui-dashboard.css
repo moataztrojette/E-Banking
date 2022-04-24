@@ -25114,6 +25114,13 @@ pre[class*="language-"] {
   grid-gap: 10px ;
   margin-bottom: 20px;
 }
+.bloc_cb{
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px ;
+  margin-bottom: 20px;
+}
+
 
 .bloc_pc{
   display: flex;

@@ -17,6 +17,7 @@ import ListeComptesCdc from '../Gestion_admin/ChargeClientele/Comptes/ListeCompt
 import Comptes from '../Gestion_admin/ChargeClientele/Comptes/Comptes';
 import TableauDeBordCdc from '../Gestion_admin/ChargeClientele/Comptes/ProfilCdc/TableauDeBordCdc';
 import Consulter_les_comptes_bancaires_créés from '../Gestion_admin/ChargeClientele/Comptes/ProfilCdc/Choix/Consulter_les_comptes_bancaires_créés/Consulter_les_comptes_bancaires_créés';
+import Consulter_les_carnets_chéques_validées from '../Gestion_admin/ChargeClientele/Comptes/ProfilCdc/Choix/Consulter_les_carnets_cheques_validees/Consulter_les_carnets_chéques_validées';
 
 
 const InterfaceAdmin = (props) => {
@@ -34,6 +35,7 @@ const InterfaceAdmin = (props) => {
         <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <Navbar logout ={logout} />
             <Switch>
+            <Route path="/admin/cdc/liste/profil/carnet_valider/:id" component={Consulter_les_carnets_chéques_validées}/>
             <Route path="/admin/cdc/liste/profil/compte_créés/:id" component={Consulter_les_comptes_bancaires_créés}/>
             <Route path="/admin/agences/client/liste/:id" component={Clients_par_agence}/>
             <Route path="/admin/clients/type/liste/:id" component={Clients_par_type}/>
