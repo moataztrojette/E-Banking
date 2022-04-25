@@ -180,7 +180,14 @@ const Posts = ({ posts, loading,setPosts}) => {
                    ) : (<td class="align-middle text-center text-sm"></td>)}
          
                
-            
+            {c.etat_demande=="valider" ? (<>
+                <img src="/img/icons8-check-mark-48.png" style={{width:"3em"}}/>
+            </>) :(<></>)}
+
+
+            {c.etat_demande=="refuser" ? (<>
+                <img src="/img/icons8-close-64.png" style={{width:"3em"}}/>
+            </>) :(<></>)}
 
                
                 </tr>

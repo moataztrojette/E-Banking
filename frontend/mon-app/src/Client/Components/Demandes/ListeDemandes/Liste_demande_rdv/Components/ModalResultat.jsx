@@ -60,7 +60,7 @@ const ModalResultat = (props) => {
               {stateRes.map((c)=>(
 
                   <div>
-                        <p>Bonjour monsieur <b>{c.id_user.id_client.nom} {c.id_user.id_client.prenom}</b> votre demande de rendez-vous en ligne   <b>validée</b> à la date <b>{c.id_demande.date}</b> a l'heure <b>{c.id_demande.heure}</b> Voici lien Meet  :  <b>                        <a href={c.link} target="_blank"><img src="/img/icons8-link (1).gif" className="link_meet"></img>  </a>
+                        <p>Bonjour monsieur <b>{c.id_user.id_client.nom} {c.id_user.id_client.prenom}</b> votre demande de rendez-vous en ligne   <b>validée</b> à la date <b>{c.id_demande.date}</b> à l'heure <b>{c.id_demande.heure}</b> Voici le lien Meet  :  <b>                        <a href={c.link} target="_blank"><img src="/img/icons8-link (1).gif" className="link_meet"></img>  </a>
 </b></p>
 
                   </div>

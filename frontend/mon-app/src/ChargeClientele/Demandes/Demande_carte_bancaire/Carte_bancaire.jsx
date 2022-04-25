@@ -32,7 +32,6 @@ const Carte_bancaire = () => {
 
                   <div class="card-header pb-0">
 
-                    <h6>Cartes bancaires </h6>
 
                 
                   </div>
@@ -54,12 +53,12 @@ const Carte_bancaire = () => {
                                       <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                                
                                 </div>
                                 </li></Link>
-                                <Link to={'/admin/clients/comptes'}><li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
+                                <Link to={'/cdc/demandes/cartes/choix/liste'}><li class="bloc4 border-0  p-4 mb-2 bg-gray-100 border-radius-lg" >
             
                                 <div className='bloc1'>
                                 <div className='bloc2'>
                                           <img src="/img/icons8-bank-cards-100.png" alt="erreur_1" className='imgWM'/>
-                                      <span >liste des demande de cartes bancaires </span>
+                                      <span >liste de demande des cartes bancaires </span>
                             </div>
                   
                             <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                             

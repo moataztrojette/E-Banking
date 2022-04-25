@@ -24,7 +24,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Compte a été désactiver avec succees",
+        title: "Compte a été désactivé avec succés",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -48,7 +48,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Compte a été Activer avec succees",
+        title: "Compte a été activé avec succés",
         showConfirmButton: false,
         timer: 1500,
       });

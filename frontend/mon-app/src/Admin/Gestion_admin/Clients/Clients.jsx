@@ -46,7 +46,7 @@ const Clients = () => {
                               <div className='bloc1' >
                                <div className='bloc2' >
                                             <img src="/img/icons8-client-60.png"  alt="erreur_1" className='imgWM'/>
-                                          <span>Type Clinets</span>
+                                          <span>types de clients </span>
 
                                       </div>
                             
@@ -59,7 +59,7 @@ const Clients = () => {
                                 <div className='bloc1'>
                                 <div className='bloc2'>
                                           <img src="/img/icons8-client-64.png" alt="erreur_1" className='imgWM'/>
-                                      <span >Liste de clients </span>
+                                      <span >Liste des clients </span>
                             </div>
                   
                             <img src="https://img.icons8.com/dusk/80/4a90e2/circled-right.png" alt="erreur_1" className='imgW'/>                             

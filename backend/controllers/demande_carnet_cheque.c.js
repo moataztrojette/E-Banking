@@ -10,7 +10,7 @@ module.exports.demande_carnet_cheque = async (req,res)=>{
 
     const response = await demande_carnet_cheques.findOne({date : dataFull , id_user : req.info_compte._id })
     if(response){
-        return res.status(422).send("Impossible de faire deux demande pour le meme jour")
+        return res.status(422).send("Impossible de passer deux demande au meme jour")
     }
     else{
         const response =  new demande_carnet_cheques({

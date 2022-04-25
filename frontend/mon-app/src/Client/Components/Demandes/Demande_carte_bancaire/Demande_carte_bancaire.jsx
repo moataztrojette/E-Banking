@@ -30,6 +30,7 @@ useEffect(() => {
   };
 
   const handleFormSubmit = async (event) => {
+    
     props.history.replace("/client/demandes/carte/bancaire/type/"+valuesInput.id_type_carte)
   
   };

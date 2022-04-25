@@ -34,7 +34,7 @@ const Posts = ({ posts, loading,setPosts }) => {
     <div className="col-12">
       <div className="card mb-4">
         <div className="card-header pb-0">
-          <h6>Liste des demandes de carnet de cheéques</h6>
+          <h6>Liste des demandes de carnet de chéque</h6>
         </div>
        
         <div className="card-body px-0 pt-0 pb-2">

@@ -64,11 +64,12 @@ const Posts = ({ posts, loading,setListeTypeClient }) => {
     <div class="filter_comptes">
         <div class="form-outline">
           <input
+          style={{width:"15em"}}
             name="serche"
             onChange={rechercheType}
             id="form1"
             class="form-control"
-            placeholder="Rechercher Type Client "
+            placeholder="Chercher les types clients "
           />
         </div>
         <button
@@ -76,14 +77,14 @@ const Posts = ({ posts, loading,setListeTypeClient }) => {
           className="btn_nouvelle_comptes"
           onClick={() => setModalIsOpen(true)}
         >
-          Nouveau Type Client +{" "}
+          Nouveau type de client +{" "}
         </button>
       </div>
 
     <div className="col-12">
       <div className="card mb-4">
         <div className="card-header pb-0">
-          <h6>Liste des Type  clients</h6>
+          <h6>Les différents types de clients</h6>
         </div>
        
         <div className="card-body px-0 pt-0 pb-2">
@@ -97,7 +98,7 @@ const Posts = ({ posts, loading,setListeTypeClient }) => {
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Type Client{" "}
+                    Type de Client{" "}
                   </th>
                
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">

@@ -35,7 +35,7 @@ const Virement = () => {
                     <h6>Virement </h6>
 
                     <p class="text-sm">
-                      <span class="font-weight-bold">Veuillez trouver ici  les Virement
+                      <span class="font-weight-bold">Veuillez trouver ici  les virements
                       </span>
                     </p>
                   </div>

@@ -45,7 +45,7 @@ const AjouterComptes = (props) => {
         props.valuesInput
       );
 
-      toast("Compte a été ajouter avec succès ", {
+      toast("Compte a été ajouté avec succès ", {
         type: "success",
       });
 

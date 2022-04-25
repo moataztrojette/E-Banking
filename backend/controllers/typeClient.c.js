@@ -4,7 +4,7 @@ module.exports.ajouter_categorie_client = async (req,res)=>{
    
             const response = await typeClients.findOne({nom_type : req.body.nom_type})
             if(response){
-                return res.status(422).send("Type Client existe déjà ")
+                return res.status(422).send("Type client existe déjà ")
             }
             else{
                 const typeClient =  new typeClients({

@@ -49,7 +49,7 @@ const Comptes = () => {
             onChange={rechercheAgence}
             id="form1"
             class="form-control"
-            placeholder="Rechercher Agence "
+            placeholder="chercher une agence "
           />
 
         </div>
@@ -69,7 +69,7 @@ const Comptes = () => {
           
         </div>
         <div className="containts">
-          <p>Agnece: <b>{c.nom}</b></p>
+          <p>Agence: <b>{c.nom}</b></p>
           <p>Email : <b>{c.email}</b></p>
           <p>Téléphone : <b>{c.tel}</b></p>
           <Link to ={'/admin/cdc/liste/'+c._id}><p>          <input type="submit" value="Voir" className="btn-voir-clients" /></p></Link>

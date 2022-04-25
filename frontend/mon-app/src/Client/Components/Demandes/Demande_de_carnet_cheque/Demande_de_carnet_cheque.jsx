@@ -26,7 +26,7 @@ const Demande_de_carnet_cheque = (props) => {
         valuesInput
       );
 
-      toast("La demande de chéquier bancaire a été effectuée avec succès.", {
+      toast("la demande de chéquier bancaire a été effectuée avec succés.", {
         type: "success",
       });
     } catch (error) {

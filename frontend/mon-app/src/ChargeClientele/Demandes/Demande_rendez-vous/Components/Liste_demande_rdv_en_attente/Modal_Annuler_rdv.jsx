@@ -29,7 +29,7 @@ const Modal_Annuler_rdv = (props) => {
         }
       );
 
-      toast("Annulation rendez-Vous ", {
+      toast("Annulation de rendez-Vous ", {
         type: "success",
       });
 

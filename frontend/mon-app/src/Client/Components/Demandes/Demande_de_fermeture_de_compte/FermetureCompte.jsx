@@ -23,7 +23,7 @@ const FermetureCompte = (props) => {
       
       await axios.post("http://localhost:4000/api/demande/fermeture/add", valuesInput);
 
-      toast("La demande de fermeture de votre compte bancaire a été effectuée avec succès.", {
+      toast("La demande de fermeture de votre compte bancaire a été effectuée avec succés.", {
         type: "success",
       });
     } catch (error) {

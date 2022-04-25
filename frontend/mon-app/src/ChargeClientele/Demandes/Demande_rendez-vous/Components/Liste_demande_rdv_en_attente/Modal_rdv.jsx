@@ -30,7 +30,7 @@ const Modal_rdv = (props) => {
       );
 
 
-      toast("Opération valider ", {
+      toast("Opération validée ", {
         type: "success",
       });
 

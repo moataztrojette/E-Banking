@@ -4,7 +4,7 @@ module.exports.demande_rendez_vous = async (req,res)=>{
 
     const response = await rendez_vous.findOne({date : req.body.date , id_user : req.info_compte._id })
     if(response){
-        return res.status(422).send("Impossible de prendre deux rendez-vous pour le meme jour")
+        return res.status(422).send("Impossible de prendre deux rendez-vous au meme jour")
     }
     else{
         const response =  new rendez_vous({

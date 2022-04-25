@@ -49,7 +49,7 @@ module.exports.état_compte_activer  =  async (req,res)=>{
         isActive : true,
         },{
             new : true
-        })
+        }).populate({path:"id_user",populate:{path:"id_client"}});
         res.json(response)
   
   }
@@ -60,7 +60,7 @@ module.exports.état_compte_activer  =  async (req,res)=>{
         isActive : false,
         },{
             new : true
-        })
+        }).populate({path:"id_user",populate:{path:"id_client"}});
         res.json(response)
   
   }

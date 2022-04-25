@@ -14,6 +14,7 @@ import ListeDemandeFermetureComptes from '../Demandes/Demande_fermeture_comptes/
 import Liste_demande_carnet_cheques from '../Demandes/Demande_carnet_cheques/Liste_demande_carnet_cheques';
 import Carte_bancaire from '../Demandes/Demande_carte_bancaire/Carte_bancaire';
 import Liste_type_carte_bancaire from '../Demandes/Demande_carte_bancaire/Ajouter_type_carte_bancaire/Liste_type_carte_bancaire';
+import Liste_demande_carte_bancaire from '../Demandes/Demande_carte_bancaire/Liste_demande_carte_bancaire/Liste_demande_carte_bancaire';
 
 
 
@@ -34,10 +35,9 @@ const InterfaceChargeClientele = (props) => {
         <Navbar logout ={logout} />
             <Switch>
             <Route path="/cdc/demandes/cartes/choix/type_carte" component={Liste_type_carte_bancaire}/>
+            <Route path="/cdc/demandes/cartes/choix/liste" component={Liste_demande_carte_bancaire}/>
             <Route path="/cdc/profil/historique/:id" component={Virements}/>
             <Route path="/cdc/demandes/cartes/choix" component={Carte_bancaire}/>
-
-            
             <Route path="/cdc/demandes/fermeture" component={ListeDemandeFermetureComptes}/>
             <Route path="/cdc/demandes/carnet" component={Liste_demande_carnet_cheques}/>
          

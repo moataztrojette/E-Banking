@@ -32,6 +32,6 @@ module.exports.consulter_resultat_demande_rdv = async (req,res )=>{
 }
 
 module.exports.consulter_les_rendez_vous_valider = async (req,res )=>{
-    const response = await rendez_vous.find({id_cdc : req.info_compte._id }).populate({path:"id_user id_demande ",populate:{path:"id_client"}});
+    const response = await rendez_vous.find({id_cdc : req.info_compte._id }).populate({path:"id_user id_demande id_cdc ",populate:{path:"id_client"}});
     res.status(200).send(response)
 }

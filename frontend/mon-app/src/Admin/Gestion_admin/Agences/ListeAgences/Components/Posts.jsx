@@ -80,7 +80,7 @@ const Posts = ({ posts, loading, setListeAgence }) => {
             onChange={rechercheAgence}
             id="form1"
             class="form-control"
-            placeholder="Rechercher Agence "
+            placeholder="Chercher agence "
           />
         </div>
         <button
@@ -88,13 +88,13 @@ const Posts = ({ posts, loading, setListeAgence }) => {
           className="btn_nouvelle_comptes"
           onClick={() => setModalIsOpen(true)}
         >
-          Nouveau Agence +{" "}
+          Nouvelle agence +{" "}
         </button>
       </div>
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
-            <h6>Liste des Agences</h6>
+            <h6>Liste des agences</h6>
           </div>
 
           <div className="card-body px-0 pt-0 pb-2">

@@ -21,7 +21,7 @@ const Posts = ({ posts, loading }) => {
     <div className="col-12">
       <div className="card mb-4">
         <div className="card-header pb-0">
-          <h6>Liste validation carnets chéques</h6>
+          <h6>Les différents carnets de chèques validés</h6>
         </div>
        
         <div className="card-body px-0 pt-0 pb-2">

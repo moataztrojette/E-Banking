@@ -82,17 +82,17 @@ module.exports.add = async (req,res)=>{
            }
             res.status(200).json(virement);
         }else{
-            res.status(422).send("Désolé minimum pour faire un virement 10 dinar")
+            res.status(422).send("Impossible ! Le montant  minimum de virement est 10 dinar")
         }
      
      }else{
-         res.status(422).send("SVP verifier vos coordonnées ")
+         res.status(422).send("SVP vérifier vos coordonnées ")
      }
     }else{
      res.status(422).send("solde insuffisant")
     }
  }else{
-    res.status(422).send("SVP verifier vos coordonnées ")
+    res.status(422).send("SVP vérifier vos coordonnées ")
 }
 }
 

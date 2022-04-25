@@ -50,8 +50,8 @@ const Beneficiaires  = () => {
                 <table className="table align-items-center mb-0">
                   <thead>
                     <tr>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom Prénom Beneficiaire</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rib Beneficiaire</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom Prénom bénéficiaire</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rib bénéficiaire</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 
                     </tr>

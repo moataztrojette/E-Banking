@@ -4,7 +4,7 @@ module.exports.ajouter_agence = async (req,res)=>{
    
             const response = await agences.findOne({nom : req.body.nom})
             if(response){
-                return res.status(422).send("Agence existe déjà ")
+                return res.status(422).send("L'agence existe déjà ")
             }
             else{
                 const agence =  new agences({

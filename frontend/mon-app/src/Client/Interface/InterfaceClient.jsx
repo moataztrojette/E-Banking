@@ -23,6 +23,7 @@ import Liste_demande_rdv from '../Components/Demandes/ListeDemandes/Liste_demand
 import Liste_demande_carnet_cheque from '../Components/Demandes/ListeDemandes/liste_demande_carnet_cheque/Liste_demande_carnet_cheque';
 import Demande_carte_bancaire from '../Components/Demandes/Demande_carte_bancaire/Demande_carte_bancaire';
 import Type_carte_bancaire from '../Components/Demandes/Demande_carte_bancaire/Type_carte_bancaire/Type_carte_bancaire';
+import Liste_demande_carte_bancaire from '../Components/Demandes/ListeDemandes/liste_demande_carte_bancaire/Liste_demande_carte_bancaire';
 
 
 const InterfaceClient = (props) => {
@@ -46,10 +47,13 @@ const InterfaceClient = (props) => {
                 <Route path ="/client/parametre/changepassword" component={ChangePasword}/>
                 <Route path ="/client/demandes/carte/bancaire" component={Demande_carte_bancaire}/>
                 <Route path ="/client/virements/beneficiaires" component={Beneficiaires}/>
+                <Route path ="/client/demandes/liste/carnets" component={Liste_demande_carnet_cheque}/>
                 <Route path ="/client/cheques/typecheques" component={TypeCheques}/>
                 <Route path ="/client/virements/historique" component={Historique}/>
-                <Route path ="/client/demandes/liste/carnets" component={Liste_demande_carnet_cheque}/>
+                <Route path ="/client/demandes/liste/cartes" component={Liste_demande_carte_bancaire}/>
+
                 <Route path ="/client/demandes/liste/rdv" component={Liste_demande_rdv}/>
+
                 <Route path ="/client/cartes/demande" component={DemandesCartes}/>
 
                 

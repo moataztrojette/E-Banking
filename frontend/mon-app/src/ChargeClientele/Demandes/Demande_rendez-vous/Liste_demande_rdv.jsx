@@ -15,9 +15,9 @@ const Liste_demande_rdv = () => {
         
         <div class="slider_his">
   <div className='silder_btn'>
-  <a href="#slide-1" className='btn_virement_2'>Liste demande rendez-vous en attente </a>
+  <a href="#slide-1" className='btn_virement_2'>Liste pour les demandes en attente de rendez-vous   </a>
   
-  <a href="#slide-2" className='btn_virement_1'>Liste des rendez-vous Accepter</a>
+  <a href="#slide-2" className='btn_virement_1'>Liste des rendez-vous acceptés</a>
   </div>
 
   <div class="slides_rdv">

@@ -48,8 +48,13 @@ const Posts = ({ posts, loading, setPosts }) => {
                       Motif
                     </th>
                     <th class="text-center  text-secondary  text-sm	  opacity-7">
+                      Validé par
+                    </th>
+
+                    <th class="text-center  text-secondary  text-sm	  opacity-7">
                       Resultat
                     </th>
+                  
 
                     <th class="text-center  text-secondary text-sm	 opacity-7">
                       {" "}
@@ -76,9 +81,15 @@ const Posts = ({ posts, loading, setPosts }) => {
                           {c.id_demande.heure}
                         </span>
                       </td>
+                    
                       <td class="text-center text-uppercase text-secondary text-lg		 font-weight-bolder ">
                         <span class="text-secondary  text-sm font-weight-bold">
                           {c.id_demande.motif}
+                        </span>
+                      </td>
+                      <td class="text-center text-uppercase text-secondary text-lg		 font-weight-bolder ">
+                        <span class="text-secondary  text-sm font-weight-bold">
+                          {c.id_cdc.prenom} {c.id_cdc.nom}
                         </span>
                       </td>
                       <td

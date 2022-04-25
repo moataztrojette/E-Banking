@@ -19,7 +19,7 @@ const Modal_Ajouter_Carte = (props) => {
         props.valuesInput
       );
 
-      toast("type de carte bancaire a été ajouter avec succès ", {
+      toast("type de carte bancaire a été ajouté avec succès ", {
         type: "success",
       });
 

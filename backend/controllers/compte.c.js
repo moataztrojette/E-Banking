@@ -79,7 +79,7 @@ module.exports.se_connecter = async (req,res)=>{
           _id : compte._id,
         });
       }else{
-        res.status(403).send("Pour Réactiver votre compte Rendez-vous dans l’agence la plus proche")
+        res.status(403).send("Pour réactiver votre compte rendez-vous dans l’agence la plus proche")
 
       }
   
@@ -124,7 +124,7 @@ module.exports.modifier_mot_de_passe = async (req,res)=>{
       }
     }
     else{
-      return res.status(404).send("Verifier votre mot de passe")
+      return res.status(404).send("Vérifier votre mot de passe")
     }
   }
   
@@ -137,16 +137,7 @@ module.exports.consulter_releves_compte_client_cdc = async(req,res)=>{
 }
 
 
-module.exports.fermer_compte =  async (req,res)=>{
 
-  const response = await comptes.findOneAndUpdate({_id:req.params.id},{
-      isActive : false,
-      },{
-          new : true
-      })
-      res.json(response)
-
-}
 module.exports.chercher_compte_par_mot_cle_cdc = async (req, res) => {
 
   const client = await clients.findOne({cin:req.params.cin,id_agence:req.info_compte.id_agence}).select("_id")
@@ -193,10 +184,21 @@ module.exports.activer_compte =  async (req,res)=>{
       isActive : true,
       },{
           new : true
-      })
+      }).populate("id_client")
       res.json(response)
 
 }
+module.exports.fermer_compte =  async (req,res)=>{
+
+  const response = await comptes.findOneAndUpdate({_id:req.params.id},{
+      isActive : false,
+      },{
+          new : true
+      }).populate("id_client")
+      res.json(response)
+
+}
+
 
 
 
@@ -243,5 +245,9 @@ module.exports.findComptes_par_agence = async(req,res)=>{
 }
 
 
+module.exports.consulter_comptes = async(req,res)=>{
+  const response = await comptes.findOne({id_client:req.params.id});
+  res.json(response);
+}
 
 

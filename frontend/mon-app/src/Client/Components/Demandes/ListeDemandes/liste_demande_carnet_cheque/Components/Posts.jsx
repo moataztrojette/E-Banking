@@ -101,7 +101,14 @@ const Posts = ({ posts, loading,setPosts}) => {
                         Voir
                         </button>
                       </td>
+                      {c.etat_demande == "valider" ? (   <td
+                   
+                   >
+                   <img src="/img/icons8-check-mark-48.png" style={{width:"2em"}}/>
 
+                   </td>) :(<></>)}
+
+                   
                 </tr>
               </tbody>
                ))}

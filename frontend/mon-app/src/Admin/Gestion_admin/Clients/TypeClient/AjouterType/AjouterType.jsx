@@ -56,7 +56,7 @@ const AjouterType = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Type Client </h3>
+          <h3 className="font-weight-light">Type client </h3>
           <br />
           <form
             className="pt-3"

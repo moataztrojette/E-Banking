@@ -56,7 +56,7 @@ const AjouterAgence = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Ajouter Agence </h3>
+          <h3 className="font-weight-light">Ajouter une agence </h3>
           <br />
           <form
             className="pt-3"
@@ -72,7 +72,7 @@ const AjouterAgence = (props) => {
                     id="exampleInputUsername2"
                     name="nom"
                     required
-                    placeholder="Nom Agence"
+                    placeholder="Nom d'agence"
                     onChange={MyValuesInput}
                   />
 

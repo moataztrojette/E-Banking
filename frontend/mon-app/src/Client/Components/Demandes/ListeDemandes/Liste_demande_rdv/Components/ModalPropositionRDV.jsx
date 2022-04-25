@@ -60,7 +60,7 @@ const ModalPropositionRDV = (props) => {
               {stateRes.map((c)=>(
 
                   <div>
-                        <p>Bonjour monsieur <b>{c.id_user.id_client.nom} {c.id_user.id_client.prenom}</b> votre demande de rendez-vous en ligne   <b>Annuler</b> à la date <b>{c.id_demande.date}</b> a l'heure <b>{c.id_demande.heure}</b> <p>on proposer autre date <b>{c.date} </b> a l'heure <b>{c.heure}</b>  si possible faire un demande <b>Merci</b></p></p>
+                        <p>Bonjour monsieur <b>{c.id_user.id_client.nom} {c.id_user.id_client.prenom}</b> votre demande de rendez-vous en ligne   <b>est annulée</b> à la date <b>{c.id_demande.date}</b> à l'heure <b>{c.id_demande.heure}</b> <p>vous pouvez prendre un àutre rendez-vous à la date <b>{c.date} </b> a l'heure <b>{c.heure}</b>  <b>Merci</b></p></p>
 
                   </div>
 

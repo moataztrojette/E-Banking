@@ -25780,3 +25780,24 @@ form.sign-in-form_login {
   align-items: center;
   font-size: 100px;
 }
+.demande_refuser{
+display: flex;
+flex-direction: row;
+grid-gap:10px;
+align-items: center;
+}
+.exp{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.rib_img{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content:space-around;
+}
+.card-name{
+  color:white;
+  opacity: 0.33;}

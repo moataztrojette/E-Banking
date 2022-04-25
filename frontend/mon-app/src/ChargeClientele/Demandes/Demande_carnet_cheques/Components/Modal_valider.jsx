@@ -27,7 +27,7 @@ const Modal_valider = (props) => {
       );
 
 
-      toast("Opération valider ", {
+      toast("Opération validée ", {
         type: "success",
       });
 
