@@ -3,6 +3,25 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const clients =require("../models/client.model")
 
+
+
+module.exports.chercher_compte_par_mot_cle_cdc = async (req, res) => {
+
+  const client = await clients.findOne({cin:req.params.cin,id_agence:req.info_compte.id_agence}).select("_id")
+
+  const res_recherche = await comptes.find({id_client:client}).populate("id_client")
+  res.json(res_recherche);
+
+};
+
+module.exports.consulter_les_comptes_bancaires = async(req,res)=>{
+  const compte = await comptes.find().populate({path:"id_client" , populate:{path:"id_agence"}}).sort({_id:-1});
+  res.json(compte);
+}
+
+
+
+
 module.exports.ajouter_compte = async (req,res)=>{
 
   let date_ob = new Date();
@@ -131,6 +150,7 @@ module.exports.modifier_mot_de_passe = async (req,res)=>{
 
 }
 
+//admin
 module.exports.consulter_releves_compte_client_cdc = async(req,res)=>{
   const compte = await comptes.find({_id:req.params.id}).populate("id_client");
   res.json(compte);
@@ -138,45 +158,12 @@ module.exports.consulter_releves_compte_client_cdc = async(req,res)=>{
 
 
 
-module.exports.chercher_compte_par_mot_cle_cdc = async (req, res) => {
-
-  const client = await clients.findOne({cin:req.params.cin,id_agence:req.info_compte.id_agence}).select("_id")
-
-  const res_recherche = await comptes.find({id_client:client}).populate("id_client")
-  res.json(res_recherche);
-
-};
 
 
 module.exports.Consulter_les_comptes_crées_par_cdc = async(req,res)=>{
   const compte = await comptes.find({id_cdc:req.params.id}).populate({path:"id_client" , populate:{path:"id_agence"}}).sort({_id:-1});
   res.json(compte);
 }
-
-
-
-
-module.exports.findall = async(req,res)=>{
-    const compte = await comptes.find().populate({path:"id_client" , populate:{path:"id_agence"}}).sort({_id:-1});
-    res.json(compte);
-}
-
-
-
-
-
-
-module.exports.recherche_compte_ac = async (req, res) => {
-
-  const client = await clients.findOne({cin:req.params.cin}).select("_id")
-
-  const res_recherche = await comptes.find({id_client:client}).populate("id_client")
-  res.json(res_recherche);
-
-};
-
-
-
 
 module.exports.activer_compte =  async (req,res)=>{
 
@@ -203,7 +190,29 @@ module.exports.fermer_compte =  async (req,res)=>{
 
 
 
-module.exports.findComptes_par_agence = async(req,res)=>{
+
+
+
+
+
+module.exports.recherche_compte_ac = async (req, res) => {
+
+  const client = await clients.findOne({cin:req.params.cin}).select("_id")
+
+  const res_recherche = await comptes.find({id_client:client}).populate("id_client")
+  res.json(res_recherche);
+
+};
+
+
+
+
+
+
+
+
+//les comptes bancaires par agence
+module.exports.consulter_les_comptes_par_agence = async(req,res)=>{
   tabId =[] 
   Collection =[] 
 

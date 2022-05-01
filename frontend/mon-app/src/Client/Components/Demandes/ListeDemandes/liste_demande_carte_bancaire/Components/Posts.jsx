@@ -57,7 +57,7 @@ const Posts = ({ posts, loading,setPosts}) => {
 
                   </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                  Resultat
+                  Resultat 
                   </th>
 
                
@@ -109,6 +109,7 @@ const Posts = ({ posts, loading,setPosts}) => {
                      <div className="demande_refuser">
                      <h6>Demande refusée</h6>
                    <img src="/img/icons8-close-64.png" style={{width:"30px"}}/>
+                   {c.raison}
                    </div>
 
                    </td>) :(<></>)}

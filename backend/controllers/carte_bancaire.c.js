@@ -8,7 +8,7 @@ module.exports.valider_demande_carte_bancaire = async (req,res )=>{
         rib : Math.floor(Math.random() * 10000000000000000) + 10000000000000000,
         id_user : req.body.id_user,
         id_cdc:req.info_compte._id,
-        id_demande_carte : req.body.id_demande_carte
+        id_demande_carte : req.body.id_demande_carte,
     })
     await response.save()
     const response2 = await demande_carnet_cheque.findOneAndUpdate({_id:req.body.id_demande_carte},{

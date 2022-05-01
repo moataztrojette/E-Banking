@@ -49,6 +49,7 @@ module.exports.refuser_demande_carte_bancaire = async(req,res)=>{
 
     const response = await demande_carte_bancaire.findOneAndUpdate({_id:req.params.id},{
         etat_demande :"refuser",
+        raison:req.body.raison
     },{
         new : true
     })

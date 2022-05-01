@@ -1,12 +1,19 @@
 import React, { useEffect,useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import "react-datepicker/dist/react-datepicker.css";
 import Modal_valider_demande_carte from "./Modal_valider_demande_carte";
-import axios from "axios";
+import Modal_refuser_demande_carte from "./Modal_refuser_demande_carte";
+
+
 
 const Posts = ({ posts, loading,setPosts }) => {
   const [modalIsOpenAccepterDemande, setModalIsOpenAccepterDemande] = useState(false);
+  const [modalIsOpenRefusDemande, setModalIsOpenRefusDemande] = useState(false);
+
   const [stateUserId, setStateUserId] = useState({});
+
+
 
 
 
@@ -15,17 +22,6 @@ const Posts = ({ posts, loading,setPosts }) => {
     return <h2>Loading...</h2>;
   }
 
-  const refuser_demande = async (c)=>{
-     await axios.post("http://localhost:4000/api/demande/carte/refuser/"+c._id)
-
-     toast("carte bancaire refuser avec success ", {
-      type: "success",
-    });
-
-
-  }
-
- 
 
   
   
@@ -44,6 +40,19 @@ const Posts = ({ posts, loading,setPosts }) => {
         <div></div>
       )}
     
+
+    {modalIsOpenRefusDemande === true ? (
+        <Modal_refuser_demande_carte
+        modalIsOpenRefusDemande={modalIsOpenRefusDemande}
+        setModalIsOpenRefusDemande={setModalIsOpenRefusDemande}
+          stateUserId={stateUserId}
+          setStateUserId={setStateUserId}
+        />
+      ) : (
+        <div></div>
+      )}
+
+
     <div className="col-12">
       <div className="card mb-4">
         <div className="card-header pb-0">
@@ -121,7 +130,10 @@ const Posts = ({ posts, loading,setPosts }) => {
                   </>) }
                   
                   {c.etat_demande == "en attente" ? (     <td class="align-middle text-center">
-                  <button type="button" class="btn btn-danger" onClick={() => refuser_demande(c) }>Refuser demande</button>
+                  <button type="button" class="btn btn-danger"  onClick={() => {
+                          setModalIsOpenRefusDemande(true);
+                          setStateUserId(c);
+                        }} >Refuser demande</button>
 
                   </td>) : (<>
                   
@@ -135,7 +147,6 @@ const Posts = ({ posts, loading,setPosts }) => {
 
                       </td>) :(<></>)}
 
-                  <ToastContainer></ToastContainer>
 
 
             

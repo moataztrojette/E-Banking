@@ -2,6 +2,7 @@ import React, {useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AjouterComptes from "../AjouterComptes/AjouterComptes";
+import Swal from "sweetalert2";
 
 const Posts = ({ posts, loading,setListeCompte }) => {
 

@@ -16,16 +16,18 @@ module.exports.ajouter_categorie_client = async (req,res)=>{
             }
 }
 
-module.exports.afficher_la_liste_categorie = async(req,res)=>{
+module.exports.Archives_categorie_client = async (req,res)=>{
+  await typeClients.findByIdAndRemove({_id : req.params.id})
+  res.status(200).send("deleted")
+}
+
+module.exports.consulter_les_categories = async(req,res)=>{
     const response = await typeClients.find({})
     res.json(response)   
 }
 
 
-  module.exports.Archives_categorie_client = async (req,res)=>{
-    await typeClients.findByIdAndRemove({_id : req.params.id})
-    res.status(200).send("deleted")
-}
+  
 module.exports.recherche_type_client = async (req, res) => {
     const res_recherche = await typeClients.find({
       nom_type: { $regex: req.params.nom, $options: "i" },

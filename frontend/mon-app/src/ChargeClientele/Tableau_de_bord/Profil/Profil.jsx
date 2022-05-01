@@ -7,7 +7,7 @@ const Profil = (props) => {
     return (<>
 
          
-   <div className="col-xl-6 mb-xl-0 mb-4">
+   <div className="col-12 col-xl-4">
    <div className="card h-100">
      <div className="card-header pb-0 p-3">
        <div className="row">

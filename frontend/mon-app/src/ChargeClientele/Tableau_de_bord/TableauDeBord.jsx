@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Profil from "./Profil/Profil";
 import axios from "axios";
 import NavPage from "../Interface/NavPage/NavPage";
+import Calendrier from "./Calendrier/Calendrier";
 
 
 const TableauDeBord = () => {
@@ -23,9 +24,11 @@ const TableauDeBord = () => {
         <div className="row">
           <div className="col-lg-8">
             <div className="row">
-              <Profil infoProfil={infoProfil} setInfoProfil={setInfoProfil} />
+            <Calendrier />
             </div>
           </div>
+          <Profil infoProfil={infoProfil} setInfoProfil={setInfoProfil} />
+
         </div>
       </div>
     </>

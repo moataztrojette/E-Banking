@@ -5,6 +5,7 @@ const demande_carte_bancaire = new mongoose.Schema({
     id_user: {type:mongoose.Types.ObjectId, ref:"comptes"},
     id_type_carte : {type:mongoose.Types.ObjectId, ref:"type_carte_bancaires"},
     etat_demande: {type:String,required:true},
+    raison : {type:String}
 
 
 })

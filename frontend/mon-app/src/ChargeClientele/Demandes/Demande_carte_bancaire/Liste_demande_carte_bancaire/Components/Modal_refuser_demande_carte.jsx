@@ -5,7 +5,8 @@ import Modal from "react-modal";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Modal_valider_demande_carte = (props) => {
+const Modal_refuser_demande_carte = (props) => {
+
   const [valuesInput, setValues] = useState({});
 
   const MyValuesInput = (event) => {
@@ -16,36 +17,33 @@ const Modal_valider_demande_carte = (props) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    try{
+        toast("Carte bancaire a été refusé avec succés ", {
+            type: "success",
+          });
 
-    try {
-      const data = await axios.post(
-        "http://localhost:4000/api/carte/bancaire/add",
-        {
-          date: valuesInput.date,
-          heure: valuesInput.heure,
-          id_user: props.stateUserId.id_user._id,
-          id_demande_carte: props.stateUserId._id,
+        const data = await axios.post(
+            "http://localhost:4000/api/demande/carte/refuser/"+props.stateUserId._id,valuesInput
+          );
+        
+    }catch (error) {
+        if (error.response.data) {
+          toast(error.response.data, {
+            type: "error",
+          });
         }
-      );
-
-      toast("Carte bancaire est validée ", {
-        type: "success",
-      });
-    } catch (error) {
-      if (error.response.data) {
-        toast(error.response.data, {
-          type: "error",
-        });
       }
-    }
+
+
+
   };
 
   return (
     <div>
       <Modal
-        isOpen={props.modalIsOpenAccepterDemande}
+        isOpen={props.modalIsOpenRefusDemande}
         shouldCloseOnOverlayClick={false}
-        onRequestClose={() => props.setModalIsOpenAccepterDemande(false)}
+        onRequestClose={() => props.setModalIsOpenRefusDemande(false)}
         style={{
           content: {
             top: "50%",
@@ -61,7 +59,8 @@ const Modal_valider_demande_carte = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Validation carte bancaire</h3>
+          <h3 className="font-weight-light">Refus de la demande de carte bancaire
+</h3>
           <br />
           <form
             className="pt-3"
@@ -73,35 +72,19 @@ const Modal_valider_demande_carte = (props) => {
                 <div>
                   <div>
                     {" "}
-                    <h6>Date de prendre le carte</h6>
-                    <input
-                      type="date"
-                      className="form-control"
-                      name="date"
-                      required
-                      onChange={MyValuesInput}
-                      min={
-                        new Date(
-                          new Date().getTime() -
-                            new Date().getTimezoneOffset() * 60000
-                        )
-                          .toISOString()
-                          .split("T")[0]
-                      }
-                      //minDate={new Date()}
-                    />
-                    <br />
-                    <h6>Heure de prendre le carte</h6>
-                    <input
-                      name="heure"
-                      className="form-control"
-                      type="time"
-                      id="appt"
-                      min="09:00"
-                      max="18:00"
-                      required
-                      onChange={MyValuesInput}
-                    />
+                    <h6>Raison de refus de la demande de carte bancaire
+ </h6>
+                    <textarea
+                  name="raison"
+                  rows="4"
+                  className="form-control"
+                  cols="50"
+                  placeholder="Raison"
+                  form="usrform"
+                  onChange={MyValuesInput}
+
+                ></textarea>
+                  
                   </div>
 
                   <br />
@@ -123,7 +106,7 @@ const Modal_valider_demande_carte = (props) => {
                   <div className="mb-2">
                     <button
                       type="button"
-                      onClick={() => props.setModalIsOpenAccepterDemande(false)}
+                      onClick={() => props.setModalIsOpenRefusDemande(false)}
                       className="btn btn-block btn-facebook auth-form-btn"
                     >
                       <i className="mdi mr-2" />
@@ -148,4 +131,4 @@ const Modal_valider_demande_carte = (props) => {
   );
 };
 
-export default Modal_valider_demande_carte;
+export default Modal_refuser_demande_carte;
