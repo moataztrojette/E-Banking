@@ -13,12 +13,19 @@ const TableauDeBord = () => {
   const [client, setClient] = useState([]);
   const [historique, setHistorique] = useState([]);
   const [virementRecu, setVirementRecu] = useState([]);
+  const [Posts, setPosts] = useState([]);
+
 
   useEffect(() => {
     axios.get("http://localhost:4000/api/compte/profil").then((compte) => {
       setInfoProfil(compte.data);
      
     });
+    axios.get("http://localhost:4000/api/client/find/cdc").then((Posts) => {
+      setPosts(Posts.data);
+     
+    });
+
     axios.get("http://localhost:4000/api/client/find").then((client) => {
       setClient(client.data);
      
@@ -47,7 +54,7 @@ const TableauDeBord = () => {
               <Statistique />
             </div>
           </div>
-          <ChargesClienteles />
+          <ChargesClienteles Posts={Posts} />
         </div>
 
         <div className="accordion-1">

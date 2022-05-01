@@ -5,6 +5,14 @@ import axios from "axios";
 import Modal from "react-modal";
 
 const Modal_Ajouter_Carte = (props) => {
+
+  const uploadToState = (event) => {
+    let res = props.valuesInput;
+    res[event.target.name] = event.target.files[0];
+    props.setValues(res);
+  };
+
+
   const MyValuesInput = (event) => {
     let res = props.valuesInput;
     res[event.target.name] = event.target.value;
@@ -14,10 +22,24 @@ const Modal_Ajouter_Carte = (props) => {
   const handleFormSubmit = async (event) => {
     try {
       event.preventDefault();
+      const formData = new FormData();
+      formData.append("nom_carte", props.valuesInput.nom_carte);
+      formData.append("plafond_global_carte", props.valuesInput.plafond_global_carte);
+      formData.append("plafond_retrait_par_jour", props.valuesInput.plafond_retrait_par_jour);
+      formData.append("plafond_retrait_par_semaine", props.valuesInput.plafond_retrait_par_semaine);
+      formData.append("Plafond_de_paiement", props.valuesInput.Plafond_de_paiement);
+      formData.append("image_carte", props.valuesInput.image_carte);
+
+      console.log(formData)
       const data = await axios.post(
         "http://localhost:4000/api/type/carte/add",
-        props.valuesInput
-      );
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+              );
 
       toast("type de carte bancaire a été ajouté avec succès ", {
         type: "success",
@@ -130,6 +152,24 @@ const Modal_Ajouter_Carte = (props) => {
                     onChange={MyValuesInput}
                   />
                                     </div>
+
+
+                                    
+           <div >
+             <p>Image </p>
+
+             <input
+               type="file"
+               className="form-control"
+               name="image_carte"
+               id="exampleInputMobile"
+               required
+               placeholder="image"
+               onChange={uploadToState}
+             />
+           </div>
+
+
 
                 </div>
 

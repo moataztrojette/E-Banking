@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ChargesClienteles = () => {
+const ChargesClienteles = (props) => {
     return ( <div className="col-12 col-xl-4">
     <div className="card h-100">
       <div className="card-header pb-0 p-3">
@@ -8,60 +8,23 @@ const ChargesClienteles = () => {
       </div>
       <div className="card-body p-3">
         <ul className="list-group">
+        {props.Posts.map((post) => (
+
           <li className="list-group-item border-0 d-flex align-items-center px-0 mb-2">
             <div className="avatar me-3">
               <img src="/img/User-icon (1).png" alt="kal" className="border-radius-lg shadow" />
             </div>
             <div className="d-flex align-items-start flex-column justify-content-center">
-              <h6 className="mb-0 text-sm">Sophie B.</h6>
-              <p className="mb-0 text-xs">SophieB@gmail.com</p>
+              <h6 className="mb-0 text-sm">{post.prenom} {post.nom}</h6>
+              <p className="mb-0 text-xs">{post.email}</p>
             </div>
-            <a href={() => false} className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
+            <a href="https://mail.google.com"  className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
           </li>
-          <li className="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-            <div className="avatar me-3">
-              <img src="/img/User-icon (1).png" alt="kal" className="border-radius-lg shadow" />
-            </div>
-            <div className="d-flex align-items-start flex-column justify-content-center">
-              <h6 className="mb-0 text-sm">Sophie B.</h6>
-              <p className="mb-0 text-xs">SophieB@gmail.com</p>
-            </div>
-            <a  href={() => false} 
- className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
-          </li>
-          <li className="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-            <div className="avatar me-3">
-              <img src="/img/User-icon (1).png" alt="kal" className="border-radius-lg shadow" />
-            </div>
-            <div className="d-flex align-items-start flex-column justify-content-center">
-              <h6 className="mb-0 text-sm">Sophie B.</h6>
-              <p className="mb-0 text-xs">SophieB@gmail.com</p>
-            </div>
-            <a href={() => false} 
- className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
-          </li>
-          <li className="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-            <div className="avatar me-3">
-              <img src="/img/User-icon (1).png" alt="kal" className="border-radius-lg shadow" />
-            </div>
-            <div className="d-flex align-items-start flex-column justify-content-center">
-              <h6 className="mb-0 text-sm">Sophie B.</h6>
-              <p className="mb-0 text-xs">SophieB@gmail.com</p>
-            </div>
-            <a  href={() => false} 
- className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
-          </li>
-          <li className="list-group-item border-0 d-flex align-items-center px-0">
-            <div className="avatar me-3">
-              <img src="/img/User-icon (1).png" alt="kal" className="border-radius-lg shadow" />
-            </div>
-            <div className="d-flex align-items-start flex-column justify-content-center">
-              <h6 className="mb-0 text-sm">Sophie B.</h6>
-              <p className="mb-0 text-xs">SophieB@gmail.com</p>
-            </div>
-            <a  href={() => false} 
- className="btn btn-link pe-3 ps-0 mb-0 ms-auto" >Envoyer un mail</a>
-          </li>
+    
+         
+    ))}
+
+          
         </ul>
       </div>
     </div>

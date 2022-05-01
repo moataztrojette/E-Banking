@@ -7,6 +7,8 @@ const type_carte_bancaire = new mongoose.Schema({
     plafond_retrait_par_semaine :{type:Number,required:true},
     Plafond_de_paiement:{type:Number,required:true},
     id_cdc : {type:mongoose.Types.ObjectId, ref:"chargeClienteles"},
+    image_carte : {type:String},
+
 
 })
 const type_carte_bancaires = mongoose.model("type_carte_bancaires",type_carte_bancaire);

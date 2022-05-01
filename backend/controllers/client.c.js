@@ -1,4 +1,5 @@
 const clients = require("../models/client.model")
+const chargeClienteles = require("../models/chargeClientele.model")
 
 
 module.exports.update_donnees_person =  async (req,res)=>{
@@ -37,3 +38,10 @@ module.exports.recherche_client = async (req, res) => {
     })
     res.json(res_recherche);
   };
+
+  module.exports.consulter_les_cdc = async(req,res)=>{
+    const client = await clients.findOne({_id:req.info_compte.id_client})
+    const response = await chargeClienteles.find({id_agence:client.id_agence})
+    
+    res.json(response);
+}

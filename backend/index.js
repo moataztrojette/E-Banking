@@ -4,6 +4,8 @@ const cors = require("cors")
 
 const env = require('dotenv')
 const cookieSession = require('cookie-session')
+const expressfileupload = require("express-fileupload")
+
 
 const compte = require("./routes/compte.router");
 const virement = require("./routes/virement.router");
@@ -32,6 +34,9 @@ app.use(express.json())
 app.use(cookieSession({
   name : 'EB',
   keys : ['EB_key'],
+}))
+app.use(expressfileupload({
+
 }))
 
 

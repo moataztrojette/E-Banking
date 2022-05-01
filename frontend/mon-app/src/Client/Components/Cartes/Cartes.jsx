@@ -34,7 +34,9 @@ const Cartes = () => {
 
           <div className="col-xl-4 mb-xl-0 mb-2">
             <div className="card bg-transparent shadow-xl">
-              <div className="overflow-hidden position-relative border-radius-xl" style={{backgroundImage: 'url("/img/curved-images/curved14.jpg")'}}>
+          
+
+              <div className="overflow-hidden position-relative border-radius-xl" style={{backgroundImage:`url(${"http://localhost:4000/api/type/carte/getImage/"+ c.id_demande_carte.id_type_carte._id})` }}>
                 <span className="mask bg-gradient-dark" />
                 <div className="card-body position-relative z-index-1 p-3">
 
@@ -52,7 +54,7 @@ const Cartes = () => {
                   <div className="d-flex">
                     <div className="exp">
                     <div>
-                    <h6 class="card-name">{c.id_user.id_client.prenom} {c.id_user.id_client.nom}</h6>
+                    <h6 className="text-white mt-2 mb-4 pb-2">{c.id_user.id_client.prenom} {c.id_user.id_client.nom}</h6>
         <h6 class="card-expire">EXPIRE 05/23</h6>
                     </div>
                     

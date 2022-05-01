@@ -41,7 +41,7 @@ const ListeDemandes = () => {
               
                             <div className='bloc1' >
                                   <div className='bloc2' >
-                                  <img src="https://img.icons8.com/external-others-iconmarket/64/4a90e2/external-calander-healthcare-and-medical-others-iconmarket.png" alt="erreur_1" className='bloc3' />
+                                  <img src="/img/icons8-restaurant-table-50.PNG" alt="erreur_1" className='bloc3' />
                                   <span>Demandes des rendez-vous</span>
   
                                         </div>
@@ -54,7 +54,7 @@ const ListeDemandes = () => {
               
                                   <div className='bloc1'>
                                   <div className='bloc2'>
-                                  <img src="https://img.icons8.com/ultraviolet/40/000000/check.png" alt="erreur_1" className='bloc3' />
+                                  <img src="/img/icons8-cheque-64.png" alt="erreur_1" className='bloc3'  />
                                   <span>Demande de carnet de chéque</span>
                               </div>
                     
@@ -67,7 +67,7 @@ const ListeDemandes = () => {
               
                                   <div className='bloc1'>
                                   <div className='bloc2'>
-                                  <img src="https://img.icons8.com/ultraviolet/40/000000/check.png" alt="erreur_1" className='bloc3' />
+                                  <img src="/img/icons8-card-payment-50.png" alt="erreur_1" className='bloc3'  />
                                   <span>Demandes de carte bancaire</span>
                               
                     </div>

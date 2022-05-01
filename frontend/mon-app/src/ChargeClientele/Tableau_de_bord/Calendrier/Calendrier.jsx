@@ -35,6 +35,7 @@ const Calendrier = () => {
         textColor: "rgba(0, 0, 0, 1)",
         overflow: "hidden",
         overflowWrap: 'break-word'
+
         //onvrdisplaypresentchange : deletedTache(event._id)
       };
     });
@@ -93,6 +94,7 @@ const Calendrier = () => {
             weekends={false}
             locale="fr"
             events={eventsCalendar()}
+            
           />
         </div>
       </div>
