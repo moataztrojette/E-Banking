@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Modal_valider_demande_carte from "./Modal_valider_demande_carte";
 import Modal_refuser_demande_carte from "./Modal_refuser_demande_carte";
 
+import dateformat from 'dateformat'
 
 
 const Posts = ({ posts, loading,setPosts }) => {
@@ -95,7 +96,8 @@ const Posts = ({ posts, loading,setPosts }) => {
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">{c.date} </h6>
+                        <h6 class="mb-0 text-sm">                    { dateformat(c.date , "dd mmmm yyyy") }   
+ </h6>
                       </div>
                     </div>
                   </td>

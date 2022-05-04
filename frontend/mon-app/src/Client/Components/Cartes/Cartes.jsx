@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import NavPage from '../../Interface/NavPage/NavPage';
 import axios from "axios";
+import dateformat from 'dateformat'
 
 
 const Cartes = () => {
@@ -32,11 +33,11 @@ const Cartes = () => {
 
         {posts.map((c)=>(
 
-          <div className="col-xl-4 mb-xl-0 mb-2">
+          <div className="col-xl-4 mb-xl-0 mb-2" style={{marginBottom:"20px"}}>
             <div className="card bg-transparent shadow-xl">
           
 
-              <div className="overflow-hidden position-relative border-radius-xl" style={{backgroundImage:`url(${"http://localhost:4000/api/type/carte/getImage/"+ c.id_demande_carte.id_type_carte._id})` }}>
+              <div className="overflow-hidden position-relative border-radius-xl" style={{backgroundImage:`url(${"http://localhost:4000/api/type/carte/getImage/"+ c.id_demande_carte.id_type_carte._id})`,marginBottom:"10px" }}>
                 <span className="mask bg-gradient-dark" />
                 <div className="card-body position-relative z-index-1 p-3">
 
@@ -55,7 +56,8 @@ const Cartes = () => {
                     <div className="exp">
                     <div>
                     <h6 className="text-white mt-2 mb-4 pb-2">{c.id_user.id_client.prenom} {c.id_user.id_client.nom}</h6>
-        <h6 class="card-expire">EXPIRE 05/23</h6>
+        <h6 class="card-expire">EXPIRE     { dateformat(c.date_expiration , "dd mmmm yyyy") }   </h6>
+    
                     </div>
                     
                     </div>

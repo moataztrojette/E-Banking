@@ -21,27 +21,20 @@ const Calendrier = () => {
   }, []);
 
 
+
+
   const eventsCalendar = () => {
     const res = calendar.map((event) => {
       return {
-        title:
-          event.nom_user +" "+
-          event.raison +" "+
-          event.heureDebut,
+        title: event.nom_user +" , "+ event.raison +" , "+ event.heureDebut,
         start: event.start,
         end: event.end,
-        backgroundColor:"rgb(239, 187, 174)",
-        color: "black",
-        textColor: "rgba(0, 0, 0, 1)",
-        overflow: "hidden",
-        overflowWrap: 'break-word'
 
         //onvrdisplaypresentchange : deletedTache(event._id)
       };
     });
     return res;
   };
-
 
 
 
@@ -58,7 +51,7 @@ const Calendrier = () => {
           <button
           style={{padding:"10px"}}
             type="button"
-            className="btn_nouvelle_comptes"
+            class="btn btn-success"
             onClick={() => setModalIsOpen(true)}
           >
             Nouvelle Tâche +{" "}
@@ -68,7 +61,7 @@ const Calendrier = () => {
           <button
           style={{padding:"10px"}}
             type="button"
-            className="btn_nouvelle_comptes"
+            class="btn btn-danger"
             onClick={() => setModalIsOpenDeleteTache(true)}
           >
             Supprimer Tâche +{" "}
@@ -83,6 +76,7 @@ const Calendrier = () => {
           style={{
             position: "relative",
             zIndex: 0,
+            whiteSpace:"normal"
           }}
         >
           <FullCalendar
@@ -92,8 +86,11 @@ const Calendrier = () => {
             plugins={[dayGridPlugin]}
             themeSystem="bootstrap4"
             weekends={false}
-            locale="fr"
+            locale="frLocale"
+          
             events={eventsCalendar()}
+          
+            
             
           />
         </div>

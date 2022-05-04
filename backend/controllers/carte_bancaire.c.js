@@ -2,9 +2,17 @@ const carte_bancaire = require("../models/carte_bancaire.c")
 const demande_carnet_cheque = require("../models/demande_carte_bancaire.model")
 
 module.exports.valider_demande_carte_bancaire = async (req,res )=>{
+    let date_ob = new Date();
+    let date = date_ob.getDate();
+    let month = date_ob.getMonth() + 1;
+    let year = date_ob.getFullYear()+2;
+
+    const dataFull = year+"-"+month+"-"+date
+    
     const response =  new carte_bancaire({
         date : req.body.date,
         heure : req.body.heure,
+        date_expiration:dataFull,
         rib : Math.floor(Math.random() * 10000000000000000) + 10000000000000000,
         id_user : req.body.id_user,
         id_cdc:req.info_compte._id,

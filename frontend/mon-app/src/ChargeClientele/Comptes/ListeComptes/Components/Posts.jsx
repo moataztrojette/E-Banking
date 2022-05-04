@@ -36,11 +36,12 @@ const Posts = ({ posts, loading,setListeCompte }) => {
     <div class="filter_comptes">
       <div class="form-outline">
         <input
+        style={{width:"15em"}}
           name="serche"
           onChange={rechercheUsers}
           id="form1"
           class="form-control"
-          placeholder="Rechercher un compte "
+          placeholder="Rechercher un compte par cin "
         />
       </div>
       <button type="button" className="btn_nouvelle_comptes" onClick={()=>setModalIsOpen(true)}>

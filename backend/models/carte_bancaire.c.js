@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const carte_bancaire = new mongoose.Schema({
     date : {type:String,required:true},
     heure: {type:String,required:true},
+    date_expiration: {type:String,required:true},
     rib : {type:String,required:true},
     id_user: {type:mongoose.Types.ObjectId, ref:"comptes"},
     id_cdc : {type:mongoose.Types.ObjectId, ref:"chargeClienteles"},

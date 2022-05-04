@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const SideBar = () => {
+const SideBar = (props) => {
     return (
         <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
           <div className="sidenav-header">
             <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav" />
             <a className="navbar-brand m-0"  rel="noreferrer">
               <img src="/img/icons8-user-40.png" className="navbar-brand-img h-100" alt="main_logo" />
-              <span className="ms-1 font-weight-bold">User</span>
+              <span className="ms-1 font-weight-bold"></span>
             </a>
           </div>
           <hr className="horizontal dark mt-0" />
@@ -65,7 +65,7 @@ const SideBar = () => {
 
 
               <li className="nav-item">
-                <a className="nav-link  " href="../pages/rtl.html">
+                <a className="nav-link" onClick={()=>props.logout()}>
                   <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
                     <img src="/img/icons8-sign-out-50.png" width="30px" alt="" />
                   </div>

@@ -32,7 +32,7 @@ const InterfaceAdmin = (props) => {
      }
 
     return (<div >
-        <SideBar/>
+        <SideBar  logout ={logout}/>
         <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <Navbar logout ={logout} />
             <Switch>

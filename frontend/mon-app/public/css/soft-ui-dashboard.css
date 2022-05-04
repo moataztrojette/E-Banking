@@ -25801,3 +25801,30 @@ align-items: center;
 .card-name{
   color:white;
   opacity: 0.33;}
+
+  .icons{
+    width: 2em;
+}
+.info_cdc{
+  padding: 10px;
+  width: 28em;
+  height: 8em;
+  overflow: hidden;
+  background-color:white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.img_text_cdc{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 20px;
+}
+.List_information_cdc{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 10px;
+  margin-bottom: 22px;
+}

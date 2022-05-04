@@ -76,7 +76,7 @@ const Statistique = () => {
                         return stateDate.indexOf(item) == pos;
                     });
                     let na = uniqueArray.map(v=>v === uniqueArray[index] ? v : null  );
-                    console.log(na);
+                    //console.log(na);
                     return na[index] || null;     
                     }
                 }
