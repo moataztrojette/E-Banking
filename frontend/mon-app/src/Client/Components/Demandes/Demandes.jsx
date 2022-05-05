@@ -38,7 +38,7 @@ const Demandes = () => {
 
                   <div class="card-header pb-0">
 
-                    <h6>Demandes </h6>
+                    <h4>Demandes </h4>
 
                     <p class="text-sm">
                       <span class="font-weight-bold">Veuillez trouver ici  les Demandes

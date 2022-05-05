@@ -25,7 +25,7 @@ const Type_carte_bancaire = (props) => {
     await axios.post("http://localhost:4000/api/demande/carte/add",{
       id_type_carte : c._id
     })
-    toast("Operation effectuée avec succées ", {
+    toast("Opération est effectuée avec succés ", {
       type: "success",
     });
   }catch (error) {

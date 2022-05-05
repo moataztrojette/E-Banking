@@ -3,7 +3,7 @@ const demandeFerCompt = require("../models/demande_fermeture_compte.model")
 module.exports.add = async (req,res)=>{
     const response = await demandeFerCompt.findOne({id_user : req.info_compte._id})
     if(response){
-        return res.status(422).send("vous avez déjà fait une demande de rendez-vous")
+        return res.status(422).send("vous avez déjà fait une demande de fermeture  ")
     }
     else{
         let date_ob = new Date();
