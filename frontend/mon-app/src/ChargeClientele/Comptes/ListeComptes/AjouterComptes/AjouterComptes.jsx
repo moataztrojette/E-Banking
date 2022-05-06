@@ -167,15 +167,7 @@ const AjouterComptes = (props) => {
                     </select>
                 </div>
 
-                <input
-                  type="password"
-                  className="form-control"
-                  id="input_password"
-                  name="mdp"
-                  required
-                  placeholder="Mot de passe"
-                  onChange={MyValuesInput}
-                />
+         
 
                 <ToastContainer></ToastContainer>
 

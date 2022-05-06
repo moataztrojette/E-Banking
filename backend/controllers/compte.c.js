@@ -2,6 +2,19 @@ const comptes = require("../models/compte.model")
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const clients =require("../models/client.model")
+const nodemailer= require('nodemailer');
+const env = require('dotenv')
+env.config()
+const path = require('path')
+var hbs = require('nodemailer-express-handlebars');
+
+
+
+
+
+
+
+
 
 
 
@@ -22,12 +35,37 @@ module.exports.consulter_les_comptes_bancaires = async(req,res)=>{
 
 
 
+
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth:{
+      user: process.env.USER,
+      pass: process.env.PASS
+  }
+})
+
+const handlebarOptions = {
+  viewEngine: {
+    extName: ".handlebars",
+    partialsDir: path.resolve('./controllers'),
+    defaultLayout: false,
+  },
+  viewPath: path.resolve('./controllers'),
+  extName: ".handlebars",
+}
+
+
+
+
+
 module.exports.ajouter_compte = async (req,res)=>{
 
   let date_ob = new Date();
   let date = date_ob.getDate();
   let month = date_ob.getMonth() + 1;
   let year = date_ob.getFullYear();
+
 
   const dataFull = year+"-"+month+"-"+date
 
@@ -46,9 +84,10 @@ module.exports.ajouter_compte = async (req,res)=>{
     await client.save()
   
 
-
-        const nmdp = await bcrypt.hash(req.body.mdp,13)
+        var generatePass= Math.random().toString(36).substring(2, 15);
+        const nmdp = await bcrypt.hash(generatePass,13)
         let generateLogin = req.body.nom.substr(0, 3)+Math.floor(Math.random() * 100) + 1000
+
 
         const compte = new comptes({
 
@@ -60,11 +99,37 @@ module.exports.ajouter_compte = async (req,res)=>{
             isActive:true,
             id_client:client._id,
             date_creation:dataFull
-      
-
         })
         await compte.save()
         const response = await  comptes.populate(compte,{ path : 'id_client'})
+
+        transporter.use('compile', hbs(handlebarOptions));
+
+
+        var mailOptions = {
+          from: 'moataztrojette1998i@gmail.com',
+          to: "moataztrojette@gmail.com",
+          subject: 'Votre Compte bancaire en ligne ',
+          template: 'email',
+          context: {
+            np:req.body.prenom +" "+req.body.nom,
+            login:generateLogin,
+            mdp:generatePass
+          }
+        
+        };
+
+            
+        
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            //console.log('Email sent: ' + info.response);
+          }
+        });
+
+        
 
         res.status(200).send(response);
    
