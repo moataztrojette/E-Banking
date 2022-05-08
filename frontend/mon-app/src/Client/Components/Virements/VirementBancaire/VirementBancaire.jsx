@@ -87,16 +87,26 @@ const VirementBancaire = (props) => {
 
               />
 </div>
-              <input
+
+             
+                  <div className="col-auto">
+        <div className="input-group mb-2">
+          
+          <input
                type="number"
                 className="form-control"
                 id="input_email"
                 name="montant"
                 required
-                placeholder="Montant"
+                placeholder="Montant en dinar (DT)"
                 onChange={MyValuesInput}
 
-              />
+              />  
+              <div className="input-group-prepend">
+            <div className="input-group-text">DT</div>
+          </div>      </div>
+      </div>
+
             <ToastContainer></ToastContainer>
             <div className="bloc_creation_compte">
             <div className="mb-2">

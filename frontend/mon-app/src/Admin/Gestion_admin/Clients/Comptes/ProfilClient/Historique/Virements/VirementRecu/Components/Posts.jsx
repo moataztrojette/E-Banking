@@ -42,7 +42,7 @@ const Posts = ({ posts, loading }) => {
        <span className="text-xs">
          Montant:{" "}
          <span className="text-success ms-sm-2 font-weight-bold">
-           + {numberWithCommas(post.montant)} DT
+           + {post.montant} DT
          </span>
        </span>
      </div>

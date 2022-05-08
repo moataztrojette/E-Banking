@@ -14,7 +14,7 @@ const Carte = (props) => {
         <span className="mask bg-gradient-dark" />
         <div className="card-body position-relative z-index-1 p-3">
           <div style={{display: 'flex', alignItems: 'center', margin: '10px'}}>
-            <h2 className="text-white">{numberWithCommas(cl.montant)} </h2>
+            <h2 className="text-white">{cl.montant} </h2>
             <h3 className="text-white" style={{marginLeft: '5px'}}>DT</h3>
                       </div>
           <h5 className="text-white mt-4 mb-5 pb-2">RIB : {cl.rib}</h5>

@@ -25,7 +25,7 @@ module.exports.add = async (req,res)=>{
     {
      if(ribValid ){
 
-        if(parseInt(req.body.montant)>10000){
+        if(parseInt(req.body.montant)>10.000){
             let preventMontant = ribValid.montant;
         
             await comptes.findOneAndUpdate({rib:req.body.ribBeneficiaire},{

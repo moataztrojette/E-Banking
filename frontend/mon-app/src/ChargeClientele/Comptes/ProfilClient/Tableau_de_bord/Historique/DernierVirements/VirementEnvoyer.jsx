@@ -61,7 +61,7 @@ const VirementEnvoyer = (props) => {
               <span className="text-xs">
                 Montant:{" "}
                 <span className="text-danger ms-sm-2 font-weight-bold">
-                  -{numberWithCommas(his.montant)} DT
+                  -{his.montant} DT
                 </span>
               </span>
             </div>

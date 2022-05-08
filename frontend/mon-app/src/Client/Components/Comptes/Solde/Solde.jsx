@@ -15,7 +15,7 @@ const Solde = (props) => {
             <div>
               <h5>Solde : </h5>
               <div>
-                <h5 className="font-weight-bold">{numberWithCommas(cl.montant)}  DT </h5> 
+                <h5 className="font-weight-bold">{cl.montant}  DT </h5> 
               </div>
             </div>
             <div>

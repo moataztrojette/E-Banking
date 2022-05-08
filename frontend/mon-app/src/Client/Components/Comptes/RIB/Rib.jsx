@@ -53,7 +53,7 @@ const Rib = () => {
                     <h6 className="card-title">Téléphone : {info.id_client.cin}</h6>
 
                     <h6 className="card-title">RIB bancaire : {info.rib}</h6>
-                    <h6 className="card-title">Solde de Compte Bancaire : {numberWithCommas(info.montant)} DT</h6>
+                    <h6 className="card-title">Solde de Compte Bancaire : {info.montant} DT</h6>
                     <img src="/img/signateur.png" alt="erreur_1" className='signateur' />
 
 

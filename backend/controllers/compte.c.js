@@ -101,7 +101,7 @@ module.exports.ajouter_compte = async (req,res)=>{
             mdp :nmdp,
             login:generateLogin,
             rib : Math.floor(Math.random() * 10000000000000000) + 10000000000000000,
-            montant : 1000000,
+            montant : 1000,
             id_cdc:req.info_compte._id,
             isActive:true,
             id_client:client._id,

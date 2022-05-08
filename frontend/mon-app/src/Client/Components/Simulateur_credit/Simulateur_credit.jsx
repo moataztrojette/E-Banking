@@ -39,6 +39,8 @@ const Simulateur_credit = () => {
                       <h4>Montant</h4>
                     </div>
                     <div class="form-outline">
+
+                      
                       <input
                         style={{ width: "30em" }}
                         name="montant"
@@ -50,6 +52,7 @@ const Simulateur_credit = () => {
 
                       />
                     </div>{" "}
+                    
                   </div>
                   <div className="bloc1_part1">
                     <div className="part1_div_h4">

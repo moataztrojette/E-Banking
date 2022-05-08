@@ -62,7 +62,7 @@ const VirementRecu = (props) => {
                 <span className="text-success
 
 ms-sm-2 font-weight-bold">
-                  +{numberWithCommas(his.montant)} DT
+                  +{his.montant} DT
                 </span>
               </span>
             </div>

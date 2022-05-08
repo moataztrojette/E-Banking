@@ -12,10 +12,17 @@ const Profil = (props) => {
     let res = valuesInput_update;
     setValues_update({ ...res, [event.target.name]: event.target.value });
   };
-
+/*
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
+ 
+  function numberWithCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
+ */
 
   return (
     <>
@@ -52,7 +59,7 @@ const Profil = (props) => {
                   }}
                 >
                   <h2 className="text-white">
-                    {numberWithCommas(cl.montant)}{" "}
+                    {cl.montant}
                   </h2>
                   <h3 className="text-white" style={{ marginLeft: "5px" }}>
                     DT

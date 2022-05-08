@@ -69,7 +69,6 @@ const Taux = (props) => {
               <div>
               
              
-                <p>Votre dernier taux est {props.taux.taux}%</p>
                 <input
                   type="number"
                   className="form-control"
