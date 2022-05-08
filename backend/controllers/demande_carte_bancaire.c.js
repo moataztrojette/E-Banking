@@ -1,4 +1,27 @@
 const demande_carte_bancaire = require("../models/demande_carte_bancaire.model")
+const nodemailer= require('nodemailer');
+const env = require('dotenv')
+env.config()
+const path = require('path')
+var hbs = require('nodemailer-express-handlebars');
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth:{
+        user: process.env.USER,
+        pass: process.env.PASS
+    }
+  })
+  
+  const handlebarOptions = {
+    viewEngine: {
+      extName: ".handlebars",
+      partialsDir: path.resolve('./controllers/Views'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./controllers/Views'),
+    extName: ".handlebars",
+  }
 
 module.exports.demande_carte_bancaire = async (req,res)=>{
     let date_ob = new Date();
@@ -52,8 +75,36 @@ module.exports.refuser_demande_carte_bancaire = async(req,res)=>{
         raison:req.body.raison
     },{
         new : true
-    })
+    }).populate({path:"id_user id_type_carte ",populate:{path:"id_client "}});
     await response.save()
+
+
+    transporter.use('compile', hbs(handlebarOptions));
+
+
+    var mailOptions = {
+      from: process.env.USER,
+      to: response.id_user.id_client.email,
+      subject: "Demande de carte bancaire",
+      template: 'Annulation_demande_carte_bancaire',
+      context: {
+        np:response.id_user.id_client.nom +" "+response.id_user.id_client.prenom,
+        nom_carte : response.id_type_carte.nom_carte,
+        raison : req.body.raison
+      }
+    
+    };
+
+        
+    
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        //console.log('Email sent: ' + info.response);
+      }
+    });
+
 
 }
 module.exports.consulter_les_demande_de_carte_bancaire = async(req,res)=>{

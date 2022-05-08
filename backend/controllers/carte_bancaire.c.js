@@ -1,5 +1,29 @@
 const carte_bancaire = require("../models/carte_bancaire.c")
 const demande_carnet_cheque = require("../models/demande_carte_bancaire.model")
+const nodemailer= require('nodemailer');
+const env = require('dotenv')
+env.config()
+const path = require('path')
+var hbs = require('nodemailer-express-handlebars');
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth:{
+        user: process.env.USER,
+        pass: process.env.PASS
+    }
+  })
+  
+  const handlebarOptions = {
+    viewEngine: {
+      extName: ".handlebars",
+      partialsDir: path.resolve('./controllers/Views'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./controllers/Views'),
+    extName: ".handlebars",
+  }
+
 
 module.exports.valider_demande_carte_bancaire = async (req,res )=>{
     let date_ob = new Date();
@@ -23,8 +47,35 @@ module.exports.valider_demande_carte_bancaire = async (req,res )=>{
         etat_demande :"valider",
     },{
         new : true
-    })
+    }).populate({path:"id_user id_type_carte ",populate:{path:"id_client "}});
     await response2.save()
+
+    
+    transporter.use('compile', hbs(handlebarOptions));
+
+
+    var mailOptions = {
+      from: process.env.USER,
+      to: response2.id_user.id_client.email,
+      subject: "Demande de carte bancaire",
+      template: 'validation_demande_carte_bancaire',
+      context: {
+        np:response2.id_user.id_client.nom +" "+response2.id_user.id_client.prenom,
+        date : req.body.date,
+        nom_carte : response2.id_type_carte.nom_carte
+      }
+    
+    };
+
+        
+    
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        //console.log('Email sent: ' + info.response);
+      }
+    });
 
  
     res.status(200).send(response)

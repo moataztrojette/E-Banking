@@ -1,4 +1,10 @@
 const demandeFerCompt = require("../models/demande_fermeture_compte.model")
+const nodemailer= require('nodemailer');
+const env = require('dotenv')
+env.config()
+const path = require('path')
+var hbs = require('nodemailer-express-handlebars');
+
 
 module.exports.add = async (req,res)=>{
     const response = await demandeFerCompt.findOne({id_user : req.info_compte._id})
@@ -41,6 +47,23 @@ module.exports.demandes = async(req,res)=>{
     
     res.status(200).json(Collection);
 }
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth:{
+        user: process.env.USER,
+        pass: process.env.PASS
+    }
+  })
+  
+  const handlebarOptions = {
+    viewEngine: {
+      extName: ".handlebars",
+      partialsDir: path.resolve('./controllers/Views'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./controllers/Views'),
+    extName: ".handlebars",
+  }
 
 
 module.exports.état_compte_activer  =  async (req,res)=>{
@@ -52,6 +75,30 @@ module.exports.état_compte_activer  =  async (req,res)=>{
         }).populate({path:"id_user",populate:{path:"id_client"}});
         res.json(response)
   
+        transporter.use('compile', hbs(handlebarOptions));
+
+
+        var mailOptions = {
+          from: process.env.USER,
+          to: response.id_user.id_client.email,
+          subject: "Activation compte bancaire",
+          template: 'Activer_compte',
+          context: {
+            np:response.id_user.id_client.nom +" "+response.id_user.id_client.prenom,
+          }
+        
+        };
+
+            
+        
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            //console.log('Email sent: ' + info.response);
+          }
+        });
+
   }
   
   module.exports.état_compte_desactiver =  async (req,res)=>{
@@ -61,6 +108,33 @@ module.exports.état_compte_activer  =  async (req,res)=>{
         },{
             new : true
         }).populate({path:"id_user",populate:{path:"id_client"}});
+
+        transporter.use('compile', hbs(handlebarOptions));
+
+
+        var mailOptions = {
+          from: process.env.USER,
+          to: response.id_user.id_client.email,
+          subject: "Demande de fermeture d'un compte bancaire",
+          template: 'Fermeture_compte',
+          context: {
+            np:response.id_user.id_client.nom +" "+response.id_user.id_client.prenom,
+          }
+        
+        };
+
+            
+        
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            //console.log('Email sent: ' + info.response);
+          }
+        });
+
+
+
         res.json(response)
   
   }

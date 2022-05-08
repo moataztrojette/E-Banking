@@ -1,5 +1,9 @@
 const rendez_vous = require("../models/demande_rendez_vous.model")
 
+
+
+
+
 module.exports.demande_rendez_vous = async (req,res)=>{
 
     const response = await rendez_vous.findOne({date : req.body.date , id_user : req.info_compte._id })
@@ -59,7 +63,9 @@ module.exports.Annuler_rendez_vous =  async (req,res)=>{
             new : true
         }).populate({path:"id_user",populate:{path:"id_client"}})
         res.json(response)
-    
+
+        
+  
 
 }
 

@@ -1,5 +1,28 @@
 const carnet_cheques = require("../models/carnet_cheque.model")
 const demande_carnet_cheques = require("../models/demande_carnet_cheque.model")
+const nodemailer= require('nodemailer');
+const env = require('dotenv')
+env.config()
+const path = require('path')
+var hbs = require('nodemailer-express-handlebars');
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth:{
+        user: process.env.USER,
+        pass: process.env.PASS
+    }
+  })
+  
+  const handlebarOptions = {
+    viewEngine: {
+      extName: ".handlebars",
+      partialsDir: path.resolve('./controllers/Views'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./controllers/Views'),
+    extName: ".handlebars",
+  }
 
 module.exports.valider_carnet_chéque_bancaire = async (req,res )=>{
     const response =  new carnet_cheques({
@@ -16,6 +39,32 @@ module.exports.valider_carnet_chéque_bancaire = async (req,res )=>{
         new : true
     }).populate({path:"id_user",populate:{path:"id_client"}})
     await response2.save()
+
+    transporter.use('compile', hbs(handlebarOptions));
+
+
+    var mailOptions = {
+      from: process.env.USER,
+      to: response2.id_user.id_client.email,
+      subject: "Demande de chéquier",
+      template: 'validation_demande_carnet_cheque',
+      context: {
+        np:response2.id_user.id_client.nom +" "+response2.id_user.id_client.prenom,
+        date : req.body.date
+      }
+    
+    };
+
+        
+    
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        //console.log('Email sent: ' + info.response);
+      }
+    });
+
 
     res.status(200).send(response)
 }

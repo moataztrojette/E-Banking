@@ -1,6 +1,29 @@
 const rendez_vous = require("../models/rendez-vous.model")
 const demande_rendez_vous = require("../models/demande_rendez_vous.model")
 const calendriers = require('../models/calendrier.model')
+const nodemailer= require('nodemailer');
+const env = require('dotenv')
+env.config()
+const path = require('path')
+var hbs = require('nodemailer-express-handlebars');
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth:{
+        user: process.env.USER,
+        pass: process.env.PASS
+    }
+  })
+  
+  const handlebarOptions = {
+    viewEngine: {
+      extName: ".handlebars",
+      partialsDir: path.resolve('./controllers/Views'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./controllers/Views'),
+    extName: ".handlebars",
+  }
 
 
 module.exports.valider_rendez_vous = async (req,res )=>{
@@ -39,8 +62,34 @@ module.exports.valider_rendez_vous = async (req,res )=>{
     }).populate({path:"id_user id_demande id_cdc ",populate:{path:"id_client"}});
     await new_rendez_vous.save()
 
+  transporter.use('compile', hbs(handlebarOptions));
 
 
+    var mailOptions = {
+      from: process.env.USER,
+      to: response.id_user.id_client.email,
+      subject: "Demande de rendez-vous en ligne",
+      template: 'validation_demande_rdv',
+      context: {
+        np:response.id_user.id_client.nom +" "+response.id_user.id_client.prenom,
+        link : req.body.link,
+        date : response2.date,
+        heure : response2.heure,
+
+      }
+    
+    };
+
+        
+    
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        //console.log('Email sent: ' + info.response);
+      }
+    });
+    
 
     res.status(200).send(response)
 }

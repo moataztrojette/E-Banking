@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
 
-const Login = (props) => {
+const Recuperation_compte = (props) => {
 
     const[valuesInput,setValues] = useState({})
 
@@ -19,8 +19,11 @@ const Login = (props) => {
 
       event.preventDefault()
       try{
-       await axios.post("http://localhost:4000/api/compte/connexion",valuesInput)
-       props.history.replace('/client/main')
+       await axios.post("http://localhost:4000/api/compte/mot_de_passe/oublier",valuesInput)
+       toast("Votre demande de réinitialiser votre mot de passe a été effectuée avec succès  s'il vous plait vérifier votre e-mails ", {
+        type: "success",
+      });
+      
 
       }catch(error){
         if(error.response.data){
@@ -47,17 +50,14 @@ const Login = (props) => {
 
           <div className="input-field_login">
             <i className="fas fa-user" />
-            <input type="text" placeholder="Login" onChange={MyValuesInput} name="login" />
+            <input type="text" placeholder="Adresse Email" onChange={MyValuesInput} name="email" required />
           </div>
-          <div className="input-field_login">
-            <i className="fas fa-lock" />
-            <input type="password" placeholder="Mot de passe" onChange={MyValuesInput} name="mdp" />
-          </div>
+        
       
-          <input type="submit" value="Connexion" className="btn_login" />
+          <input type="submit" value="Réinitialiser le mot de passe" className="btn_login" />
           <h6>
          
-         <Link to="/recuperation-compte">  Mot de passe oublié ? {" "}</Link>
+         <Link to="/">   Vous avez déja un compte ? {" "}</Link>
        </h6>
         </form>
       </div>
@@ -65,10 +65,10 @@ const Login = (props) => {
 
     <div className="panels-container_login">
       <div className="panel_login left-panel">
-        <img src="img/register.svg" className="image_login" alt="" />
+        <img src="/img/register.svg" className="image_login" alt="" />
       </div>
     </div>
   </div>  );
 }
  
-export default Login;
+export default Recuperation_compte;

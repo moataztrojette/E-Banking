@@ -7,7 +7,7 @@ const env = require('dotenv')
 env.config()
 const path = require('path')
 var hbs = require('nodemailer-express-handlebars');
-
+const crypto=require("crypto-js")
 
 
 
@@ -48,10 +48,10 @@ const transporter = nodemailer.createTransport({
 const handlebarOptions = {
   viewEngine: {
     extName: ".handlebars",
-    partialsDir: path.resolve('./controllers'),
+    partialsDir: path.resolve('./controllers/Views'),
     defaultLayout: false,
   },
-  viewPath: path.resolve('./controllers'),
+  viewPath: path.resolve('./controllers/Views'),
   extName: ".handlebars",
 }
 
@@ -69,6 +69,13 @@ module.exports.ajouter_compte = async (req,res)=>{
 
   const dataFull = year+"-"+month+"-"+date
 
+  const Verife = await comptes.findOne({email:req.body.email})
+
+  if(Verife){
+    return res.status(404).send("Adresse email est déjà utlilsé.Essayez un autre nom")
+  }
+  
+  
   
       const client = new clients({
         nom : req.body.nom,
@@ -107,8 +114,8 @@ module.exports.ajouter_compte = async (req,res)=>{
 
 
         var mailOptions = {
-          from: 'moataztrojette1998i@gmail.com',
-          to: "moataztrojette@gmail.com",
+          from: process.env.USER,
+          to: req.body.email,
           subject: 'Votre Compte bancaire en ligne ',
           template: 'email',
           context: {
@@ -130,6 +137,10 @@ module.exports.ajouter_compte = async (req,res)=>{
         });
 
         
+
+        
+  
+
 
         res.status(200).send(response);
    
@@ -324,4 +335,61 @@ module.exports.consulter_comptes = async(req,res)=>{
   res.json(response);
 }
 
+
+module.exports.Récupérer_votre_compte = async(req,res)=>{
+
+  const response = await clients.findOne({email:req.body.email}).select("_id")
+  const data2 = await comptes.findOne({id_client:response._id})
+
+  
+  transporter.use('compile', hbs(handlebarOptions));
+
+
+  var mailOptions = {
+    from: process.env.USER,
+    to: req.body.email,
+    subject: 'Réinitialiser le mot de passe  ',
+    template: 'resetPassword',
+    context: {
+    link : "http://localhost:3000/mot-de-passe-oublié/"+data2._id,
+    
+    }
+  
+  };
+
+      
+  
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      //console.log('Email sent: ' + info.response);
+    }
+  });
+
+ 
+  res.json(data2)
+}
+
+module.exports.Récupérer_modifier_mot_de_passe = async (req,res)=>{
+
+      if(req.body.newPassword===req.body.confPassword)
+      {
+        const nmdp = await bcrypt.hash(req.body.newPassword,13)
+
+        await comptes.findOneAndUpdate({_id:req.params.id},{
+          mdp :  nmdp
+      },{
+          new : true
+      });
+      return res.status(200).send("Mot de passe a été changé avec succés")
+
+      }
+      else{
+        return res.status(404).send("Confirmer votre mot de passe")
+      }
+    }
+ 
+  
+  
 

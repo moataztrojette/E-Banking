@@ -26,6 +26,9 @@ const type_carte_bancaire = require("./routes/type_carte_bancaire.router")
 const demande_carte_bancaire = require("./routes/demande_carte_bancaire.router")
 const carte_bancaire = require("./routes/carte_bancaire.router")
 const calendar = require('./routes/calendrier.route')
+const simulation_credit = require("./routes/simulation_credit.router")
+const taux = require("./routes/taux.router")
+
 
 
 env.config()
@@ -61,20 +64,8 @@ app.use("/api/type/carte",type_carte_bancaire)
 app.use("/api/demande/carte",demande_carte_bancaire)
 app.use("/api/carte/bancaire",carte_bancaire)
 app.use('/api/calendar',calendar)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.use('/api/simulateur-credit',simulation_credit)
+app.use('/api/taux',taux)
 
 
 

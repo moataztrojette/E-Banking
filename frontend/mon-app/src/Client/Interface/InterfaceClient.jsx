@@ -24,6 +24,7 @@ import Liste_demande_carnet_cheque from '../Components/Demandes/ListeDemandes/li
 import Demande_carte_bancaire from '../Components/Demandes/Demande_carte_bancaire/Demande_carte_bancaire';
 import Type_carte_bancaire from '../Components/Demandes/Demande_carte_bancaire/Type_carte_bancaire/Type_carte_bancaire';
 import Liste_demande_carte_bancaire from '../Components/Demandes/ListeDemandes/liste_demande_carte_bancaire/Liste_demande_carte_bancaire';
+import Simulateur_credit from '../Components/Simulateur_credit/Simulateur_credit';
 
 
 const InterfaceClient = (props) => {
@@ -53,22 +54,22 @@ const InterfaceClient = (props) => {
                 <Route path ="/client/demandes/liste/cartes" component={Liste_demande_carte_bancaire}/>
 
                 <Route path ="/client/demandes/liste/rdv" component={Liste_demande_rdv}/>
+                <Route path ="/client/simulateur-credit" component={Simulateur_credit}/>
 
-                <Route path ="/client/cartes/demande" component={DemandesCartes}/>
-
-                
-               
+                <Route path ="/client/cartes/demande" component={DemandesCartes}/>                
                 <Route path ="/client/demandes/liste" component={ListeDemandes}/>
+                <Route path ="/client/comptes/rib" component={Rib}/>
 
            
                 <Route path ="/client/virements" component={Virements}/>
                 <Route path ="/client/parametre" component={Parametre}/>
                 <Route path ="/client/demandes" component={Demandes}/>
-                <Route path="/client/main" component={TableauDeBord}/>
-                <Route path ="/client/comptes/rib" component={Rib}/>
                 <Route path ="/client/comptes" component={Comptes}/>
                 <Route path ="/client/cheques" component={Cheques}/>
                 <Route path ="/client/cartes" component={Cartes}/>
+                <Route path="/client/main" component={TableauDeBord}/>
+              
+        
          
 
             </Switch>

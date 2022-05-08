@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 
 const Connexion = (props) => {
@@ -53,7 +54,10 @@ const Connexion = (props) => {
             <input type="password" placeholder="Mot de passe" onChange={MyValuesInput} name="mdp" />
           </div>
           <input type="submit" value="Connexion" className="btn_login" />
-
+          <h6>
+          vous n'avez pas de compte ? {" "}
+                  <Link to="/cdc/inscription"> inscrivez-vous</Link>
+                </h6>
         </form>
       </div>
     </div>
