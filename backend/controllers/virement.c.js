@@ -25,11 +25,11 @@ module.exports.add = async (req,res)=>{
     {
      if(ribValid ){
 
-        if(parseInt(req.body.montant)>10.000){
+        if(parseInt(req.body.montant)>10){
             let preventMontant = ribValid.montant;
         
             await comptes.findOneAndUpdate({rib:req.body.ribBeneficiaire},{
-                    montant : parseInt(preventMontant)+parseInt(req.body.montant)
+                    montant : parseFloat(preventMontant)+parseFloat(req.body.montant)
             },{
                 new : true
             })
@@ -37,7 +37,7 @@ module.exports.add = async (req,res)=>{
             
     
             await comptes.findOneAndUpdate({_id:req.info_compte._id},{
-                montant :  parseInt(comptesUser.montant) - parseInt(req.body.montant)
+                montant :  parseFloat(comptesUser.montant) - parseFloat(req.body.montant)
             },{
                 new : true
             });
@@ -57,7 +57,7 @@ module.exports.add = async (req,res)=>{
    
             const historique =  new historiques({
                id_user : req.info_compte._id,
-               montant :parseInt(comptesUser.montant) - parseInt(req.body.montant) ,
+               montant :parseFloat(comptesUser.montant) - parseFloat(req.body.montant) ,
                date : dataFull,
               
            })
@@ -65,7 +65,7 @@ module.exports.add = async (req,res)=>{
    
            const his =  new historiques({
                id_user : comptesUser2._id,
-               montant :parseInt(comptesUser2.montant )+ parseInt(req.body.montant) ,
+               montant :parseFloat(comptesUser2.montant )+ parseFloat(req.body.montant) ,
                date : dataFull,
               
            })

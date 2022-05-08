@@ -94,6 +94,7 @@ const VirementBancaire = (props) => {
           
           <input
                type="number"
+               step="0.01"
                 className="form-control"
                 id="input_email"
                 name="montant"
