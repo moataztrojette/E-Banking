@@ -43,7 +43,7 @@ useEffect(() => {
 
              <div className="container-fluid py-5">
     <div className="row">
-        <h3>Select your carte</h3>
+        <h3>Choisissez votre carte bancaire</h3>
       <div className="col-lg-9">
         <div className="row" style={{marginLeft: '20%', boxShadow: "2px 2px 2px",padding:"3em"}}>
       

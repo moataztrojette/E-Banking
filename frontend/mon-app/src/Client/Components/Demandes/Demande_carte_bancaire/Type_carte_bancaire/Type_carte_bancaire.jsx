@@ -58,9 +58,7 @@ const Type_carte_bancaire = (props) => {
                         </div>
 
                         <h6>Carte bancaire : {c.nom_carte} </h6>
-                        <p className="text-sm">
-                          <span className="font-weight-bold">description</span>
-                        </p>
+                     
                       </div>
                       <div className="card-body p-3">
                         <div>
@@ -85,7 +83,7 @@ const Type_carte_bancaire = (props) => {
                                       padding: "10px",
                                     }}
                                   >
-                                    {numberWithCommas(c.plafond_global_carte)}{" "}
+                                    {c.plafond_global_carte}{" "}
                                     DT
                                   </span>{" "}
                                 </div>

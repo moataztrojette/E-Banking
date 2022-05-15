@@ -88,7 +88,7 @@ const Inscription = (props) => {
 
           <div className="input-field_login">
             <i className="fas fa-user" />
-            <input type="text" placeholder="Identifiant" onChange={MyValuesInput} name="cin" />
+            <input type="text" placeholder="CIN" onChange={MyValuesInput} name="cin" />
           </div>
           <div className="bloc_ag">
 

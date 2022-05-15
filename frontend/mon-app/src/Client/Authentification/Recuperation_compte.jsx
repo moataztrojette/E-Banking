@@ -20,7 +20,7 @@ const Recuperation_compte = (props) => {
       event.preventDefault()
       try{
        await axios.post("http://localhost:4000/api/compte/mot_de_passe/oublier",valuesInput)
-       toast("Votre demande de réinitialiser votre mot de passe a été effectuée avec succès  s'il vous plait vérifier votre e-mails ", {
+       toast("Votre demande de réinitialisation de mot de passe a été effectuée avec succès  s'il vous plait vérifier votre e-mail ", {
         type: "success",
       });
       

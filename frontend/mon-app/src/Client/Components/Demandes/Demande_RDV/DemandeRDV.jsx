@@ -102,7 +102,7 @@ const DemandeRDV = (props) => {
                   className="form-control"
                   cols="50"
                   placeholder="motif"
-                  form="usrform"
+                  required
                   onChange={MyValuesInput}
 
                 ></textarea>

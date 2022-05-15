@@ -74,7 +74,7 @@ const Posts = ({ posts, loading,setPosts }) => {
                    Date de demande{" "}
                   </th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Nom de carte
+                    Type de carte
                   </th>
 
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">

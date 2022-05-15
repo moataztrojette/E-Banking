@@ -73,7 +73,7 @@ const Modal_valider_demande_carte = (props) => {
                 <div>
                   <div>
                     {" "}
-                    <h6>Date de prendre le carte</h6>
+                    <h6>Date de récupération </h6>
                     <input
                       type="date"
                       className="form-control"
@@ -91,7 +91,7 @@ const Modal_valider_demande_carte = (props) => {
                       //minDate={new Date()}
                     />
                     <br />
-                    <h6>Heure de prendre le carte</h6>
+                    <h6>Heure de récupération </h6>
                     <input
                       name="heure"
                       className="form-control"

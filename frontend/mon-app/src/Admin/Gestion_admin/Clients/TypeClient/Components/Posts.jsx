@@ -69,7 +69,7 @@ const Posts = ({ posts, loading,setListeTypeClient }) => {
             onChange={rechercheType}
             id="form1"
             class="form-control"
-            placeholder="Chercher les types clients "
+            placeholder="Chercher les types de client "
           />
         </div>
         <button

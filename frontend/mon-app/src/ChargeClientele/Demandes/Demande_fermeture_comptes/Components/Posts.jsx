@@ -94,7 +94,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                     Email
                   </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                  Date de demande de fermeture de compte bancaire
+                  Date de demande de clôture de compte bancaire
                   </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     motif
@@ -137,14 +137,14 @@ const Posts = ({ posts, loading,setListeCompte }) => {
                     <button class="btn_activer_desactiver"  onClick={() => {
                           desactiverCompte(c);
                         }}>
-                      Désactiver Compte
+                      Désactiver le compte
                     </button>
                   </td>) :(
                     <td class="align-middle text-center">
                     <button class="btn_activer_desactiver"  onClick={() => {
                           ActiverCompte(c);
                         }}>
-                      Activer Compte
+                      Activer le compte
                     </button>
                   </td>
 

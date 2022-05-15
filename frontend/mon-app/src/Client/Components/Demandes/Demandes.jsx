@@ -69,7 +69,7 @@ const Demandes = () => {
             <div className='bloc1' >
               <div className='bloc2' >
               <img src="/img/icons8-close-58.png" alt="erreur_1" className='bloc3' />
-              <span>Demande de fermeture de compte bancaire </span>
+              <span>Demande de clôture de compte bancaire </span>
 
                     </div>
           

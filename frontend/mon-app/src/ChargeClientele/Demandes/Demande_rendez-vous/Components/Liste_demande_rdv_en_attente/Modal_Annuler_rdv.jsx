@@ -77,7 +77,7 @@ const Modal_Annuler_rdv = (props) => {
                   className="form-group"
                   style={{ borderRadius: "10px", padding: "10px" }}
                 >
-                  <a href="https://meet.google.com/" target="_blanck">
+                  <a href="#" target="_blanck">
                     S'il vous plaît reprendre un autre rendez-vous selon votre
                     disponibilité !!
                   </a>

@@ -1,31 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 import Modal from "react-modal";
+import axios from "axios";
 
-const AjouterType = (props) => {
-  const MyValuesInput = (event) => {
-    let res = props.valuesInput;
+const ModalCheckCode = (props) => {
+  const [valuesInput_code, setValuescode] = useState({});
+  const [modalIsOpenCheckCode, setModalIsOpenCheckCode] = useState(false);
+  const [stateCodeSec, setCodeSec] = useState({});
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:4000/api/virement/code-generator")
+      .then((data) => {
+        setCodeSec(data.data);
+        console.log(data.data);
+      });
+  }, []);
+
+  const MyValuesInput_code = (event) => {
+    let res = valuesInput_code;
     res[event.target.name] = event.target.value;
-    props.setValues(res);
+    setValuescode(res);
   };
 
   const handleFormSubmit = async (event) => {
+    event.preventDefault();
+   
+
     try {
       event.preventDefault();
-      const data = await axios.post(
-        "http://localhost:4000/api/type/client/add",
-        props.valuesInput
-      );
+      if (stateCodeSec == valuesInput_code.code_securite) {
+        await axios.post("http://localhost:4000/api/virement/add", {
+          nomBeneficiaire : props.nomBeneficiaire,
+          ribBeneficiaire:props.ribBeneficiaire,
+          montant:props.montant
+        });
 
-      toast("Type Client a été ajouté avec succès ", {
-        type: "success",
-      });
+        toast("Virement effectué avec succès ", {
+          type: "success",
+        });
+        
+      } else {
+        toast("Code de sécurité incorrect ", {
+          type: "error",
+        });
 
-      const preventState = props.listeType;
-      preventState.push(data.data);
-      props.setListeTypeClient(preventState);
+      }
     } catch (error) {
       if (error.response.data) {
         toast(error.response.data, {
@@ -38,9 +59,9 @@ const AjouterType = (props) => {
   return (
     <div>
       <Modal
-        isOpen={props.modalIsOpen}
+        isOpen={props.modalIsOpenCheckCode}
         shouldCloseOnOverlayClick={false}
-        onRequestClose={() => props.setModalIsOpen(false)}
+        onRequestClose={() => props.setModalIsOpenCheckCode(false)}
         style={{
           content: {
             top: "50%",
@@ -56,7 +77,7 @@ const AjouterType = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Type client </h3>
+          <h3 className="font-weight-light">Code sécurité </h3>
           <br />
           <form
             className="pt-3"
@@ -70,19 +91,14 @@ const AjouterType = (props) => {
                     type="text"
                     className="form-control"
                     id="exampleInputUsername2"
-                    name="nom_type"
+                    name="code_securite"
                     required
-                    placeholder="type client"
-                    onChange={MyValuesInput}
+                    placeholder="Code sécurité"
+                    onChange={MyValuesInput_code}
                   />
-
-            
                 </div>
-         
-
 
                 <ToastContainer></ToastContainer>
-
                 <div className="bloc_creation_compte">
                   <div className="mb-2">
                     <button type="submit" className="btn_terminer">
@@ -94,7 +110,7 @@ const AjouterType = (props) => {
                   <div className="mb-2">
                     <button
                       type="button"
-                      onClick={() => props.setModalIsOpen(false)}
+                      onClick={() => props.setModalIsOpenCheckCode(false)}
                       className="btn btn-block btn-facebook auth-form-btn"
                     >
                       <i className="mdi mr-2" />
@@ -104,7 +120,11 @@ const AjouterType = (props) => {
                 </div>
               </div>
               <div>
-                <img src="/img/register.svg" alt="erreur_1" className="image_register" />
+                <img
+                  src="/img/money_transfer.jpg"
+                  alt="erreur_1"
+                  className="image_money"
+                />
               </div>
             </div>
           </form>
@@ -114,4 +134,4 @@ const AjouterType = (props) => {
   );
 };
 
-export default AjouterType;
+export default ModalCheckCode;

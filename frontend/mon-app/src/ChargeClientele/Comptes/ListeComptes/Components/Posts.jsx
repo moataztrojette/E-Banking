@@ -41,7 +41,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
           onChange={rechercheUsers}
           id="form1"
           class="form-control"
-          placeholder="Rechercher un compte par cin "
+          placeholder="Chercher un compte par cin "
         />
       </div>
       <button type="button" className="btn_nouvelle_comptes" onClick={()=>setModalIsOpen(true)}>

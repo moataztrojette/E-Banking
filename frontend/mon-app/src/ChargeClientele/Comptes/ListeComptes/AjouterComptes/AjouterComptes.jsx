@@ -141,6 +141,7 @@ const AjouterComptes = (props) => {
                     required
                     placeholder="CIN"
                     onChange={MyValuesInput}
+                    minlength="5"
                   />
                 </div>
                 <input

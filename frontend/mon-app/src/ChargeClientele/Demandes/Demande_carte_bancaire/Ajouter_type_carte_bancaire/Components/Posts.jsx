@@ -76,10 +76,10 @@ const Posts = ({ posts, loading, setPosts }) => {
                     Type de carte bancaire	
                     </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Plafonds Global	
+                    Plafond Global	
                     </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Plafonds de retrait	
+                    Plafond de retrait	
                     </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     Plafond de paiement

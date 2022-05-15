@@ -59,7 +59,7 @@ const Modal_refuser_demande_carte = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Refus de la demande de carte bancaire
+          <h3 className="font-weight-light">Refus de la demande 
 </h3>
           <br />
           <form
@@ -72,7 +72,7 @@ const Modal_refuser_demande_carte = (props) => {
                 <div>
                   <div>
                     {" "}
-                    <h6>Raison de refus de la demande de carte bancaire
+                    <h6>La raison de refus 
  </h6>
                     <textarea
                   name="raison"
@@ -80,7 +80,7 @@ const Modal_refuser_demande_carte = (props) => {
                   className="form-control"
                   cols="50"
                   placeholder="Raison"
-                  form="usrform"
+                  required
                   onChange={MyValuesInput}
 
                 ></textarea>

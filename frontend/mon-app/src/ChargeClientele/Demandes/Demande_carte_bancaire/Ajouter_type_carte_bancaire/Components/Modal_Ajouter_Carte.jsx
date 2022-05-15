@@ -100,10 +100,11 @@ const Modal_Ajouter_Carte = (props) => {
                       onChange={MyValuesInput}
                     />
                   </div>
-                  <div>
-                    <p>Plafond global de carte bancaire</p>
+                  <p>Plafond global de carte bancaire</p>
 
-                    <input
+                  <div className="input-group mb-2">
+
+                  <input
                       type="number"
                       className="form-control"
                       id="exampleInputUsername2"
@@ -112,9 +113,13 @@ const Modal_Ajouter_Carte = (props) => {
                       placeholder="Plafond global"
                       onChange={MyValuesInput}
                     />
-                  </div>
-                  <div>
-                    <p>Plafond de retrait par <b>jour</b></p>
+              <div className="input-group-prepend">
+            <div className="input-group-text">DT</div>
+          </div>      </div>
+
+          <p>Plafond de retrait par <b>jour</b></p>
+
+                  <div className="input-group mb-2">
 
                     <input
                       type="number"
@@ -124,10 +129,14 @@ const Modal_Ajouter_Carte = (props) => {
                       placeholder="plafond de retrait par jour"
                       onChange={MyValuesInput}
                     />
+                      <div className="input-group-prepend">
+            <div className="input-group-text">DT</div>
+          </div>  
                   </div>
-                  <div>
-
                   <p>Plafond de retrait par <b>semaine</b></p>
+
+                  <div className="input-group mb-2">
+
 
                   <input
                     type="number"
@@ -138,10 +147,14 @@ const Modal_Ajouter_Carte = (props) => {
                     placeholder="plafond de retrait par semaine"
                     onChange={MyValuesInput}
                   />
+                       <div className="input-group-prepend">
+            <div className="input-group-text">DT</div>
+          </div>  
                   </div>
-                  <div>
-
                   <p>Plafond de paiement par <b>mois</b></p>
+
+                  <div className="input-group mb-2">
+
                   <input
                     type="number"
                     className="form-control"
@@ -151,6 +164,9 @@ const Modal_Ajouter_Carte = (props) => {
                     placeholder="Plafond de paiement par mois"
                     onChange={MyValuesInput}
                   />
+                         <div className="input-group-prepend">
+            <div className="input-group-text">DT</div>
+          </div>
                                     </div>
 
 

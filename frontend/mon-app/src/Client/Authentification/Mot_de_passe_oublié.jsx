@@ -16,7 +16,6 @@ const Mot_de_passe_oublié = (props) => {
     };
 
     useEffect(()=>{
-      console.log(props.location.pathname)
     const res =props.location.pathname.split("/").pop()
     setId(res)
   

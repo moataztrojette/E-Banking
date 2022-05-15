@@ -106,10 +106,12 @@ const Posts = ({ posts, loading,setPosts}) => {
                     style={{width:"10px"}}
                    
                    >
-                     <div className="demande_refuser">
+                     <div className="demande_refuser" style={{display:"flex",flexDirection:"column"}}>
                      <h6>Demande refusée</h6>
-                   <img src="/img/icons8-close-64.png" style={{width:"30px"}}/>
-                   {c.raison}
+                     <div style={{display:"flex"}}>
+                  <h6>Raison:  {c.raison}</h6>
+                   <img src="/img/icons8-close-64.png" style={{width:"30px",height:"28px"}}/>
+                   </div>
                    </div>
 
                    </td>) :(<></>)}

@@ -3,25 +3,60 @@ const chargeClienteles = require("../models/chargeClientele.model")
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
-module.exports.ajouter_compte = async (req,res)=>{
-    const verife = await chargeClienteles.findOne({cin:req.body.cin})
-    if(verife){
-        return res.status(422).send("Le compte existe déjà ")
-    }
-    else{
-        const nmdp = await bcrypt.hash(req.body.mdp,13)
-        const chargeClientele = new chargeClienteles({
-            nom : req.body.nom,
-            prenom : req.body.prenom,
-            email : req.body.email,
-            cin : req.body.cin,
-            mdp :nmdp,
-            id_agence:req.body.id_agence,
-            tel : req.body.tel
-        })
-        await chargeClientele.save()
-        res.status(200).send(chargeClientele);
-    }
+module.exports.Créer_son_compte_personne = async (req,res)=>{
+    const verife_cin = await chargeClienteles.findOne({cin:req.body.cin})
+    const verife_email = await chargeClienteles.findOne({email:req.body.email})
+    var Check_cin = req.body.cin
+    var Check_tel = req.body.tel
+    var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    var pass = req.body.mdp
+
+    if(verife_email == null){
+      if(verife_cin==null){
+        if(Check_tel.length == 8){
+          if(Check_cin.length>=8 && Check_cin.length<10){
+            const nmdp = await bcrypt.hash(req.body.mdp,13)
+            if(pass.match(decimal)){
+              const chargeClientele = new chargeClienteles({
+                nom : req.body.nom,
+                prenom : req.body.prenom,
+                email : req.body.email,
+                cin : req.body.cin,
+                mdp :nmdp,
+                id_agence:req.body.id_agence,
+                tel : req.body.tel
+            })
+            await chargeClientele.save()
+            res.status(200).send(chargeClientele);
+            }else{
+              return res.status(404).send("saisir un mot de passe entre 8 et 15 caractères contenant au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial")
+
+            }
+       
+    
+          }else{
+            return res.status(404).send("Vérifier votre cin")
+
+    
+          }
+        
+        }else{
+          return res.status(404).send("Vérifier votre Téléphone")
+
+    
+        }
+          }else {
+            return res.status(422).send("Le compte existe déjà ")
+
+          }
+
+        }else {
+          return res.status(404).send("Adresse email est déjà utlilsé.Essayez un autre nom")
+
+        }
+       
+   
+      
 };
 
 module.exports.consulter_informations_personnelles = async(req,res)=>{

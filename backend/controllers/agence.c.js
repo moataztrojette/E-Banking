@@ -7,13 +7,20 @@ module.exports.ajouter_agence = async (req,res)=>{
                 return res.status(422).send("L'agence existe déjà ")
             }
             else{
-                const agence =  new agences({
-                    nom : req.body.nom,
-                    email : req.body.email,
-                    tel : req.body.tel
-                })
-                await agence.save();
-                res.status(200).send(agence)
+                tel = req.body.tel
+                if(tel.length==8){
+                    const agence =  new agences({
+                        nom : req.body.nom,
+                        email : req.body.email,
+                        tel : req.body.tel
+                    })
+                    await agence.save();
+                    res.status(200).send(agence)
+                }else{
+                    return res.status(404).send("Vérifier votre Téléphone")
+
+                }
+
             }
 }
 

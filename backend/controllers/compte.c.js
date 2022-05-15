@@ -59,7 +59,7 @@ const handlebarOptions = {
 
 
 
-module.exports.ajouter_compte = async (req,res)=>{
+module.exports.Créer_comptes_utilisateurs = async (req,res)=>{
 
   let date_ob = new Date();
   let date = date_ob.getDate();
@@ -69,72 +69,94 @@ module.exports.ajouter_compte = async (req,res)=>{
 
   const dataFull = year+"-"+month+"-"+date
 
-  const Verife = await comptes.findOne({email:req.body.email})
-
-  if(Verife){
-    return res.status(404).send("Adresse email est déjà utlilsé.Essayez un autre nom")
-  }
-  
-  
-  
-      const client = new clients({
-        nom : req.body.nom,
-        prenom : req.body.prenom,
-        email : req.body.email,
-        profession : req.body.profession,
-        tel:req.body.tel,
-        cin : req.body.cin,
-        id_agence:req.info_compte.id_agence,
-        id_type_client:req.body.id_type_client
-
-    })
-    await client.save()
-  
-
-        var generatePass= Math.random().toString(36).substring(2, 15);
-        const nmdp = await bcrypt.hash(generatePass,13)
-        let generateLogin = req.body.nom.substr(0, 3)+Math.floor(Math.random() * 100) + 1000
-
-
-        const compte = new comptes({
-
-            mdp :nmdp,
-            login:generateLogin,
-            rib : Math.floor(Math.random() * 10000000000000000) + 10000000000000000,
-            montant : 1000,
-            id_cdc:req.info_compte._id,
-            isActive:true,
-            id_client:client._id,
-            date_creation:dataFull
+  const Verife = await clients.findOne({email:req.body.email})
+  const verife_cin = await clients.findOne({cin:req.body.cin})
+  if(Verife ==null){
+    if(verife_cin == null){
+      var Check_cin = req.body.cin
+      var Check_tel = req.body.tel
+      
+      if(Check_cin.length>=8 && Check_cin.length<10){
+        if(Check_tel.length == 8){
+          const client = new clients({
+            nom : req.body.nom,
+            prenom : req.body.prenom,
+            email : req.body.email,
+            profession : req.body.profession,
+            tel:req.body.tel,
+            cin : req.body.cin,
+            id_agence:req.info_compte.id_agence,
+            id_type_client:req.body.id_type_client
+    
         })
-        await compte.save()
-        const response = await  comptes.populate(compte,{ path : 'id_client'})
-
-        transporter.use('compile', hbs(handlebarOptions));
-
-
-        var mailOptions = {
-          from: process.env.USER,
-          to: req.body.email,
-          subject: 'Votre Compte bancaire en ligne ',
-          template: 'email',
-          context: {
-            np:req.body.prenom +" "+req.body.nom,
-            login:generateLogin,
-            mdp:generatePass
-          }
-        
-        };
-
+        await client.save()
+      
+    
+            var generatePass= Math.random().toString(36).substring(2, 15);
+            const nmdp = await bcrypt.hash(generatePass,13)
+            let generateLogin = req.body.nom.substr(0, 3)+Math.floor(Math.random() * 100) + 1000
+    
+    
+            const compte = new comptes({
+    
+                mdp :nmdp,
+                login:generateLogin,
+                rib : Math.floor(Math.random() * 10000000000000000) + 10000000000000000,
+                montant : 1000,
+                id_cdc:req.info_compte._id,
+                isActive:true,
+                id_client:client._id,
+                date_creation:dataFull
+            })
+            await compte.save()
+            const response = await  comptes.populate(compte,{ path : 'id_client'})
+    
+            transporter.use('compile', hbs(handlebarOptions));
+    
+    
+            var mailOptions = {
+              from: process.env.USER,
+              to: req.body.email,
+              subject: 'Votre Compte bancaire en ligne ',
+              template: 'email',
+              context: {
+                np:req.body.prenom +" "+req.body.nom,
+                login:generateLogin,
+                mdp:generatePass
+              }
             
-        
-        transporter.sendMail(mailOptions, function (error, info) {
-          if (error) {
-            console.log(error);
-          } else {
-            //console.log('Email sent: ' + info.response);
-          }
-        });
+            };
+    
+                
+            
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error);
+              } else {
+                //console.log('Email sent: ' + info.response);
+              }
+            });
+            res.status(200).send(response);
+        }else{
+          return res.status(404).send("Veuillez Vérifier votre Téléphone")
+        }
+      }else{
+     
+        return res.status(404).send("Veuillez vérifier votre cin")
+      }
+   
+    }else{
+      return res.status(404).send("CIN est déjà utlilsé.Essayez un autre cin")
+
+    }
+  }else{
+    return res.status(404).send("Adresse email est déjà utlilsé.Essayez un autre")
+
+  }
+    
+    
+   
+   
 
         
 
@@ -142,7 +164,7 @@ module.exports.ajouter_compte = async (req,res)=>{
   
 
 
-        res.status(200).send(response);
+
    
 };
 
@@ -180,7 +202,7 @@ module.exports.se_connecter = async (req,res)=>{
   
     }
       else {
-        res.status(403).send("Adresse ou mot de passe incorrect")
+        res.status(403).send("Login ou mot de passe incorrect")
         
       }
 
@@ -198,25 +220,33 @@ module.exports.consulter_informations_personnelles = async(req,res)=>{
 
 module.exports.modifier_mot_de_passe = async (req,res)=>{
 
+  var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
   const user = await comptes.findOne({_id : req.info_compte._id})
   if(user){
     let passwordIsValid = await bcrypt.compare(req.body.currentPassword,user.mdp)
+    var pass = req.body.newPassword
     if(passwordIsValid){
-      if(req.body.newPassword===req.body.confPassword)
-      {
-        const nmdp = await bcrypt.hash(req.body.newPassword,13)
-
-        await comptes.findOneAndUpdate({_id:req.info_compte._id},{
-          mdp :  nmdp
-      },{
-          new : true
-      });
-      return res.status(200).send("Mot de passe a été changé avec succés")
-
+      if(pass.match(decimal)){
+        if(req.body.newPassword===req.body.confPassword)
+        {
+          const nmdp = await bcrypt.hash(req.body.newPassword,13)
+  
+          await comptes.findOneAndUpdate({_id:req.info_compte._id},{
+            mdp :  nmdp
+        },{
+            new : true
+        });
+        return res.status(200).send("Mot de passe a été changé avec succés")
+  
+        }
+        else{
+          return res.status(404).send("Confirmer votre mot de passe")
+        }
+      }else{
+        return res.status(404).send("saisir un mot de passe entre 8 et 15 caractères contenant au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial")
       }
-      else{
-        return res.status(404).send("Confirmer votre mot de passe")
-      }
+   
     }
     else{
       return res.status(404).send("Vérifier votre mot de passe")
@@ -372,8 +402,12 @@ module.exports.Récupérer_votre_compte = async(req,res)=>{
 }
 
 module.exports.Récupérer_modifier_mot_de_passe = async (req,res)=>{
+  
+  var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+  var pass = req.body.newPassword
 
-      if(req.body.newPassword===req.body.confPassword)
+  if(pass.match(decimal)){
+    if(req.body.newPassword===req.body.confPassword)
       {
         const nmdp = await bcrypt.hash(req.body.newPassword,13)
 
@@ -388,6 +422,12 @@ module.exports.Récupérer_modifier_mot_de_passe = async (req,res)=>{
       else{
         return res.status(404).send("Confirmer votre mot de passe")
       }
+  }else{
+    return res.status(404).send("saisir un mot de passe entre 8 et 15 caractères contenant au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial")
+  }
+
+
+      
     }
  
   

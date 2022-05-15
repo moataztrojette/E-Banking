@@ -56,7 +56,8 @@ const FermetureCompte = (props) => {
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Demande de fermeture de compte bancaire  </h3>
+          <h3 className="font-weight-light">Demande de 
+clôture de compte bancaire  </h3>
           <br />
           <form
             className="pt-3"
@@ -68,12 +69,13 @@ const FermetureCompte = (props) => {
    
                 <br />
                 <textarea
+required
                   name="motif"
                   rows="4"
                   className="form-control"
                   cols="50"
-                  placeholder="motif"
-                  form="usrform"
+                  placeholder="Motif"
+                 
                   onChange={MyValuesInput}
 
                 ></textarea>

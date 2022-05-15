@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
 import axios from "axios";
+import ModalCheckCode from './ModalCheckCode';
 
 
 const VirementBancaire = (props) => {
 
   const [valuesInput,setValues] = useState({});
+  const [modalIsOpenCheckCode, setModalIsOpenCheckCode] = useState(false);
 
+
+
+   
   const MyValuesInput = (event) => {
     let res = valuesInput;
     res[event.target.name] = event.target.value;
@@ -16,30 +21,48 @@ const VirementBancaire = (props) => {
   };
 
   const handleFormSubmit = async (event) => {
-    try {
+   
       event.preventDefault();
-      await axios.post(
-        "http://localhost:4000/api/virement/add",
-        valuesInput
-      );
+      
+      try{
+        if(valuesInput.montant>10){
+            if(valuesInput.ribBeneficiaire.length>15){
+              setModalIsOpenCheckCode(true)
+            }else{
+              setModalIsOpenCheckCode(false)
 
-      toast("Virement effectué avec succes ", {
-        type: "success",
-      });
+              toast(" SVP vérifier vos coordonnées ", {
+                type: "error",
+              });
+             
+            }
+     
+        }else{
+          setModalIsOpenCheckCode(false)
+          toast("Impossible ! Le montant  minimum de virement est 10 dinar ", {
+            type: "error",
+          });
+        }
 
-    } catch (error) {
-      if (error.response.data) {
-        toast(error.response.data, {
-          type: "error",
-        });
+
+      }catch (error) {
+        if (error.response.data) {
+          toast(error.response.data, {
+            type: "error",
+          });
+        }
       }
-    }
-  };
+
+  
+
+  }
 
 
 
     return (
 <div>
+{modalIsOpenCheckCode === true ? (<ModalCheckCode  modalIsOpenCheckCode={modalIsOpenCheckCode} setModalIsOpenCheckCode={setModalIsOpenCheckCode} nomBeneficiaire={valuesInput.nomBeneficiaire} ribBeneficiaire={valuesInput.ribBeneficiaire} montant={valuesInput.montant}  />) : (<div></div>)  } 
+
       <Modal
         isOpen={props.modalIsOpen}
         shouldCloseOnOverlayClick={false}
@@ -112,11 +135,12 @@ const VirementBancaire = (props) => {
             <div className="bloc_creation_compte">
             <div className="mb-2">
               <button
+              onClick={() => setModalIsOpenCheckCode(true)}
                 type="submit"
                 className="btn_terminer"
               >
                 <i className="mdi mr-2" />
-                Terminer{" "}
+                Suivant{" "}
               </button>
             </div>
 
