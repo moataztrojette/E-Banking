@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
 import axios from "axios";
-import ModalCheckCode from './ModalCheckCode';
-
+import ModalCheckCode from "./ModalCheckCode";
 
 const VirementBancaire = (props) => {
-
-  const [valuesInput,setValues] = useState({});
+  const [valuesInput, setValues] = useState({});
   const [modalIsOpenCheckCode, setModalIsOpenCheckCode] = useState(false);
 
-
-
-   
   const MyValuesInput = (event) => {
     let res = valuesInput;
     res[event.target.name] = event.target.value;
@@ -21,47 +16,66 @@ const VirementBancaire = (props) => {
   };
 
   const handleFormSubmit = async (event) => {
-   
-      event.preventDefault();
-      
-      try{
-        if(valuesInput.montant>10){
-            if(valuesInput.ribBeneficiaire.length>15){
-              setModalIsOpenCheckCode(true)
-            }else{
-              setModalIsOpenCheckCode(false)
+    event.preventDefault();
+    
 
-              toast(" SVP vérifier vos coordonnées ", {
-                type: "error",
-              });
-             
+    try {
+      if (valuesInput.ribBeneficiaire.length==17) {
+        if (valuesInput.ribBeneficiaire != props.profil.rib) {
+          if (valuesInput.montant < props.profil.montant) {
+            if (valuesInput.montant > 10) {
+              setModalIsOpenCheckCode(true);
+            } else {
+              setModalIsOpenCheckCode(false);
+              toast(
+                "Impossible ! Le montant  minimum de virement est 10 dinar ",
+                {
+                  type: "error",
+                }
+              );
             }
-     
-        }else{
-          setModalIsOpenCheckCode(false)
-          toast("Impossible ! Le montant  minimum de virement est 10 dinar ", {
+          } else {
+            setModalIsOpenCheckCode(false);
+            toast("solde insuffisant ", {
+              type: "error",
+            });
+          }
+        } else {
+          setModalIsOpenCheckCode(false);
+          toast("SVP vérifier vos coordonnées ", {
             type: "error",
           });
         }
+      }else{
+        setModalIsOpenCheckCode(false);
+        toast("SVP vérifier vos coordonnées ", {
+          type: "error",
+        });
 
-
-      }catch (error) {
-        if (error.response.data) {
-          toast(error.response.data, {
-            type: "error",
-          });
-        }
       }
+    } catch (error) {
+      if (error.response.data) {
+        toast(error.response.data, {
+          type: "error",
+        });
+      }
+    }
+  };
 
-  
-
-  }
-
-
-
-    return (
-<div>
-{modalIsOpenCheckCode === true ? (<ModalCheckCode  modalIsOpenCheckCode={modalIsOpenCheckCode} setModalIsOpenCheckCode={setModalIsOpenCheckCode} nomBeneficiaire={valuesInput.nomBeneficiaire} ribBeneficiaire={valuesInput.ribBeneficiaire} montant={valuesInput.montant}  />) : (<div></div>)  } 
+  return (
+    <div>
+      {modalIsOpenCheckCode === true ? (
+        <ModalCheckCode
+          modalIsOpenCheckCode={modalIsOpenCheckCode}
+          setModalIsOpenCheckCode={setModalIsOpenCheckCode}
+          nomBeneficiaire={valuesInput.nomBeneficiaire}
+          ribBeneficiaire={valuesInput.ribBeneficiaire}
+          montant={valuesInput.montant}
+          setModalIsOpen={props.setModalIsOpen}
+        />
+      ) : (
+        <div></div>
+      )}
 
       <Modal
         isOpen={props.modalIsOpen}
@@ -84,89 +98,91 @@ const VirementBancaire = (props) => {
         <div className="auth-form-light text-left p-5">
           <h3 className="font-weight-light">Virement bancaire </h3>
           <br />
-          <form className="pt-3" encType="multipart/form-data"  onSubmit={handleFormSubmit}>
-          <div className="bloc_component_ajouter_comptes">
+          <form
+            className="pt-3"
+            encType="multipart/form-data"
+            onSubmit={handleFormSubmit}
+          >
+            <div className="bloc_component_ajouter_comptes">
+              <div>
+                <div className="bloc_np">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="exampleInputUsername2"
+                    name="nomBeneficiaire"
+                    required
+                    placeholder="Nom  bénéficiaire"
+                    onChange={MyValuesInput}
+                  />
 
-            <div>
-            <div className="bloc_np">
-              <input
-                type="text"
-                className="form-control"
-                id="exampleInputUsername2"
-                name="nomBeneficiaire"
-                required
-                placeholder="Nom  bénéficiaire"
-                onChange={MyValuesInput}
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="exampleInputUsername2"
+                    name="ribBeneficiaire"
+                    required
+                    placeholder="RIB  bénéficiaire"
+                    onChange={MyValuesInput}
+                  />
+                </div>
+
+                <div className="col-auto">
+                  <div className="input-group mb-2">
+                    <input
+                      type="number"
+                      step="0.01"
+                      className="form-control"
+                      id="input_email"
+                      name="montant"
+                      required
+                      placeholder="Montant en dinar (DT)"
+                      onChange={MyValuesInput}
+                    />
+                    <div className="input-group-prepend">
+                      <div className="input-group-text">DT</div>
+                    </div>{" "}
+                  </div>
+                </div>
+
+                <ToastContainer></ToastContainer>
+                <div className="bloc_creation_compte">
+                  <div className="mb-2">
+                    <button
+                      onClick={() => setModalIsOpenCheckCode(true)}
+                      type="submit"
+                      className="btn_terminer"
+                    >
+                      <i className="mdi mr-2" />
+                      Suivant{" "}
+                    </button>
+                  </div>
+
+                  <div className="mb-2">
+                    <button
+                      type="button"
+                      onClick={() => props.setModalIsOpen(false)}
+                      className="btn btn-block btn-facebook auth-form-btn"
+                    >
+                      <i className="mdi mr-2" />
+                      Retour{" "}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <img
+                  src="/img/money_transfer.jpg"
+                  alt="erreur_1"
+                  className="image_money"
                 />
-
-              <input
-                type="number"
-                className="form-control"
-                id="exampleInputUsername2"
-                name="ribBeneficiaire"
-                required
-                placeholder="RIB  bénéficiaire"
-                onChange={MyValuesInput}
-
-              />
-</div>
-
-             
-                  <div className="col-auto">
-        <div className="input-group mb-2">
-          
-          <input
-               type="number"
-               step="0.01"
-                className="form-control"
-                id="input_email"
-                name="montant"
-                required
-                placeholder="Montant en dinar (DT)"
-                onChange={MyValuesInput}
-
-              />  
-              <div className="input-group-prepend">
-            <div className="input-group-text">DT</div>
-          </div>      </div>
-      </div>
-
-            <ToastContainer></ToastContainer>
-            <div className="bloc_creation_compte">
-            <div className="mb-2">
-              <button
-              onClick={() => setModalIsOpenCheckCode(true)}
-                type="submit"
-                className="btn_terminer"
-              >
-                <i className="mdi mr-2" />
-                Suivant{" "}
-              </button>
+              </div>
             </div>
-
-            <div className="mb-2">
-              <button
-                type="button"
-                onClick={() => props.setModalIsOpen(false)}
-                className="btn btn-block btn-facebook auth-form-btn"
-              >
-                <i className="mdi mr-2" />
-                Retour{" "}
-              </button>
-            </div>
-            </div>
-            </div>
-            <div>
-              <img src="/img/money_transfer.jpg" alt="erreur_1"  className="image_money"/>
-            </div>
-            </div>
-            
           </form>
         </div>
       </Modal>
     </div>
-    
-     );
-}
- 
+  );
+};
+
 export default VirementBancaire;

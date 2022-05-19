@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useState,useEffect} from "react";
 import axios from "axios";
 
 import Navbar from './Navbar/Navbar';
@@ -20,6 +20,23 @@ import Liste_demande_carte_bancaire from '../Demandes/Demande_carte_bancaire/Lis
 
 
 const InterfaceChargeClientele = (props) => {
+
+
+    
+    const [user, setUser] = useState(null);
+
+useEffect(()=>{
+    axios.get("http://localhost:4000/api/compte/verife").then((res)=>{
+        setUser(res.data)
+    }).catch((error)=>{
+        if(error.response.status === 403){
+            props.history && props.history.replace('/cdc/connexion');
+            setUser(null)
+        }
+    } )
+},[])
+
+
     const logout = async ()=>{
         try{
          await axios.post('http://localhost:4000/api/cdc/deconnexion')

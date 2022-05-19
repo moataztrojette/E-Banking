@@ -429,7 +429,59 @@ module.exports.Récupérer_modifier_mot_de_passe = async (req,res)=>{
 
       
     }
- 
+
+    module.exports.vérifier_solde_rib = async(req,res)=>{
+
+      const response = await comptes.findOne({_id:req.info_compte._id})
+      if((req.body.ribBeneficiaire).length>16)
+      {
+        if (response.rib != req.body.ribBeneficiaire) {
+          if(response.montant > req.body.montant) {
+            if (parseInt(req.body.montant) > 10) {
+               res.json(response)
   
+            }
+            else
+            {
+              return res.status(404).send("Impossible ! Le montant  minimum de virement est 10 dinar");
+            }
+  
+          }
+          else
+          {
+            return res.status(404).send("solde insuffisant");
+  
+          }
+      
+          }
+          else
+          {
+            return res.status(404).send("SVP vérifier vos coordonnées ");
+          }
+          }
+          else
+          {
+            return res.status(404).send("SVP vérifier vos coordonnées ");
+           }
+   
+  }
+
+    
+
+  module.exports.verife = (req,res)=>{
+    const token = req.session.token
+    jwt.verify(token,process.env.SECURITE,(error,decoded)=>{
+      if(error){
+        return res.status(403).send('invalid token')
+      }
+      res.json(decoded)
+    })
+  }
+  
+ 
+  module.exports.consulter_compte_bancaire = async(req,res)=>{
+    const compte = await comptes.findOne({_id:req.info_compte._id}).populate("id_client");
+    res.json(compte);
+}
   
 

@@ -14,7 +14,6 @@ const ModalCheckCode = (props) => {
       .post("http://localhost:4000/api/virement/code-generator")
       .then((data) => {
         setCodeSec(data.data);
-        console.log(data.data);
       });
   }, []);
 
@@ -40,7 +39,7 @@ const ModalCheckCode = (props) => {
         toast("Virement effectué avec succès ", {
           type: "success",
         });
-        
+        props.setModalIsOpen(false)
       } else {
         toast("Code de sécurité incorrect ", {
           type: "error",

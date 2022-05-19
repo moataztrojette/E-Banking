@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useState,useEffect} from "react";
 import axios from "axios";
 
 import Navbar from './Navbar/Navbar';
@@ -22,6 +22,21 @@ import Consulter_les_cartes_bancaires_validées from '../Gestion_admin/ChargeCli
 
 
 const InterfaceAdmin = (props) => {
+
+    const [user, setUser] = useState(null);
+
+    useEffect(()=>{
+        axios.get("http://localhost:4000/api/compte/verife").then((res)=>{
+            setUser(res.data)
+        }).catch((error)=>{
+            if(error.response.status === 403){
+                props.history && props.history.replace('/admin/connexion');
+                setUser(null)
+            }
+        } )
+    },[])
+
+
     const logout = async ()=>{
         try{
          await axios.post('http://localhost:4000/api/admin/deconnexion')

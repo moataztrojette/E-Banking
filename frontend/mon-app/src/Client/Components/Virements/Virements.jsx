@@ -1,15 +1,23 @@
-import React , {useState }  from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link  } from 'react-router-dom';
 import VirementBancaire from './VirementBancaire/VirementBancaire';
+import axios from "axios";
 
 const Virement = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const [profil,setProfil] = useState({})
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/api/compte/").then((data) => {
+        setProfil(data.data);
+      });
+  }, []);
 
     return (
   
     <div>  
-      {modalIsOpen === true ? (<VirementBancaire  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />) : (<div></div>)  } 
+      {modalIsOpen === true ? (<VirementBancaire  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} profil={profil} />) : (<div></div>)  } 
 
 
 

@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {Créer_comptes_utilisateurs,se_connecter,se_deconnecter,consulter_informations_personnelles,consulter_les_comptes_bancaires,modifier_mot_de_passe,recherche_compte_ac,consulter_releves_compte_client_cdc,fermer_compte,activer_compte,consulter_les_comptes_par_agence,chercher_compte_par_mot_cle_cdc,Consulter_les_comptes_crées_par_cdc,consulter_comptes,Récupérer_votre_compte,Récupérer_modifier_mot_de_passe} = require("../controllers/compte.c")
+const {Créer_comptes_utilisateurs,se_connecter,se_deconnecter,consulter_informations_personnelles,consulter_les_comptes_bancaires,modifier_mot_de_passe,recherche_compte_ac,consulter_releves_compte_client_cdc,fermer_compte,activer_compte,consulter_les_comptes_par_agence,chercher_compte_par_mot_cle_cdc,Consulter_les_comptes_crées_par_cdc,consulter_comptes,Récupérer_votre_compte,Récupérer_modifier_mot_de_passe,verife,vérifier_solde_rib,consulter_compte_bancaire} = require("../controllers/compte.c")
 const { isLogin } = require("../middleware/auth")
 
 
@@ -20,6 +20,10 @@ router.get("/cdc/recherche/:cin", isLogin,chercher_compte_par_mot_cle_cdc);
 router.get("/creer/cdc/:id",Consulter_les_comptes_crées_par_cdc)
 router.post("/mot_de_passe/oublier",Récupérer_votre_compte)
 router.post("/change/password/:id",Récupérer_modifier_mot_de_passe)
+router.get('/verife',verife)
+router.post("/check-solde-rib",isLogin,vérifier_solde_rib)
+router.get('/',isLogin,consulter_compte_bancaire)
+
 
 module.exports = router;
 

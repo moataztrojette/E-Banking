@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useState,useEffect} from "react";
 import axios from "axios";
 
 import Navbar from './Navbar/Navbar';
@@ -27,7 +27,23 @@ import Liste_demande_carte_bancaire from '../Components/Demandes/ListeDemandes/l
 import Simulateur_credit from '../Components/Simulateur_credit/Simulateur_credit';
 
 
+
 const InterfaceClient = (props) => {
+
+    const [user, setUser] = useState(null);
+
+useEffect(()=>{
+    axios.get("http://localhost:4000/api/compte/verife").then((res)=>{
+        setUser(res.data)
+    }).catch((error)=>{
+        if(error.response.status === 403){
+            props.history && props.history.replace('/');
+            setUser(null)
+        }
+    } )
+},[])
+
+
 
     const logout = async ()=>{
         try{
@@ -37,6 +53,10 @@ const InterfaceClient = (props) => {
         catch(error){
         }
      }
+
+  
+
+
 
     return (<div >
         <SideBar logout ={logout}/>

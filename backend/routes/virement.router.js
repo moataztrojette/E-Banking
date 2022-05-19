@@ -22,6 +22,7 @@ router.post('/filter/envoyer/:id',filter_virements_envoyés_ac)
 router.post('/filter/recu/:id',filter_virements_reçus_ac)
 router.post('/code-generator',isLogin,generate_code)
 router.get('/check-rib',isLogin,check_rib)
+
 module.exports = router;
 
 
