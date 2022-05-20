@@ -1,3 +1,5 @@
+
+  
 import React, { useState,useEffect } from 'react'
 import { Line } from "react-chartjs-2";
 import dateformat from 'dateformat'
@@ -18,7 +20,7 @@ const Statistique = () => {
         axios.get("http://localhost:4000/api/historique/find").then((fact)=>{
 
             for(const dataObj of fact.data){
-
+                
              
                 date.push(dateformat(dataObj.date , "mmmm"))
                 montant.push(dataObj.montant)

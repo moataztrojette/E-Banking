@@ -25904,3 +25904,8 @@ align-items: center;
   position: relative;
   margin-bottom: 40px;
 }
+.bloc_stat{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
