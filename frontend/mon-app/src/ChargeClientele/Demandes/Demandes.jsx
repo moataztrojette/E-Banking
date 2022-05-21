@@ -19,7 +19,7 @@ const Demandes = () => {
                       </div>
                    
                   </div>
-                      <h5>CARTES</h5>
+                      <h5>Cartes</h5>
                       <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
               
                 </div>
@@ -38,7 +38,7 @@ const Demandes = () => {
                      </div>
                    
                   </div>
-                  <h5>CHÈQUES</h5>
+                  <h5>Carnet de chèques</h5>
                       <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
                  
                 </div>
@@ -57,7 +57,7 @@ const Demandes = () => {
                      </div>
                    
                   </div>
-                  <h5>Les rendez vous</h5>
+                  <h5>Les rendez vous en ligne</h5>
                       <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
                  
                 </div>
@@ -77,7 +77,7 @@ const Demandes = () => {
                      </div>
                    
                   </div>
-                  <h5>Demande de fermetures de comptes</h5>
+                  <h5>Demande de désactivation/activation de comptes bancaire</h5>
                       <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
                  
                 </div>

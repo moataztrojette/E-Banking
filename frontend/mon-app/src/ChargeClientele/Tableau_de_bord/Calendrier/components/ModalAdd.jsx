@@ -54,7 +54,7 @@ return (<div>
         }}
       >
         <div className="auth-form-light text-left p-5">
-          <h3 className="font-weight-light">Ajouter un nouveau Tâche</h3>
+          <h3 className="font-weight-light">Ajouter une nouvelle tâche</h3>
           <br />
           <form className="pt-3" onSubmit={handleFormSubmit}>
             <div className="form-group">

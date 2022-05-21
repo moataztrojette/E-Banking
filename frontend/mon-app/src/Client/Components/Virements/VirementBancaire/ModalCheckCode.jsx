@@ -39,7 +39,7 @@ const ModalCheckCode = (props) => {
         toast("Virement effectué avec succès ", {
           type: "success",
         });
-        props.setModalIsOpen(false)
+        //props.setModalIsOpen(false)
       } else {
         toast("Code de sécurité incorrect ", {
           type: "error",

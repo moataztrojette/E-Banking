@@ -67,7 +67,7 @@ const Stat_nb_compte_selon_agence = () => {
 
     return (<>
         <div style={{width:"20em",marginLeft:"80px"}}>
-        <p style={{textAlign:"center"}}>Le nombre de comptes bancaires selon l'agence</p>
+        <p style={{textAlign:"center"}}>Le nombre de comptes bancaires par l'agence</p>
 
       <Doughnut data={stateData}  />
       </div>
