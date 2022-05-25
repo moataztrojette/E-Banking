@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import Posts from "./Components/Posts";
 import Pagination from "./Components/Pagination";
 import axios from "axios";
@@ -13,6 +13,7 @@ const Liste_virements_envoyés = (props) => {
 
 
     useEffect(() => {
+      console.log(props.match.params.id)
         const fetchPosts = async () => {
             setLoading(true);
             const res = await axios.get('http://localhost:4000/api/virement/envoyer/liste/'+props.match.params.id);

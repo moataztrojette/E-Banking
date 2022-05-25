@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState,useRef  } from "react";
 import dateformat from 'dateformat'
+import ReactToPrint from 'react-to-print';
 
 const Posts = ({ posts, loading }) => {
+  const componentRef = useRef();
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -17,7 +19,7 @@ const Posts = ({ posts, loading }) => {
     
  </div>
  
-    <ul className='list-group mb-4' style={{fontSize:"10px"}}>
+    <ul className='list-group mb-4' style={{fontSize:"10px"}} ref={componentRef}>
       {posts.map(post => (
         <li key={post.id_user.id} className="bloc4 border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
          <div className="d-flex flex-column">
@@ -28,6 +30,7 @@ const Posts = ({ posts, loading }) => {
 
          </span>
        </span>
+       
        <span className="mb-2 text-xs">
          Nom bénéficiaire:{" "}
          <span className="text-dark font-weight-bold ms-sm-2">
@@ -57,6 +60,12 @@ const Posts = ({ posts, loading }) => {
         </li>
       ))}
     </ul>
+    <ReactToPrint
+             trigger={() => <button  class="btn btn-success" style={{marginTop:"-15em"}}
+             >Imprimer vos informations !</button>}
+             content={() => componentRef.current}
+          
+           />
     </>
   );
 };

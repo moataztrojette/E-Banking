@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef  } from "react";
 import Posts from "./Components/Posts";
 import Pagination from "./Components/Pagination";
 import axios from "axios";
 import FilterData from "./Components/FilterData";
+import ReactToPrint from 'react-to-print';
 
 
 
@@ -11,6 +12,7 @@ const VirementEnvoyer = () => {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(3);
+  
 
 
     useEffect(() => {
@@ -37,7 +39,8 @@ const VirementEnvoyer = () => {
   return (
     <div className="card-body pt-4 p-3">
       <FilterData   posts={currentPosts} setPosts={setPosts} /> 
-      <Posts posts={currentPosts} setPosts={setPosts} loading={loading} />
+    
+      <Posts posts={currentPosts} setPosts={setPosts} loading={loading}  />
        <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}

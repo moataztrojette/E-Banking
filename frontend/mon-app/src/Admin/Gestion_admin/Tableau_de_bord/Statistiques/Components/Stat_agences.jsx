@@ -22,7 +22,6 @@ const Stat_agences = () => {
     const data = {
         labels: stateAgences,
         datasets: [{
-          indexAxis: 'y',
     
           label: "le montant total des comptes bancaires selon l'agence",
           data:stateMontants,
@@ -60,24 +59,7 @@ const Stat_agences = () => {
       };
 
 
-      const  options = {
-        tooltipTemplate: "<%= value %>",
-
-        showTooltips: true,
-      
-        onAnimationComplete: function() {
-          this.showTooltip(this.datasets[0].points, true);
-        },
-        tooltipEvents: [],
-
-        indexAxis : "y",
-        scales: {
-          x: {
-            display: false
-          },
-        }
-   
-      }
+     
     
       
      
@@ -94,9 +76,9 @@ const Stat_agences = () => {
     
 
     return (<>
-            <div style={{width:"40em",marginLeft:"250px"}}>
+            <div style={{width:"40em"}}>
 
-          <Bar data={data} legend={legend} options={options}   config={config}  />
+          <Bar data={data} legend={legend}   config={config}  />
 </div>
 </>  );
 }

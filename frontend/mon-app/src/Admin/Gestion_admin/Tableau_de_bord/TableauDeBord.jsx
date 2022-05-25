@@ -17,12 +17,6 @@ const TableauDeBord = () => {
   }, []);
 
 
- 
-
-
-  
-
- 
   return (
     <>
       <NavPage name="Tableau de bord" />
@@ -33,15 +27,14 @@ const TableauDeBord = () => {
           <div className="col-lg-8">
             <div className="row">
               <Profil taux={taux} />
-            <div className="bloc_stat" >
               <div>
               <Stat_agences/>
 
               </div>
               <div>            
+                <br />
               <Stat_nb_compte_selon_agence/>
 
-              </div>
               </div>
             </div>
           </div>

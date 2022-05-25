@@ -423,22 +423,27 @@ module.exports.le_montant_total_des_comptes_bancaires_selon_lagence = async (req
       {
         return les_agences.indexOf(ele) == pos;
       }) 
-
+      let dataStat = []
+      
       for (let i = 0; i < filteredArray_les_agences.length; i++) 
       {
         let montant = 0
+        
         for (let j = 0; j < data.length; j++) 
         {
             if(  filteredArray_les_agences[i] == data[j].id_client.id_agence.nom)
             {
               montant = montant + data[j].montant
             }
+
         }
+        dataStat.push({agence:filteredArray_les_agences[i],montant:montant})
         montants.push(montant)
       }
 
+   
 
-          
+    
 
     res.json({filteredArray_les_agences,montants});
   

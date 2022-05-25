@@ -36,9 +36,10 @@ const VirementRecu = () => {
 
   return (
     <div className="card-body pt-4 p-3">
+    
             <FilterData   posts={currentPosts} setPosts={setPosts} /> 
-
-      <Posts posts={currentPosts} loading={loading} />
+           
+      <Posts posts={currentPosts} loading={loading}  />
        <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}

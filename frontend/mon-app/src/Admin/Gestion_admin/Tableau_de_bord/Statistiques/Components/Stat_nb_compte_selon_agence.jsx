@@ -54,19 +54,9 @@ const Stat_nb_compte_selon_agence = () => {
     }
   fetchData();
   }, [])
-  
-      
-
-   
-    
-      
-     
-      
-  
-    
 
     return (<>
-        <div style={{width:"20em",marginLeft:"80px"}}>
+        <div style={{width:"20em",marginLeft:"30em"}}>
         <p style={{textAlign:"center"}}>Le nombre de comptes bancaires par l'agence</p>
 
       <Doughnut data={stateData}  />

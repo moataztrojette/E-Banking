@@ -36,21 +36,21 @@ const Posts = ({ posts, loading,setPosts }) => {
               <span className="mb-2 text-xs">
                 Nom bénéficiaire:{" "}
                 <span className="text-dark font-weight-bold ms-sm-2">
-                  {post.id_user_recu.id_client.nom+" "+post.id_user_recu.id_client.prenom}
+                  {post.id_compte_beneficiaire.id_client.nom+" "+post.id_compte_beneficiaire.id_client.prenom}
                 </span>
               </span>
               
               <span className="mb-2 text-xs">
                 RIB bénéficiaire :{" "}
                 <span className="text-dark ms-sm-2 font-weight-bold">
-                  {post.ribBeneficiaire}
+                  {post.id_compte_beneficiaire.rib}
                 </span>
               </span>
                     
               <span className="mb-2 text-xs">
                 Agence :{" "}
                 <span className="text-dark ms-sm-2 font-weight-bold">
-                {post.id_user_recu.id_client.id_agence.nom}
+                {post.id_compte_beneficiaire.id_client.id_agence.nom}
                 </span>
               </span>
               

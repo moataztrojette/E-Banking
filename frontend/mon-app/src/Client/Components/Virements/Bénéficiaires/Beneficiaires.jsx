@@ -13,34 +13,21 @@ const Beneficiaires  = () => {
 
   useEffect(()=>{
 
-    axios.get("http://localhost:4000/api/beneficiaire/find").then((data)=>{
+
+    axios.get("http://localhost:4000/api/virement/beneficiaires").then((data)=>{
+    
+     
         setListeBeneficiaires(data.data)
     })
   },[])
 
-  const deleteBeneficiaire = async (id) => {
-    await axios
-      .delete("http://localhost:4000/api/beneficiaire/delete/" + id)
-      .then((verife) => {
-        if (verife.status != 200) {
-          Swal.fire("Deleted!", "Your file has been deleted.", "error");
-        } else {
-          const preventStatu = Listebeneficiaires;
-          const newState = preventStatu.filter((dev) => dev._id != id);
-          setListeBeneficiaires(newState);
-          Swal.fire("Beneficiaire", "Beneficiaire has been deleted", "success");
-        }
-      });
-  };
-
+  
 
 
     return (
         
         <div className="row">
-                {modalIsOpen === true ? (<AjouterBeneficiaires  modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} valuesInput={valuesInput} setValues={setValues} Listebeneficiaires={Listebeneficiaires} setListeBeneficiaires={setListeBeneficiaires} />) : (<div></div>)  } 
 
-            <button type="button" class="btn_add_beneficiares"  onClick={()=>setModalIsOpen(true)}>Ajouter un bénéficiaire </button>
         <div className="col-12">
           <div className="card mb-4">
             <div className="card-header pb-0">
@@ -62,30 +49,16 @@ const Beneficiaires  = () => {
                   <tr>
                           
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{data.nom}</span>
+                            <span class="text-secondary text-xs font-weight-bold">{data.id_compte_beneficiaire.id_client.nom} {data.id_compte_beneficiaire.id_client.prenom }</span>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-secondary text-xs font-weight-bold">{data.rib}</span>
+                            <span class="text-secondary text-xs font-weight-bold">{data.id_compte_beneficiaire.rib}</span>
                           </td>
                         <td class="align-middle text-center text-sm">
-                       <img src="/img/icons8-trash.gif" className="icon_trash"  onClick={() => {
-                      Swal.fire({
-                        title: "Êtes - vous sûr ?",
-                        text: "",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Oui, supprimez-le!",
-                      }).then((result) => {
-                        if (result.value) {
-                          deleteBeneficiaire(data._id);
-                        }
-                      });
-                    }}/>
+                      
                         </td>
                         <td  class="align-middle text-center text-sm">
-                        <Link to ={'/client/virements/beneficiaires/'+data.rib}><img
+                        <Link to ={'/client/virements/beneficiaires/'+data.id_compte_beneficiaire._id}><img
                           src="/img/icons8-view-64.png"
                           className="icon_trash"
                         /></Link>
