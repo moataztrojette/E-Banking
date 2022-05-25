@@ -109,7 +109,6 @@ module.exports.Faire_des_virements_bancaires = async (req, res) => {
 
           const virement = new virements({
             id_user: req.info_compte._id,
-            nomBeneficiaire: req.body.nomBeneficiaire,
             ribBeneficiaire: req.body.ribBeneficiaire,
             montant: req.body.montant,
             date: dataFull,
@@ -230,7 +229,7 @@ module.exports.Filtrer_les_virements_bancaires_reçus = async (req, res) => {
 module.exports.dernier_virements_envoyés = async (req, res) => {
   const dernier_virement_envoyer = await virements
     .find({ id_user: req.info_compte._id })
-    .populate({ path: "id_user id_user_recu", populate: { path: "id_client" } })
+    .populate({ path: "id_user id_user_recu", populate: { path: "id_client",populate:{path:"id_agence"}} })
     .sort({ _id: -1 })
     .limit(3);
   res.status(200).json(dernier_virement_envoyer);
@@ -242,16 +241,15 @@ module.exports.dernier_virements_reçus = async (req, res) => {
     .sort({ _id: -1 })
     .limit(3)
     .populate({
-      path: "id_user id_user_recu",
-      populate: { path: "id_client" },
-    });
+      path: "id_user id_user_recu ",
+      populate: { path: "id_client",populate:{path:"id_agence"}} })
   res.status(200).json(dernier_virement_recu);
 };
 
 module.exports.liste_virements_envoyés = async (req, res) => {
   const virement_envoyer = await virements
     .find({ id_user: req.info_compte._id })
-    .populate({ path: "id_user id_user_recu", populate: { path: "id_client" } })
+    .populate({ path: "id_user id_user_recu ", populate: { path: "id_client",populate:{path:"id_agence"}} })
     .sort({ _id: -1 });
   res.status(200).json(virement_envoyer);
 };
@@ -259,7 +257,7 @@ module.exports.liste_virements_envoyés = async (req, res) => {
 module.exports.liste_virements_reçus = async (req, res) => {
   const response = await virements
     .find({ id_user_recu: req.info_compte._id })
-    .populate({ path: "id_user id_user_recu", populate: { path: "id_client" } })
+    .populate({ path: "id_user id_user_recu", populate: { path: "id_client",populate:{path:"id_agence"}} })
     .sort({ _id: -1 });
   res.status(200).json(response);
 };
@@ -271,7 +269,7 @@ module.exports.liste_virements_reçus = async (req, res) => {
 module.exports.dernier_virements_envoyés_ac = async (req, res) => {
   const response = await virements
     .find({ id_user: req.params.id })
-    .populate({ path: "id_user id_user_recu", populate: { path: "id_client" } })
+    .populate({ path: "id_user id_user_recu", populate: { path: "id_client",populate:{path:"id_agence"}} })
     .sort({ _id: -1 })
     .limit(3);
   res.status(200).json(response);
@@ -280,7 +278,7 @@ module.exports.dernier_virements_envoyés_ac = async (req, res) => {
 module.exports.dernier_virements_reçus_ac = async (req, res) => {
   const response = await virements
     .find({ id_user_recu: req.params.id })
-    .populate({ path: "id_user id_user_recu", populate: { path: "id_client" } })
+    .populate({ path: "id_user id_user_recu", populate: { path: "id_client",populate:{path:"id_agence"}} })
     .sort({ _id: -1 })
     .limit(3);
   res.status(200).json(response);
@@ -289,7 +287,7 @@ module.exports.dernier_virements_reçus_ac = async (req, res) => {
 module.exports.liste_virements_envoyés_ac = async (req, res) => {
   const response = await virements
     .find({ id_user: req.params.id })
-    .populate({ path: "id_user", populate: { path: "id_client" } })
+    .populate({ path: "id_user id_user_recu", populate: { path: "id_client",populate:{path:"id_agence"}} })
     .sort({ _id: -1 });
   res.status(200).json(response);
 };
@@ -297,7 +295,7 @@ module.exports.liste_virements_envoyés_ac = async (req, res) => {
 module.exports.liste_virements_reçus_ac = async (req, res) => {
   const response = await virements
     .find({ id_user_recu: req.params.id })
-    .populate({ path: "id_user", populate: { path: "id_client" } })
+    .populate({ path: "id_user",populate: { path: "id_client",populate:{path:"id_agence"}} })
     .sort({ _id: -1 });
   res.status(200).json(response);
 };
@@ -344,4 +342,12 @@ module.exports.check_rib = async (req, res) => {
   } 
 }
 
+module.exports.liste_virements_envoyés_par_personne =async (req,res)=>{
+  const response = await virements
+  .find({ id_user: req.info_compte._id ,ribBeneficiaire: req.params.rib })
+  .populate({ path: "id_user id_user_recu",populate: { path: "id_client",populate:{path:"id_agence"}} })
+
+  .sort({ _id: -1 });
+res.status(200).json(response);
+}
 

@@ -27,7 +27,7 @@ const Posts = ({ posts, loading,setPosts }) => {
               <span className="mb-2 text-xs">
                 Nom bénéficiaire:{" "}
                 <span className="text-dark font-weight-bold ms-sm-2">
-                  {post.nomBeneficiaire}
+                {post.id_user_recu.id_client.nom+" "+post.id_user_recu.id_client.prenom}
                 </span>
               </span>
               <span className="mb-2 text-xs">
@@ -36,6 +36,13 @@ const Posts = ({ posts, loading,setPosts }) => {
                   {post.ribBeneficiaire}
                 </span>
               </span>
+              <span className="mb-2 text-xs">
+                Agence :{" "}
+                <span className="text-dark ms-sm-2 font-weight-bold">
+                {post.id_user_recu.id_client.id_agence.nom}
+                </span>
+              </span>
+
               <span className="text-xs">
                 Montant:{" "}
                 <span className="text-danger ms-sm-2 font-weight-bold">

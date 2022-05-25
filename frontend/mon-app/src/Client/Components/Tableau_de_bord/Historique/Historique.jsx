@@ -50,7 +50,8 @@ const Historique = (props) => {
               <span className="mb-2 text-xs">
                 Nom bénéficiaire:{" "}
                 <span className="text-dark font-weight-bold ms-sm-2">
-                  {his.nomBeneficiaire}
+                {his.id_user_recu.id_client.nom+" "+his.id_user_recu.id_client.prenom}
+
                 </span>
               </span>
               <span className="mb-2 text-xs">
@@ -59,6 +60,14 @@ const Historique = (props) => {
                   {his.ribBeneficiaire}
                 </span>
               </span>
+              <span className="mb-2 text-xs">
+                Agence :{" "}
+                <span className="text-dark ms-sm-2 font-weight-bold">
+                {his.id_user_recu.id_client.id_agence.nom}
+                </span>
+              </span>
+              
+
               <span className="text-xs">
                 Montant:{" "}
                 <span className="text-danger ms-sm-2 font-weight-bold">

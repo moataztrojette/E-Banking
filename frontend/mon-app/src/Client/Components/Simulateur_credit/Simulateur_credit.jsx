@@ -45,7 +45,7 @@ const Simulateur_credit = () => {
                         style={{ marginRight: "10px" }}
                       >
                         <div className="part1_div_h4">
-                          <h4>Montant demander</h4>
+                          <h4>Montant demandé</h4>
                         </div>
 
                         <div className="input-group mb-2">

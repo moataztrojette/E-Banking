@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import AjouterBeneficiaires from "./AjouterBénéficiaires/AjouterBeneficiaires";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const Beneficiaires  = () => {
@@ -82,6 +83,12 @@ const Beneficiaires  = () => {
                         }
                       });
                     }}/>
+                        </td>
+                        <td  class="align-middle text-center text-sm">
+                        <Link to ={'/client/virements/beneficiaires/'+data.rib}><img
+                          src="/img/icons8-view-64.png"
+                          className="icon_trash"
+                        /></Link>
                         </td>
 
                         </tr>

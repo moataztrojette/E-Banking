@@ -15,6 +15,7 @@ const ModalCheckCode = (props) => {
       .then((data) => {
         setCodeSec(data.data);
       });
+     
   }, []);
 
   const MyValuesInput_code = (event) => {

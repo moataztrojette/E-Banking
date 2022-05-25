@@ -40,6 +40,13 @@ const Posts = ({ posts, loading }) => {
            {post.id_user.rib}
          </span>
        </span>
+       <span className="mb-2 text-xs">
+                Agence :{" "}
+                <span className="text-dark ms-sm-2 font-weight-bold">
+                {post.id_user.id_client.id_agence.nom}
+                </span>
+              </span>
+
        <span className="text-xs">
          Montant:{" "}
          <span className="text-success ms-sm-2 font-weight-bold">

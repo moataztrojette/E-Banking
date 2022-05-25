@@ -277,7 +277,7 @@ module.exports.recherche_compte_ac = async (req, res) => {
 
   const res_recherche = await comptes
     .find({ id_client: client })
-    .populate("id_client");
+    .populate({ path: "id_client", populate: { path: "id_agence" } })
   res.json(res_recherche);
 };
 
