@@ -1,5 +1,3 @@
-
-  
 import React, { useState,useEffect } from 'react'
 import { Line } from "react-chartjs-2";
 import dateformat from 'dateformat'
@@ -8,7 +6,8 @@ import axios from 'axios'
 const Statistique = () => {
 
     const [stateDate,setDate] = useState([])
-    const [stateMontant,setMontant] = useState([])    
+    const [stateMontant,setMontant] = useState([])  
+    const [dateValues,setDateValues] = useState([]);  
     
     useEffect(()=>{
        
@@ -20,7 +19,7 @@ const Statistique = () => {
         axios.get("http://localhost:4000/api/historique/find").then((fact)=>{
 
             for(const dataObj of fact.data){
-                
+
              
                 date.push(dateformat(dataObj.date , "mmmm"))
                 montant.push(dataObj.montant)
@@ -29,8 +28,15 @@ const Statistique = () => {
         
             
        
-            setDate(date)
-            setMontant(montant)
+          let uniqueArray = {}
+          date.forEach(function(item, pos) {
+              if(date.indexOf(item) == pos){
+               uniqueArray[item] = {shown:false,pos} ;
+              }
+          });
+          setDateValues(uniqueArray)
+          setDate(date)
+          setMontant(montant)
         
         })
     },[])
@@ -46,7 +52,8 @@ const Statistique = () => {
             fill: true,
             backgroundColor: "rgba(75,192,192,0.2)",
             borderColor: "rgba(75,192,192,1)",
-           
+            tension: 0.32
+
           },
           
         ]
@@ -66,21 +73,21 @@ const Statistique = () => {
         title: {
           display: true,
           text: "Chart Title",
-          
         
         },
         scales: {
           xAxis: {
                 ticks:{
                     autoSkip:false,
-                    callback : (label, index, labels)=>{  
-                      let uniqueArray = stateDate.filter(function(item, pos) {
-                        return stateDate.indexOf(item) == pos;
-                    });
-                    let na = uniqueArray.map(v=>v === uniqueArray[index] ? v : null  );
-                    //console.log(na);
-                    return na[index] || null;     
+                    callback : (label, index, labels)=>{ 
+                    if(dateValues[stateDate[label]].pos === label){
+                      return stateDate[label]; 
+                    }else{
+                      return ""
                     }
+                        
+                    },
+                    
                 }
 
             //display: false

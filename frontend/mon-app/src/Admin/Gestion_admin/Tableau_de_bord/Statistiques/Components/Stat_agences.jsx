@@ -58,6 +58,8 @@ const Stat_agences = () => {
         
       };
 
+   
+
 
      
     
@@ -76,9 +78,9 @@ const Stat_agences = () => {
     
 
     return (<>
-            <div style={{width:"40em"}}>
+            <div style={{width:"55em"}}>
 
-          <Bar data={data} legend={legend}   config={config}  />
+          <Bar data={data} legend={legend}  config={config}  />
 </div>
 </>  );
 }

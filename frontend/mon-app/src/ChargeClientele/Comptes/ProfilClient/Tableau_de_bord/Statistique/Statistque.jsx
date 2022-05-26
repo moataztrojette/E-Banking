@@ -2,18 +2,19 @@ import React from 'react'
 import { Line } from "react-chartjs-2";
 
 
-const Statistique = (props) => {
+const Statistique = ({stateDate,stateMontant,dateValues,setDateValues}) => {
 
     const data = {
-        labels: props.stateDate,
+        labels: stateDate,
         datasets: [
           {
             label: "Solde",
-            data: props.stateMontant,
+            data: stateMontant,
             fill: true,
             backgroundColor: "rgba(75,192,192,0.2)",
             borderColor: "rgba(75,192,192,1)",
-           
+            tension: 0.32
+
           },
           
         ]
@@ -33,21 +34,21 @@ const Statistique = (props) => {
         title: {
           display: true,
           text: "Chart Title",
-          
         
         },
         scales: {
           xAxis: {
                 ticks:{
                     autoSkip:false,
-                    callback : (label, index, labels)=>{  
-                      let uniqueArray = props.stateDate.filter(function(item, pos) {
-                        return props.stateDate.indexOf(item) == pos;
-                    });
-                    let na = uniqueArray.map(v=>v === uniqueArray[index] ? v : null  );
-                    console.log(na);
-                    return na[index] || null;     
+                    callback : (label, index, labels)=>{ 
+                    if(dateValues[stateDate[label]].pos === label){
+                      return stateDate[label]; 
+                    }else{
+                      return ""
                     }
+                        
+                    },
+                    
                 }
 
             //display: false

@@ -12,6 +12,7 @@ module.exports.ajouter_agence = async (req,res)=>{
                     const agence =  new agences({
                         nom : req.body.nom,
                         email : req.body.email,
+                        adresse:req.body.adresse,
                         tel : req.body.tel
                     })
                     await agence.save();

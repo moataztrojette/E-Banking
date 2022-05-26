@@ -25687,7 +25687,7 @@ form.sign-in-form_login {
   margin-left: 69em;
 }
 .agences{
-  width: 20em;
+  width: 22em;
   height: 30em;
   border-radius: 10px;
   overflow: hidden;
@@ -25709,8 +25709,9 @@ form.sign-in-form_login {
 .liste_agences{
   display: flex;
   flex-direction: row;
-  grid-gap: 20px;
+  grid-gap: 50px;
   flex-wrap: wrap;
+  margin-left: 5em;
 }
 .btn-voir-clients{
   border-radius: 10px;

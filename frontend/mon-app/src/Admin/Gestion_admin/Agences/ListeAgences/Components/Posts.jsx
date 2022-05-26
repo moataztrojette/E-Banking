@@ -109,11 +109,15 @@ const Posts = ({ posts, loading, setListeAgence }) => {
                       Email
                     </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Adresse
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       Téléphone
                     </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       Action
                     </th>
+                  
                   </tr>
                 </thead>
                 {posts.map((c) => (
@@ -129,6 +133,11 @@ const Posts = ({ posts, loading, setListeAgence }) => {
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">
                           {c.email}
+                        </span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">
+                          {c.adresse}
                         </span>
                       </td>
                       <td class="align-middle text-center text-sm">

@@ -71,6 +71,8 @@ const Comptes = () => {
         <div className="containts">
           <p>Agence: <b>{c.nom}</b></p>
           <p>Email : <b>{c.email}</b></p>
+          <p>Adresse : <b>{c.adresse}</b></p>
+
           <p>Téléphone : <b>{c.tel}</b></p>
           <Link to ={'/admin/cdc/liste/'+c._id}><p>          <input type="submit" value="Voir" className="btn-voir-clients" /></p></Link>
         </div>

@@ -15,6 +15,7 @@ const TableauDeBordClient = (props) => {
   const [stateVirementRecu, setVirementRecu] = useState([]);
   const [stateDate,setDate] = useState([])
   const [stateMontant,setMontant] = useState([])    
+  const [dateValues,setDateValues] = useState([]);  
 
   useEffect(()=>{
       
@@ -47,10 +48,15 @@ const TableauDeBordClient = (props) => {
       }
   
       
- 
+      let uniqueArray = {}
+      date.forEach(function(item, pos) {
+          if(date.indexOf(item) == pos){
+           uniqueArray[item] = {shown:false,pos} ;
+          }
+      });
+      setDateValues(uniqueArray)
       setDate(date)
       setMontant(montant)
-  
   })
 
     //console.log(props.match.params.id)
@@ -71,7 +77,7 @@ const TableauDeBordClient = (props) => {
           <div className="col-lg-8">
             <div className="row">
               <Profil sateProfil={sateProfil} setProfil={setProfil}  />
-              <Statistique stateDate={stateDate}  stateMontant={stateMontant} />
+              <Statistique stateDate={stateDate}  stateMontant={stateMontant} dateValues={dateValues} setDateValues={setDateValues} />
             </div>
           </div>
           <ChargesClienteles id={props.match.params.id} />

@@ -19,7 +19,7 @@ const AjouterAgence = (props) => {
         props.valuesInput
       );
 
-      toast("Agence a été ajouter avec succès ", {
+      toast("Agence a été ajoutée avec succès ", {
         type: "success",
       });
 
@@ -86,6 +86,17 @@ const AjouterAgence = (props) => {
                     onChange={MyValuesInput}
                   />
                 </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    id="exampleInputUsername2"
+                    name="adresse"
+                    required
+                    placeholder="Adresse d'agence"
+                    onChange={MyValuesInput}
+                  />
+                                        <br />
+
                 <input
                   type="number"
                   className="form-control"

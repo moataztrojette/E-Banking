@@ -60,11 +60,12 @@ const Posts = ({ posts, loading,setListeCompte,id }) => {
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     Nom et prénom{" "}
                   </th>
-                
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     Email
                   </th>
-                
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Adresse
+                  </th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     Agence
                   </th>
@@ -90,6 +91,8 @@ const Posts = ({ posts, loading,setListeCompte,id }) => {
                       {c.email}
                     </span>
                   </td>
+              
+
                   <td class="align-middle text-center text-sm">
                     <span class="text-secondary text-xs font-weight-bold">
                       {c.id_agence.nom}

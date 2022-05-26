@@ -33,6 +33,7 @@ const TableauDeBord = () => {
               </div>
               <div>            
                 <br />
+                <br />
               <Stat_nb_compte_selon_agence/>
 
               </div>
