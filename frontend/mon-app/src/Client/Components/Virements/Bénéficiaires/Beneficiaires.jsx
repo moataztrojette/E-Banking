@@ -64,6 +64,14 @@ const Beneficiaires  = () => {
                         /></Link>
                         </td>
 
+                        <td  class="align-middle text-center text-sm">
+                        <Link to ={'/client/virements/beneficiaires/reçus/'+data.id_compte_beneficiaire._id}><img
+                          src="/img/icons8-view-64-1.png"
+                          className="icon_trash"
+                        /></Link>
+                        </td>
+
+
                         </tr>
                   
                   

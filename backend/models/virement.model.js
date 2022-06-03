@@ -7,6 +7,7 @@ const virement = new mongoose.Schema({
     montant : {type:Double,required:true},
     date : {type:String, required:true},
     mois :{type:String, required:true},
+    heure :{type:String,required:true}
 })
 
 

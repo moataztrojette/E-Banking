@@ -43,10 +43,17 @@ const Posts = ({ posts, loading }) => {
                 {post.id_compte_beneficiaire.id_client.id_agence.nom}
                 </span>
               </span>
+              <span className="mb-2 text-xs">
+                 Heure de virement :{" "}
+                <span className="text-dark ms-sm-2 font-weight-bold">
+                {post.heure}
+                </span>
+              </span>
+
               <span className="text-xs">
                 Montant:{" "}
                 <span className="text-danger ms-sm-2 font-weight-bold">
-                  -{post.montant} DT
+                  +{post.montant} DT
                 </span>
               </span>
             </div>

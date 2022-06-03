@@ -32,13 +32,13 @@ const Posts = ({ posts, loading }) => {
        </span>
        
        <span className="mb-2 text-xs">
-         Nom bénéficiaire:{" "}
+         Nom d'expéditeur:{" "}
          <span className="text-dark font-weight-bold ms-sm-2">
          {post.id_user.id_client.prenom} {post.id_user.id_client.nom}
          </span>
        </span>
        <span className="mb-2 text-xs">
-         RIB bénéficiaire :{" "}
+         RIB d'expéditeur :{" "}
          <span className="text-dark ms-sm-2 font-weight-bold">
            {post.id_user.rib}
          </span>
@@ -47,6 +47,13 @@ const Posts = ({ posts, loading }) => {
                 Agence :{" "}
                 <span className="text-dark ms-sm-2 font-weight-bold">
                 {post.id_user.id_client.id_agence.nom}
+                </span>
+              </span>
+              
+              <span className="mb-2 text-xs">
+                 Heure de virement :{" "}
+                <span className="text-dark ms-sm-2 font-weight-bold">
+                {post.heure}
                 </span>
               </span>
               

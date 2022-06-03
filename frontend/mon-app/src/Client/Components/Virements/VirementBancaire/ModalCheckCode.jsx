@@ -6,17 +6,8 @@ import axios from "axios";
 
 const ModalCheckCode = (props) => {
   const [valuesInput_code, setValuescode] = useState({});
-  const [modalIsOpenCheckCode, setModalIsOpenCheckCode] = useState(false);
-  const [stateCodeSec, setCodeSec] = useState({});
 
-  useEffect(() => {
-    axios
-      .post("http://localhost:4000/api/virement/code-generator")
-      .then((data) => {
-        setCodeSec(data.data);
-      });
-     
-  }, []);
+
 
   const MyValuesInput_code = (event) => {
     let res = valuesInput_code;
@@ -30,12 +21,8 @@ const ModalCheckCode = (props) => {
 
     try {
       event.preventDefault();
-      if (stateCodeSec == valuesInput_code.code_securite) {
-        await axios.post("http://localhost:4000/api/virement/add", {
-          nomBeneficiaire : props.nomBeneficiaire,
-          ribBeneficiaire:props.ribBeneficiaire,
-          montant:props.montant
-        });
+      if (props.stateCodeSec == valuesInput_code.code_securite) {
+        await axios.post("http://localhost:4000/api/virement/add", props.valuesInput);
 
         toast("Virement effectué avec succès ", {
           type: "success",
@@ -76,6 +63,23 @@ const ModalCheckCode = (props) => {
           },
         }}
       >
+         <div className="">
+         
+
+         <div className="mb-1">
+           <img src="/img/icons8-xbox-x-64.png"
+           className="img_y"
+             onClick={() =>{
+               props.setModalIsOpenCheckCode(false)
+              props.setModalIsOpen(false)
+}
+             }
+           >
+            
+           </img>
+         </div>
+       </div>
+
         <div className="auth-form-light text-left p-5">
           <h3 className="font-weight-light">Code sécurité </h3>
           <br />

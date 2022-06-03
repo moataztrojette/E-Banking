@@ -26,6 +26,7 @@ import Type_carte_bancaire from '../Components/Demandes/Demande_carte_bancaire/T
 import Liste_demande_carte_bancaire from '../Components/Demandes/ListeDemandes/liste_demande_carte_bancaire/Liste_demande_carte_bancaire';
 import Simulateur_credit from '../Components/Simulateur_credit/Simulateur_credit';
 import Liste_virements_envoyés from "../Components/Virements/Bénéficiaires/Liste_virements_envoyés/Liste_virements_envoyés";
+import Liste_virements_reçus from "../Components/Virements/Bénéficiaires/Liste_virements_reçus/Liste_virements_reçus";
 
 
 
@@ -64,6 +65,7 @@ useEffect(()=>{
         <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <Navbar logout ={logout} />
             <Switch>
+                <Route path ="/client/virements/beneficiaires/reçus/:id" component={Liste_virements_reçus}/>
                 <Route path ="/client/demandes/carte/bancaire/type/:id" component={Type_carte_bancaire}/>
                 <Route path ="/client/virements/virementbancaires" component={VirementBancaire}/>
                 <Route path ="/client/virements/beneficiaires/:id" component={Liste_virements_envoyés}/>

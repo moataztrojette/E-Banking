@@ -6,8 +6,16 @@ import axios from "axios";
 import ModalCheckCode from "./ModalCheckCode";
 
 const VirementBancaire = (props) => {
-  const [valuesInput, setValues] = useState({});
+  const [valuesInput, setValues] = useState({
+    nomBeneficiaire:"",
+    montant:"",
+    ribBeneficiaire:""
+
+  });
+  const [stateCodeSec, setCodeSec] = useState({});
+
   const [modalIsOpenCheckCode, setModalIsOpenCheckCode] = useState(false);
+  const [verfie, setVerfie] = useState({});
 
   const MyValuesInput = (event) => {
     let res = valuesInput;
@@ -15,44 +23,54 @@ const VirementBancaire = (props) => {
     setValues(res);
   };
 
+ 
+
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     
 
     try {
-      if (valuesInput.ribBeneficiaire.length==17) {
-        if (valuesInput.ribBeneficiaire != props.profil.rib) {
-          if (valuesInput.montant < props.profil.montant) {
-            if (valuesInput.montant > 10) {
-              setModalIsOpenCheckCode(true);
+        if (valuesInput.ribBeneficiaire!="" && valuesInput.ribBeneficiaire.length==17) {
+          if (valuesInput.ribBeneficiaire != props.profil.rib) {
+            if (valuesInput.montant < props.profil.montant) {
+              if (valuesInput.montant > 10) {
+                await axios.post("http://localhost:4000/api/virement/code-generator").then((data) => {
+                  setCodeSec(data.data);
+                });
+                setModalIsOpenCheckCode(true);
+              } else {
+                setModalIsOpenCheckCode(false);
+                toast(
+                  "Impossible ! Le montant  minimum de virement est 10 dinar ",
+                  {
+                    type: "error",
+                  }
+                );
+              }
             } else {
+  
               setModalIsOpenCheckCode(false);
-              toast(
-                "Impossible ! Le montant  minimum de virement est 10 dinar ",
-                {
-                  type: "error",
-                }
-              );
+              toast("solde insuffisant ", {
+                type: "error",
+              });
             }
           } else {
+  
             setModalIsOpenCheckCode(false);
-            toast("solde insuffisant ", {
+            toast("SVP vérifier vos coordonnées ", {
               type: "error",
             });
           }
-        } else {
+        }else{
           setModalIsOpenCheckCode(false);
           toast("SVP vérifier vos coordonnées ", {
             type: "error",
           });
+  
         }
-      }else{
-        setModalIsOpenCheckCode(false);
-        toast("SVP vérifier vos coordonnées ", {
-          type: "error",
-        });
-
-      }
+   
+    
     } catch (error) {
       if (error.response.data) {
         toast(error.response.data, {
@@ -61,6 +79,19 @@ const VirementBancaire = (props) => {
       }
     }
   };
+  const GoNextPage =async ()=>{
+    if(valuesInput.nomBeneficiaire=="" ||valuesInput.montant=="" || valuesInput.montant==""){
+      toast("SVP vérifier vos coordonnées ", {
+        type: "error",
+      });
+    }
+    else{
+      setModalIsOpenCheckCode(true);
+   
+      
+    }
+  }
+ 
 
   return (
     <div>
@@ -72,6 +103,8 @@ const VirementBancaire = (props) => {
           ribBeneficiaire={valuesInput.ribBeneficiaire}
           montant={valuesInput.montant}
           setModalIsOpen={props.setModalIsOpen}
+          valuesInput={valuesInput}
+          stateCodeSec={stateCodeSec}
         />
       ) : (
         <div></div>
@@ -149,7 +182,7 @@ const VirementBancaire = (props) => {
                 <div className="bloc_creation_compte">
                   <div className="mb-2">
                     <button
-                      onClick={() => setModalIsOpenCheckCode(true)}
+                      onClick={() => GoNextPage()}
                       type="submit"
                       className="btn_terminer"
                     >

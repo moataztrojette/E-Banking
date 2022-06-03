@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState,useRef  } from "react";
 import dateformat from 'dateformat'
+import ReactToPrint from 'react-to-print';
 
 const Posts = ({ posts, loading,setPosts }) => {
+  const componentRef = useRef();
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -14,7 +16,7 @@ const Posts = ({ posts, loading,setPosts }) => {
   return (
   <>
  
-    <ul className='list-group mb-4' style={{fontSize:"10px"}}>
+    <ul className='list-group mb-4' style={{fontSize:"10px"}} ref={componentRef}>
       {posts.map(post => (
         <li key={post.id} className="bloc4 border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
           <div className="d-flex flex-column">
@@ -42,17 +44,29 @@ const Posts = ({ posts, loading,setPosts }) => {
                 {post.id_compte_beneficiaire.id_client.id_agence.nom}
                 </span>
               </span>
-
+              <span className="mb-2 text-xs">
+                 Heure de virement :{" "}
+                <span className="text-dark ms-sm-2 font-weight-bold">
+                {post.heure}
+                </span>
+              </span>
               <span className="text-xs">
                 Montant:{" "}
                 <span className="text-danger ms-sm-2 font-weight-bold">
-                  -{post.montant} DT
+                  +{post.montant} DT
                 </span>
               </span>
             </div>
         </li>
       ))}
-    </ul></>
+    </ul>
+    <ReactToPrint
+             trigger={() => <button  class="btn btn-success" style={{marginTop:"-15em"}}
+             >Imprimer vos informations !</button>}
+             content={() => componentRef.current}
+          
+           />
+    </>
   );
   
 };

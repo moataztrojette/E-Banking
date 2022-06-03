@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 
-const Liste_virements_envoyés = (props) => {
+const Liste_virements_reçus = (props) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -15,12 +15,14 @@ const Liste_virements_envoyés = (props) => {
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.get('http://localhost:4000/api/virement/envoyer/liste/'+props.match.params.id);
+            const res = await axios.get('http://localhost:4000/api/virement/recus/'+props.match.params.id);
             setPosts(res.data);
             setLoading(false);
           };
+
       
           fetchPosts();
+          console.log(posts)
       }, []);
       // Get current posts
 
@@ -45,4 +47,4 @@ const Liste_virements_envoyés = (props) => {
   );
 };
 
-export default Liste_virements_envoyés;
+export default Liste_virements_reçus;

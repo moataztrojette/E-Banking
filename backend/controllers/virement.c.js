@@ -64,7 +64,8 @@ module.exports.Faire_des_virements_bancaires = async (req, res) => {
   let date = date_ob.getDate();
   let month = date_ob.getMonth() + 1;
   let year = date_ob.getFullYear();
-
+  let hours = date_ob.getHours()+":"+date_ob.getMinutes();
+ 
   const dataFull = year + "-" + month + "-" + date;
 
   //const dataFull = month
@@ -113,6 +114,7 @@ module.exports.Faire_des_virements_bancaires = async (req, res) => {
             date: dataFull,
             id_compte_beneficiaire: ribValid._id,
             mois: month,
+            heure : hours
           });
 
           transporter.use("compile", hbs(handlebarOptions));
@@ -366,3 +368,11 @@ module.exports.les_bénéficiaires =async (req,res)=>{
   }
 res.status(200).json(state);
 }
+
+module.exports.liste_virements_reçus_par_personne = async (req, res) => {
+  const response = await virements
+    .find({ id_user:req.params.id,id_compte_beneficiaire: req.info_compte._id })
+    .populate({ path: "id_user id_compte_beneficiaire", populate: { path: "id_client",populate:{path:"id_agence"}} })
+    .sort({ _id: -1 });
+  res.status(200).json(response);
+};

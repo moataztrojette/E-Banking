@@ -64,10 +64,17 @@ const VirementEnvoyer = (props) => {
                 {his.id_compte_beneficiaire.id_client.id_agence.nom}
                 </span>
               </span>
+              <span className="mb-2 text-xs">
+                 Heure de virement :{" "}
+                <span className="text-dark ms-sm-2 font-weight-bold">
+                {his.heure}
+                </span>
+              </span>
+
               <span className="text-xs">
                 Montant:{" "}
                 <span className="text-danger ms-sm-2 font-weight-bold">
-                  -{his.montant} DT
+                  +{his.montant} DT
                 </span>
               </span>
             </div>
