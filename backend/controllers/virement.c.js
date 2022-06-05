@@ -111,10 +111,13 @@ module.exports.Faire_des_virements_bancaires = async (req, res) => {
           const virement = new virements({
             id_user: req.info_compte._id,
             montant: req.body.montant,
-            date: dataFull,
             id_compte_beneficiaire: ribValid._id,
-            mois: month,
-            heure : hours
+            heure : hours,
+            date:{
+              jour:parseInt(date),
+              mois:parseInt(month),
+              année:parseInt(year)
+            }
           });
 
           transporter.use("compile", hbs(handlebarOptions));
@@ -203,9 +206,10 @@ module.exports.Filtrer_les_virements_bancaires_envoyés = async (req, res) => {
   const response = await virements
     .find({
       id_user: req.info_compte._id,
-      mois: {
-        $gte: parseInt(req.body.date_deb),
-        $lte: parseInt(req.body.date_fin),
+      "date.mois" : 
+              {$gte: parseInt(req.body.date_deb),
+              $lte: parseInt(req.body.date_fin),
+            
       },
     })
     .populate({ path: "id_user id_compte_beneficiaire", populate: { path: "id_client",populate:{path:"id_agence"} } })
@@ -213,11 +217,12 @@ module.exports.Filtrer_les_virements_bancaires_envoyés = async (req, res) => {
   res.status(200).json(response);
 };
 
+
 module.exports.Filtrer_les_virements_bancaires_reçus = async (req, res) => {
   const response = await virements
     .find({
       id_compte_beneficiaire: req.info_compte._id,
-      mois: {
+      "date.mois": {
         $gte: parseInt(req.body.date_deb),
         $lte: parseInt(req.body.date_fin),
       },
@@ -305,7 +310,7 @@ module.exports.filter_virements_envoyés_ac = async (req, res) => {
   const response = await virements
     .find({
       id_user: req.params.id,
-      mois: {
+      "date.mois": {
         $gte: parseInt(req.body.date_deb),
         $lte: parseInt(req.body.date_fin),
       },
@@ -319,7 +324,7 @@ module.exports.filter_virements_reçus_ac = async (req, res) => {
   const response = await virements
     .find({
       id_compte_beneficiaire: req.params.id,
-      mois: {
+      "date.mois": {
         $gte: parseInt(req.body.date_deb),
         $lte: parseInt(req.body.date_fin),
       },

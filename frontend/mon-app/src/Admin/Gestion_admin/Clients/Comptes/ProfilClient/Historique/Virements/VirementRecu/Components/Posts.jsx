@@ -25,7 +25,7 @@ const Posts = ({ posts, loading }) => {
        <span className="mb-2 text-xs">
          Date Opération :{" "}
          <span className="text-dark font-weight-bold ms-sm-2">
-         { dateformat(post.date , "dd mmmm yyyy") }   
+         { dateformat((toString(post.date.année)-toString(post.date.mois)-toString(post.date.jour)) , "dd mmmm yyyy") }   
          </span>
        </span>
        <span className="mb-2 text-xs">

@@ -35,9 +35,12 @@ const VirementBancaire = (props) => {
           if (valuesInput.ribBeneficiaire != props.profil.rib) {
             if (valuesInput.montant < props.profil.montant) {
               if (valuesInput.montant > 10) {
+
                 await axios.post("http://localhost:4000/api/virement/code-generator").then((data) => {
                   setCodeSec(data.data);
+
                 });
+
                 setModalIsOpenCheckCode(true);
               } else {
                 setModalIsOpenCheckCode(false);
