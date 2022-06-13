@@ -57,7 +57,7 @@ const FermetureCompte = (props) => {
       >
         <div className="auth-form-light text-left p-5">
           <h3 className="font-weight-light">Demande de 
-clôture de compte bancaire  </h3>
+          désactivation de compte bancaire  </h3>
           <br />
           <form
             className="pt-3"

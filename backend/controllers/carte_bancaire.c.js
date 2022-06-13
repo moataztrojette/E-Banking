@@ -1,5 +1,5 @@
 const carte_bancaire = require("../models/carte_bancaire.c")
-const demande_carnet_cheque = require("../models/demande_carte_bancaire.model")
+const demande_carte_bancaire = require("../models/demande_carte_bancaire.model")
 const nodemailer= require('nodemailer');
 const env = require('dotenv')
 env.config()
@@ -43,7 +43,7 @@ module.exports.valider_demande_carte_bancaire = async (req,res )=>{
         id_demande_carte : req.body.id_demande_carte,
     })
     await response.save()
-    const response2 = await demande_carnet_cheque.findOneAndUpdate({_id:req.body.id_demande_carte},{
+    const response2 = await demande_carte_bancaire.findOneAndUpdate({_id:req.body.id_demande_carte},{
         etat_demande :"valider",
     },{
         new : true

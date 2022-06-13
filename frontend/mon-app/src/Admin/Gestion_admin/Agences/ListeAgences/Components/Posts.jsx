@@ -146,27 +146,7 @@ const Posts = ({ posts, loading, setListeAgence }) => {
                         </span>
                       </td>
 
-                      <td class="align-middle text-center text-sm">
-                        <img
-                          src="/img/icons8-trash.gif"
-                          className="icon_trash"
-                          onClick={() => {
-                            Swal.fire({
-                              title: "Êtes - vous sûr ?",
-                              text: "",
-                              icon: "warning",
-                              showCancelButton: true,
-                              confirmButtonColor: "#3085d6",
-                              cancelButtonColor: "#d33",
-                              confirmButtonText: "Oui, supprimez-le!",
-                            }).then((result) => {
-                              if (result.value) {
-                                deleteAgence(c._id);
-                              }
-                            });
-                          }}
-                        />
-                      </td>
+                
 
                       <td class="align-middle text-center text-sm">
                         <img
