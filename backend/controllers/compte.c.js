@@ -54,10 +54,10 @@ module.exports.Créer_comptes_utilisateurs = async (req, res) => {
 
   const dataFull = year + "-" + month + "-" + date;
 
-  const Verife = await clients.findOne({ email: req.body.email });
-  const verife_cin = await clients.findOne({ cin: req.body.cin });
-  if (Verife == null) {
-    if (verife_cin == null) {
+  //const Verife = await clients.findOne({ email: req.body.email });
+  //const verife_cin = await clients.findOne({ cin: req.body.cin });
+  
+   
       var Check_cin = req.body.cin;
       var Check_tel = req.body.tel;
 
@@ -124,14 +124,8 @@ module.exports.Créer_comptes_utilisateurs = async (req, res) => {
       } else {
         return res.status(404).send("Veuillez vérifier votre cin");
       }
-    } else {
-      return res.status(404).send("CIN est déjà utlilsé.Essayez un autre cin");
-    }
-  } else {
-    return res
-      .status(404)
-      .send("Adresse email est déjà utlilsé.Essayez un autre");
-  }
+   
+
 };
 
 module.exports.se_connecter = async (req, res) => {
