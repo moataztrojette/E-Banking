@@ -24,7 +24,7 @@ const Posts = ({ posts, loading,setListeCompte }) => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Compte a été désactivé avec succés",
+        title: "Compte désactivé avec succés",
         showConfirmButton: false,
         timer: 1500,
       });

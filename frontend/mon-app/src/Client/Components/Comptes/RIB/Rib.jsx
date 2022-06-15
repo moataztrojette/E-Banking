@@ -41,7 +41,10 @@ const Rib = () => {
                 <div className="card" style={{marginLeft:"-2em",width:"40em",height:"35em"}} >
                 {infoProfil.map((info)=>(
                   <div className="card-body" style={{padding:"7em"}} ref={componentRef}>
-                  <h5 className="infoCompte">Informations sur le compte</h5>
+                          <h5 className="infoCompte" style={{marginLeft:"18em"}}>Logo</h5>
+
+                  <h5 >Informations sur le compte</h5>
+
                         <br />
                       
                           

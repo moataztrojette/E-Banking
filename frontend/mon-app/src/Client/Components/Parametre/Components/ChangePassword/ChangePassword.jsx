@@ -49,7 +49,7 @@ const ChangePasword = () => {
                   <span className="anchor" id="formLogin" />
                   <div className="card card-outline-secondary">
                     <div className="card-header">
-                      <h3 className="mb-0">Modification de mot de passe</h3>
+                      <h3 className="mb-0">Modification du mot de passe</h3>
                     </div>
                     <div className="card-body">
                       <form className="form"  onSubmit={handleFormSubmit}

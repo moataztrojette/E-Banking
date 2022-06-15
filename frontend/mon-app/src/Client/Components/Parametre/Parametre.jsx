@@ -18,9 +18,9 @@ const Parametre  = () => {
                       <div className="chart">
                         <canvas id="chart-bars" className="chart-canvas" style={{height: '10px'}} />
                       </div>
-                      <h6>Parametres </h6>
+                      <h6>Paramètres </h6>
                       <p className="text-sm">
-                        <span className="font-weight-bold">Veuillez trouver ici  les Parametres
+                        <span className="font-weight-bold">Veuillez trouver ici  les paramètres
                         </span>
                       </p>  
                     </div>
@@ -32,7 +32,7 @@ const Parametre  = () => {
                             <div className='bloc1'>
                                   <div className='bloc2'>
                                   <img src="/img/icons8-password-64.png" alt="erreur_1" style={{width: '40px'}} />                                
-                                  <span>Modification de mot de passe</span>
+                                  <span>Modification du mot de passe</span>
                                 </div>
                               </div></li></Link>
             

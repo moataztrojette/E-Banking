@@ -49,7 +49,7 @@ const ModalResultat = (props) => {
 
         <div className="auth-form-light text-left p-5">
           <h3 className="font-weight-light">
-            Resultat de demande de carte bancaire
+            Résultat de demande de carte bancaire
           </h3>
           <br />
 

@@ -109,7 +109,7 @@ const SideBar = (props) => {
                   <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center" style={{width: '3em', height: '3em'}}>
                     <img src="/img/icons8-parametric-64.png" width="30px" alt="" />
                   </div>
-                  <span className="nav-link-text ms-1">Paramétres</span>
+                  <span className="nav-link-text ms-1">Paramètres</span>
                   </Link>
               </li>
 
