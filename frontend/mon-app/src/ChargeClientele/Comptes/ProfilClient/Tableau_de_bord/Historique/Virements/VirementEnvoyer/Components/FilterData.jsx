@@ -11,7 +11,6 @@ const FilterData = ({posts,setPosts,id}) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault()
-    console.log(id)
     
     if (valuesInput.date_deb === "all" || valuesInput.date_fin==="all" ) {
         axios.get("http://localhost:4000/api/virement/envoyer/"+id).then((res) => {
@@ -22,6 +21,7 @@ const FilterData = ({posts,setPosts,id}) => {
        const  response = await axios.post(
             "http://localhost:4000/api/virement/filter/envoyer/"+id,valuesInput)           
             setPosts(response.data);
+            
       }
      
   

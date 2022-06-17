@@ -17,8 +17,6 @@ module.exports.demande_rendez_vous = async (req,res)=>{
             motif : req.body.motif,
             id_user : req.info_compte._id,
             etat_demande:"en attente"
-
-
         })
         await response.save();
         const data = await  rendez_vous.populate(response,{ path : 'id_client'})

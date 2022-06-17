@@ -3,9 +3,7 @@ import axios from "axios";
 import ReactToPrint from 'react-to-print';
 
 const Rib = () => {
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}
+ 
 
 
   const [infoProfil, setInfoProfil] = useState([]);
@@ -14,6 +12,7 @@ const Rib = () => {
   useEffect(() => {
     axios.get("http://localhost:4000/api/compte/profil").then((compte) => {
       setInfoProfil(compte.data);
+      console.log(compte.data)
       
     });
   

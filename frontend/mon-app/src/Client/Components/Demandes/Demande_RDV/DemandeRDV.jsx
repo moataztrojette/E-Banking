@@ -11,6 +11,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 const DemandeRDV = (props) => {
   const [valuesInput, setValues] = useState({});
 
+
   const MyValuesInput = (event) => {
     let res = valuesInput;
     res[event.target.name] = event.target.value;
@@ -21,7 +22,6 @@ const DemandeRDV = (props) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(valuesInput)
     try {
       
       await axios.post("http://localhost:4000/api/demande/rdv/add", valuesInput);

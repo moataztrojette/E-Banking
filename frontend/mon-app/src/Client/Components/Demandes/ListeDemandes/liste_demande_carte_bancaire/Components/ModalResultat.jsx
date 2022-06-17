@@ -59,7 +59,7 @@ const ModalResultat = (props) => {
                 <div>
                   {c.id_demande_carte.etat_demande == "valider" ? (
                     <p>
-                      Bonjour monsieur{" "}
+                      Bonjour Monsieur/Madame{" "}
                       <b>
                         {c.id_user.id_client.nom} {c.id_user.id_client.prenom}
                       </b>{" "}

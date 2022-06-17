@@ -301,7 +301,7 @@ module.exports.liste_virements_envoyés_ac = async (req, res) => {
 module.exports.liste_virements_reçus_ac = async (req, res) => {
   const response = await virements
     .find({ id_compte_beneficiaire: req.params.id })
-    .populate({ path: "id_user",populate: { path: "id_client",populate:{path:"id_agence"}} })
+    .populate({ path: "id_user id_compte_beneficiaire",populate: { path: "id_client",populate:{path:"id_agence"}} })
     .sort({ _id: -1 });
   res.status(200).json(response);
 };
@@ -315,7 +315,7 @@ module.exports.filter_virements_envoyés_ac = async (req, res) => {
         $lte: parseInt(req.body.date_fin),
       },
     })
-    .populate({ path: "id_user", populate: { path: "id_client",populate:{path:"id_agence"} } })
+    .populate({ path: "id_user id_compte_beneficiaire", populate: { path: "id_client",populate:{path:"id_agence"} } })
     .sort({ _id: -1 });
   res.status(200).json(response);
 };

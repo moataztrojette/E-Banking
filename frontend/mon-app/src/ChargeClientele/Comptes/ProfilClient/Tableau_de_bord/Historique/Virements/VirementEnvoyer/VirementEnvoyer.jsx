@@ -22,6 +22,7 @@ const VirementEnvoyer = (props) => {
           };
       
           fetchPosts();
+         
       }, []);
       // Get current posts
 

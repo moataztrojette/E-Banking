@@ -20,8 +20,11 @@ const Demandes = () => {
                    
                   </div>
                       <h5>Cartes</h5>
-                      <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
-              
+                      <p>Voici les demandes des cartes bancaires</p>
+                      <br />
+                      <br />
+                      <br />
+                      
                 </div>
               </div>
               <Link to={'/cdc/demandes/cartes/choix'}><button  type="button"  className="btn-voir">Voir</button></Link>
@@ -39,8 +42,11 @@ const Demandes = () => {
                    
                   </div>
                   <h5>Carnet de chèques</h5>
-                      <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
-                 
+                  <p>Voici les demandes des carnet de chèques</p>
+                      <br />
+                      <br />
+                      <br />
+                      
                 </div>
               </div>
               <Link to={'/cdc/demandes/carnet'}><button  type="button"  className="btn-voir">Voir</button></Link>
@@ -58,8 +64,11 @@ const Demandes = () => {
                    
                   </div>
                   <h5>Les rendez vous en ligne</h5>
-                      <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
-                 
+                  <p>Voici les demandes des rendez-vous en ligne</p>
+                      <br />
+                      <br />
+                      <br />
+                      
                 </div>
               </div>
 
@@ -77,8 +86,11 @@ const Demandes = () => {
                      </div>
                    
                   </div>
-                  <h5>Demande de désactivation/activation de comptes bancaire</h5>
-                      <p>Le chèque fait partie des effets de commerce. Il est tiré sur une banque ou un établissement financier constituant pour la personne à laquelle il est remis</p>
+                  <h5>Demande de désactivation/d'activation de comptes bancaire</h5>
+                  <p>Voici les demandes de désactivation/d'activation des comptes bancaires</p>
+                      <br />
+                      <br />
+                      <br />
                  
                 </div>
               </div>

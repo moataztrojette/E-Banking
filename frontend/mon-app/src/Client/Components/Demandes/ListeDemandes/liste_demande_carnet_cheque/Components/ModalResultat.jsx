@@ -60,7 +60,7 @@ const ModalResultat = (props) => {
               {stateRes.map((c)=>(
 
                   <div>
-                        <p>Bonjour monsieur <b>{c.id_user.id_client.nom} {c.id_user.id_client.prenom}</b> votre demande de carnet de chéque bancaire est <b>validée</b> , veuillez contacter votre agance  à la date <b>{c.date}</b></p>
+                        <p>Bonjour Monsieur/Madame <b>{c.id_user.id_client.nom} {c.id_user.id_client.prenom}</b> votre demande de carnet de chéque bancaire est <b>validée</b> , veuillez contacter votre agance  à la date <b>{c.date}</b></p>
 
                   </div>
 

@@ -41,7 +41,7 @@ const VirementRecu = (props) => {
               <span className="mb-2 text-xs">
                 Date Opération :{" "}
                 <span className="text-dark font-weight-bold ms-sm-2">
-                { dateformat((toString(his.date.année)-toString(his.date.mois)-toString(his.date.jour)) , "dd mmmm yyyy") }   
+                { dateformat((his.date.année+"-"+his.date.mois+"-"+his.date.jour), "dd mmmm yyyy") }   
 
                 </span>
               </span>
